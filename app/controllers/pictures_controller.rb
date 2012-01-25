@@ -46,7 +46,9 @@ class PicturesController < ApplicationController
       if @picture.save
        format.json { render :json => [ @picture.to_jq_upload ].to_json }
       else
-        format.json { render :json => [ @picture.to_jq_upload.merge({ :error => "custom_failure" }) ].to_json }
+      	logger.debug( @picture.to_json )
+	logger.debug( [ @picture.to_jq_upload.merge({ :error => @picture.errors.to_json }) ].to_json )
+        format.json { render :json => [ @picture.to_jq_upload.merge({ :error => @picture.errors.to_json }) ].to_json }
       end
     end
   end

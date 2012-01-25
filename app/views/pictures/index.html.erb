@@ -17,7 +17,7 @@
     <td><%= image_tag(picture.file_url(:thumb)) if picture.file.present? %></td>
     <td><%= link_to 'Show', picture %></td>
     <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-    <td><%= link_to 'Destroy', picture, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= button_to 'Destroy', picture_path(picture.id), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

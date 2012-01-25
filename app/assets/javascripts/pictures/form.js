@@ -17,27 +17,35 @@ $(function () {
     };
   
     // Initialize the jQuery File Upload widget:
-    $('#fileupload').fileupload({
-      maxNumberOfFiles: 10,
-      acceptFileTypes: /\.(jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG)$/
-    });
+    $('#fileupload')
+    	.bind('fileuploaddone', function (e, data) {
+			
+	})
+    	.bind('fileuploadfail', function (e, data) {
+	})
+    	.fileupload({
+      		maxNumberOfFiles: 10,
+      		acceptFileTypes: /\.(jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG)$/
+    	});
     
     // 
     // Load existing files:
-    $.getJSON($('#fileupload form').prop('action'), function (files) {
-        var fu = $('#fileupload').data('fileupload');
-        //fu._adjustMaxNumberOfFiles(-files.length);
-        fu._renderDownload(files)
-            .appendTo($('#fileupload .files'))
-            .fadeIn(function () {
-                // Fix for IE7 and lower:
-                $(this).show();
-            });
-            
-            $(".best_in_place").best_in_place();
-            Shadowbox.init();
-            $('#loading').hide();
-    });
+    if( $('#fileupload form').length!=0 ){
+	    $.getJSON($('#fileupload form').prop('action'), function (files) {
+		var fu = $('#fileupload').data('fileupload');
+		//fu._adjustMaxNumberOfFiles(-files.length);
+		fu._renderDownload(files)
+		    .appendTo($('#fileupload .files'))
+		    .fadeIn(function () {
+			// Fix for IE7 and lower:
+			$(this).show();
+		    });
+		    
+		    $(".best_in_place").best_in_place();
+		    Shadowbox.init();
+		    $('#loading').hide();
+	    });
+    }
 
     // Open download dialogs via iframes,
     // to prevent aborting current uploads:
@@ -72,7 +80,7 @@ $(function () {
     $('#fileupload').bind('fileuploadprogressall', function (e,data) {
       var progress = parseInt(data.loaded / data.total * 100, 10);
       //$('.progress-bar').find('div').css('width',  progress + '%').find('span').html(progress + '%');
-      console.info(progress);
+      //console.info(progress);
     });
 
 });
