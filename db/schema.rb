@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111021151343) do
+ActiveRecord::Schema.define(:version => 20120207193603) do
 
   create_table "pictures", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20111021151343) do
     t.string   "file"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "moderation_status"
   end
 
 end
