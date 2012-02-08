@@ -5,6 +5,10 @@ gem 'mysql2'
 gem 'jquery-rails'
 gem 'nifty-generators'
 gem 'carrierwave'
+
+gem 'crack' #"~> 0.1.8"
+gem 'httparty' # "~> 0.7.7"
+
 gem 'fog'
 gem 'mini_magick'
 gem "best_in_place", :git => 'git://github.com/proton/best_in_place.git'

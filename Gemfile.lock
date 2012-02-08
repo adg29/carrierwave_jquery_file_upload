@@ -47,6 +47,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.2)
+    crack (0.3.1)
     erubis (2.7.0)
     excon (0.7.6)
     execjs (1.2.9)
@@ -63,6 +64,9 @@ GEM
       ruby-hmac
     formatador (0.2.1)
     hike (1.2.1)
+    httparty (0.8.1)
+      multi_json
+      multi_xml
     i18n (0.6.0)
     jquery-rails (1.0.16)
       railties (~> 3.0)
@@ -77,6 +81,7 @@ GEM
     mini_magick (3.3)
       subexec (~> 0.1.0)
     multi_json (1.0.3)
+    multi_xml (0.4.1)
     mysql2 (0.3.7)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -143,7 +148,9 @@ DEPENDENCIES
   best_in_place!
   carrierwave
   coffee-rails (~> 3.1.1)
+  crack
   fog
+  httparty
   jquery-rails
   mini_magick
   mysql2
