@@ -2,6 +2,18 @@ CarrierwaveJqueryFileUpload::Application.routes.draw do
   resources :pictures
   root :to => 'pictures#index'
 
+  get '/channel.html' => proc {
+    [
+      200,
+      {
+        'Pragma'        => 'public',
+        'Cache-Control' => "max-age=#{1.year.to_i}",
+        'Expires'       => (Time.now + 1.year ).strftime("%d %m %Y %H:%I:%S %Z"),
+        'Content-Type'  => 'text/html'
+      },
+      ['<script type="text/javascript" src="//connect.facebook.net/en_US/all.js"></script>']
+    ]
+  }
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
