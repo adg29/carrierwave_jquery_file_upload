@@ -1,4 +1,6 @@
 CarrierwaveJqueryFileUpload::Application.routes.draw do
+  resources :mosaics
+
   resources :pictures
   root :to => 'pictures#index'
 

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120207193603) do
+ActiveRecord::Schema.define(:version => 20120213214909) do
+
+  create_table "mosaics", :force => true do |t|
+    t.integer  "rows"
+    t.integer  "columns"
+    t.integer  "unit_count"
+    t.string   "unit_list"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pictures", :force => true do |t|
     t.string   "title"
@@ -20,6 +29,15 @@ ActiveRecord::Schema.define(:version => 20120207193603) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "moderation_status"
+    t.integer  "user_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "locale"
+    t.string   "fbid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

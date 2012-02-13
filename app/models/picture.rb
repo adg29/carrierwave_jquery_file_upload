@@ -1,8 +1,21 @@
 class Picture < ActiveRecord::Base
-  include Rails.application.routes.url_helpers
+  belongs_to :user, :autosave => true
+  attr_accessible :title, :description, :file, :user_attributes
   validates_presence_of :title, :description, :file
+
+  accepts_nested_attributes_for :user
+
+  include Rails.application.routes.url_helpers
+
+
   mount_uploader :file, ImageUploader
-  
+
+  before_save :sync_picture_user
+
+  def sync_picture_user
+    self.user_id = self.user.id
+  end
+
   #one convenient method to pass jq_upload the necessary information
   def to_jq_upload
   {
@@ -17,4 +30,15 @@ class Picture < ActiveRecord::Base
     "delete_type" => "DELETE" 
    }
   end
+
+  def autosave_associated_records_for_user
+    # Find or create the user by fbid 
+    if new_user = User.find_by_fbid(user.fbid) then
+      self.user = new_user
+    else
+      logger.debug('USER NOT FOUND')
+      self.user.save!
+    end
+  end
+
 end

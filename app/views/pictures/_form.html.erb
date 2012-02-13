@@ -1,10 +1,17 @@
 <%= content_for :head do %>
   <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css", :id => "theme" %>
   <%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" %>
+
+  <script type="text/javascript">
+  </script>
+
 <% end %>
 
 <div id="fileupload">
   <%= form_for @picture, :html => { :multipart => true } do |f| %>
+      <div class="">
+      Hey <span id="callout-painter"></span>! Use this form to submit your image to be added the mosaic
+      </div>
       <div class="field">
         <%= f.label :title %><br />
         <%= f.text_field :title %>
@@ -14,6 +21,20 @@
         <%= f.label :description %><br />
         <%= f.text_field :description %>
       </div>
+      <%= f.fields_for :user do |user| %>
+	      <div class="field" id="fb-name">
+		<%= user.label :name %><br />
+		<%= user.text_field :name %>
+	      </div>
+	      <div class="field" id="fb-locale">
+		<%= user.label :locale%><br />
+		<%= user.text_field :locale%>
+	      </div>
+	      <div class="field" id="fb-id">
+		<%= user.label :fbid %><br />
+		<%= user.text_field :fbid %>
+	      </div>
+      <% end %>
       <br />
       <div class="fileupload-buttonbar">
           <label class="fileinput-button">

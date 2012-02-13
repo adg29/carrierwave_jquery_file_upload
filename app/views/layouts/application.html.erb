@@ -14,10 +14,25 @@
    var kb = kb || {};
    kb.FBGraphFetch = function(){
 	FB.api('/me', function(response) {
-	console.log('Good to see you, ' + response.name + ', aka '+ response.id);
-	console.log('Looks like your locale is  ' + response.locale + '.');
-	console.log( response );  
+		kb.FBUser = { 
+				name : response.name,
+				id : response.id,
+				locale : response.locale
+			    };
+		console.log('Good to see you, ' + response.name + ', aka '+ response.id);
+		console.log('Looks like your locale is  ' + response.locale + '.');
+		console.log( response );  
+
+		kb.FBUser_populate_form();
 	});
+
+    }
+
+    kb.FBUser_populate_form = function(){
+	console.log('Set FB form values');
+	console.log( $('#picture_user_attributes_fbid').val(kb.FBUser.id) );
+	console.log( $('#picture_user_attributes_name').val(kb.FBUser.name) );
+	console.log( $('#picture_user_attributes_locale').val(kb.FBUser.locale) );
     }
 
     window.fbAsyncInit = function() {
