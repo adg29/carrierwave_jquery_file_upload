@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120213214909) do
+ActiveRecord::Schema.define(:version => 20120214034315) do
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "mosaics", :force => true do |t|
     t.integer  "rows"
@@ -20,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20120213214909) do
     t.string   "unit_list"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "city_id"
   end
 
   create_table "pictures", :force => true do |t|
@@ -30,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20120213214909) do
     t.datetime "updated_at"
     t.integer  "moderation_status"
     t.integer  "user_id"
+    t.integer  "city_id"
   end
 
   create_table "users", :force => true do |t|

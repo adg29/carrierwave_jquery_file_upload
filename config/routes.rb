@@ -1,9 +1,20 @@
 CarrierwaveJqueryFileUpload::Application.routes.draw do
-  resources :mosaics
-
   resources :pictures
+
+  resources :cities do
+    resources :pictures
+  end
+
+  resources :mosaics do
+    resources :pictures
+    collection do
+      get 'latest'
+    end
+  end
+
   root :to => 'pictures#index'
 
+  # customization for serving facebook's channel file
   get '/channel.html' => proc {
     [
       200,

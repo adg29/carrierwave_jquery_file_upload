@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Rows:</b>
+  <%= @mosaic.rows %>
+</p>
+
+<p>
+  <b>Columns:</b>
+  <%= @mosaic.columns %>
+</p>
+
+<p>
+  <b>Unit count:</b>
+  <%= @mosaic.unit_count %>
+</p>
+
+<p>
+  <b>Unit list:</b>
+  <%= @mosaic.unit_list %>
+</p>
+
+
+<%= link_to 'Edit', edit_mosaic_path(@mosaic) %> |
+<%= link_to 'Back', mosaics_path %>

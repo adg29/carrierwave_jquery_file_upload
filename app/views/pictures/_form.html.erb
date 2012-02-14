@@ -21,6 +21,10 @@
         <%= f.label :description %><br />
         <%= f.text_field :description %>
       </div>
+      <div class="field">
+        <%= f.label :city_id %><br />
+        <%= f.text_field :city_id ,:value => @city.id %>
+      </div>
       <%= f.fields_for :user do |user| %>
 	      <div class="field" id="fb-name">
 		<%= user.label :name %><br />

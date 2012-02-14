@@ -1,0 +1,33 @@
+<%= form_for(@mosaic) do |f| %>
+  <% if @mosaic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mosaic.errors.count, "error") %> prohibited this mosaic from being saved:</h2>
+
+      <ul>
+      <% @mosaic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rows %><br />
+    <%= f.number_field :rows %>
+  </div>
+  <div class="field">
+    <%= f.label :columns %><br />
+    <%= f.number_field :columns %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_count %><br />
+    <%= f.number_field :unit_count %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_list %><br />
+    <%= f.text_field :unit_list %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

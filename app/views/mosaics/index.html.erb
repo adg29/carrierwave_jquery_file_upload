@@ -1,0 +1,29 @@
+<h1>Listing mosaics</h1>
+
+<table>
+  <tr>
+    <th>Rows</th>
+    <th>Columns</th>
+    <th>Unit count</th>
+    <th>Unit list</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mosaics.each do |mosaic| %>
+  <tr>
+    <td><%= mosaic.rows %></td>
+    <td><%= mosaic.columns %></td>
+    <td><%= mosaic.unit_count %></td>
+    <td><%= mosaic.unit_list %></td>
+    <td><%= link_to 'Show', mosaic %></td>
+    <td><%= link_to 'Edit', edit_mosaic_path(mosaic) %></td>
+    <td><%= link_to 'Destroy', mosaic, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mosaic', new_mosaic_path %>

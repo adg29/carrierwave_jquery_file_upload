@@ -25,6 +25,7 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   # GET /pictures/new.json
   def new
+    @city = City.find_by_name!(params[:city_id])
     @picture = Picture.new
     @picture.build_user
 

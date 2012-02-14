@@ -1,6 +1,7 @@
 class Picture < ActiveRecord::Base
+  belongs_to :city
   belongs_to :user, :autosave => true
-  attr_accessible :title, :description, :file, :user_attributes
+  attr_accessible :city_id, :title, :description, :file, :user_attributes
   validates_presence_of :title, :description, :file
 
   accepts_nested_attributes_for :user
@@ -11,6 +12,15 @@ class Picture < ActiveRecord::Base
   mount_uploader :file, ImageUploader
 
   before_save :sync_picture_user
+  
+  def as_json(options={})
+    super(:include => :user)
+  end
+
+  def as_xml(options={})
+    super(:include => :user)
+  end
+  
 
   def sync_picture_user
     self.user_id = self.user.id
@@ -23,6 +33,7 @@ class Picture < ActiveRecord::Base
     "title" => read_attribute(:title),
     "description" => read_attribute(:description),
     "name" => read_attribute(:file),
+    "city_id" => read_attribute(:city_id),
     "size" => file.size,
     "url" => file.url,
     "thumbnail_url" => file.thumb.url,
