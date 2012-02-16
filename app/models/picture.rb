@@ -1,8 +1,8 @@
-class Picture < ActiveRecord::Base
+﻿class Picture < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   validates_presence_of :title, :description, :file
   mount_uploader :file, ImageUploader
-=begin
+
   require "digest"	# Required for md5 hashing
   require "httparty"	# Required for posting to moderation service
 
@@ -35,7 +35,7 @@ class Picture < ActiveRecord::Base
     lw_customer_id = 'Intel'
     lw_secret_key = 123456
     # Instance values
-    lw_seed = lw_id = lw_content_time_stamp = created_at.to_time.to_i
+    lw_seed = lw_id = lw_content_time_stamp = (created_at.to_time.to_i * 1000)	# LW expects timestamp in milliseconds
     lw_hash_value = Digest::MD5.hexdigest("#{lw_secret_key}#{lw_seed}")
     lw_subject = title
     lw_body = description
@@ -46,27 +46,24 @@ class Picture < ActiveRecord::Base
     lw_content_url = file.url 
     lw_locale = "en_US" # Need to get locale along with user HARDCODED
 
-    xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent>
-    <seed><![CDATA[#{lw_seed}]]></seed>
-    <hash__value><![CDATA[#{lw_hash_value}]]></hash__value>
-    <subject><![CDATA[#{lw_subject}]]></subject>
-    <body><![CDATA[#{lw_body}]]></body>
-    <content__id><![CDATA[#{lw_content_id}]]></content__id>
-    <author__id><![CDATA[#{lw_author_id}]]></author__id>
-    <locale><![CDATA[#{lw_locale}]]></locale>
-    <system__id><![CDATA[#{lw_system_id}]]></system__id>
-    <tracking__id><![CDATA[#{lw_tracking_id}]]></tracking__id>
-    <content__time__stamp><![CDATA[#{lw_content_time_stamp}]]></content__time__stamp>
-    <customer__id><![CDATA[#{lw_customer_id}]]></customer__id>
-    </com.liveworld.moderation.web.struts.rest.ModerationContent>"
+    # xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject>#{lw_subject}</subject><body>#{lw_body}</body><content__id>#{lw_content_id}</content__id><author__id>#{lw_author_id}</author__id><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id></com.liveworld.moderation.web.struts.rest.ModerationContent>"
+    xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject>#{lw_subject}</subject><body>#{lw_body}</body><content__id>#{lw_content_id}</content__id><author__id>#{lw_author_id}</author__id><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id><moderation__status>0</moderation__status></com.liveworld.moderation.web.struts.rest.ModerationContent>"
 
     logger.info("after_save FIRED XML is #{xml}")
 
-    rsp = HTTParty.post("http://modserver-v1-11-uat.stage.liveworld.com/EndPointClientAxis2/rest/moderation_contents.xml", :body => xml)
+	options = {
+	  :headers => {
+		"Content-Type" => "application/xml"
+	  },
+	  :body => xml
+	}
+	
+    rsp = HTTParty.post("http://modserver-v1-11-uat.stage.liveworld.com/EndPointClientAxis2/rest/moderation_contents.xml", options)
 
-    logger.info(rsp.parsed_response)
+	logger.info(rsp.response.code)
+    #logger.info(rsp.parsed_response)
   end
-=end
+
   #one convenient method to pass jq_upload the necessary information
   def to_jq_upload
   {
