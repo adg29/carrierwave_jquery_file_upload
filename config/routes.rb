@@ -3,6 +3,12 @@ CarrierwaveJqueryFileUpload::Application.routes.draw do
 
   resources :cities do
     resources :pictures
+    resources :mosaics do
+      collection do
+      	get 'generate'
+        get 'latest'
+      end
+    end
   end
 
   resources :mosaics do

@@ -1,20 +1,34 @@
 class MosaicsController < ApplicationController
 
+  # GET /cities/:city_id/mosaics/generate
+  # GET /cities/:city_id/mosaics/generate.json
+  def generate
+    @city = City.find_by_name(params['city_id'])
+    Resque.enqueue( MosaicGenerator, @city.id )
+    logger.debug( @city.inspect )
+    respond_to do |format|
+      format.html #generate.html
+      format.json { render json: ( @city ) }
+    end
+  end
+
   # GET /mosaics/latest
   # GET /mosaics/latest.json
   def latest 
-    @mosaic = Mosaic.last
+    @city = City.find_by_name(params['city_id'])
+
+    @mosaic = Mosaic.find( :last )
     if @mosaic.nil?
       @mosaic = []
     end
 
     logger.debug( @mosaic )
-    @mosaic_pic_list = Mosaic.latest_pic_list(1)
+    @mosaic['unit_details'] = Mosaic.latest_pic_list(@city.id)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: ( @mosaic + @mosaic_pic_list ) }
-      format.xml { render xml: ( @mosaic + @mosaic_pic_list ) }
+      format.json { render json: ( @mosaic ) }
+      format.xml { render xml: ( @mosaic ) }
     end
   end
 

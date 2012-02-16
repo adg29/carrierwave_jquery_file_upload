@@ -5,12 +5,16 @@ gem 'mysql2'
 gem 'jquery-rails'
 gem 'nifty-generators'
 gem 'carrierwave'
+gem 'resque'
+gem 'ruby-debug19', :require => 'ruby-debug'
+
 
 gem 'crack' #"~> 0.1.8"
 gem 'httparty' # "~> 0.7.7"
 
 gem 'fog'
-gem 'mini_magick'
+#gem 'mini_magick'
+gem 'rmagick'
 gem "best_in_place", :git => 'git://github.com/proton/best_in_place.git'
 
 group :assets do

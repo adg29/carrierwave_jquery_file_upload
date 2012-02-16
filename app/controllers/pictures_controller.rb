@@ -8,6 +8,7 @@ class PicturesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @pictures.collect { |p| p.to_jq_upload }.to_json }
+      format.xml { render :xml => @pictures.collect { |p| p.to_jq_upload }.to_xml }
     end
   end
 
