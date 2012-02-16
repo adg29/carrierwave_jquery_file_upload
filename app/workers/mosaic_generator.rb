@@ -68,14 +68,6 @@ class MosaicGenerator
 
     Rails.logger.debug('ALL THESE')
     Rails.logger.debug(source_ids.inspect)
-    @mosaic_instance = Mosaic.new( 
-      :unit_list => source_ids.join(',') , 
-      :unit_count => source_ids.length, 
-      :columns => @@columns,
-      :rows => source_ids.length/@@columns,
-      :city_id => city_id,
-    )
-     
      
      #use if source_images have not been resized and simply reside in the input dir
      #source_images = ImageList.new(*Dir.glob(File.expand_path(@input_dir) + "/*"))
@@ -91,12 +83,23 @@ class MosaicGenerator
 
     Rails.logger.debug('tiled imags done')
 
+    @mosaic_instance = Mosaic.new( 
+      :unit_list => source_ids.join(',') , 
+      :unit_count => source_ids.length, 
+      :columns => @@columns,
+      :rows => source_ids.length/@@columns,
+      :city_id => city_id,
+    )
     mosaic_full = ImageList.new
     1.upto(10000/source_images.length) do
       mosaic_full.push( mosaic.copy )
+      @mosaic_instance.unit_list +=  source_ids.join(',')
+      @mosaic_instance.unit_count +=  source_ids.length
+      @mosaic_instance.rows +=  source_ids.length/@@columns
     end
     Rails.logger.debug( 'ALL FULL' )
     Rails.logger.debug( mosaic_full.inspect )
+     
 
     row_chunk = 0
     mosaic_full.each_slice(1) do |mosaic_row|
