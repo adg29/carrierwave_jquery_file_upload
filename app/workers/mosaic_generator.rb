@@ -115,7 +115,9 @@ class MosaicGenerator
 
     #source_images.mosaic.write('public/mosaic.jpg')
     @mosaic_instance.save
-    mosaic_full.mosaic.write('public/mosaic-full.jpg')
+
+    FileUtils.mkdir_p("public/mosaics/city-#{city_id}")
+    mosaic_full.mosaic.write("public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.jpg")
 
     image_creator = ImageCreator.new
 
@@ -128,7 +130,7 @@ class MosaicGenerator
 
     # convert
     Rails.logger.debug('DEEPZOOOOOM')
-    image_creator.create("public/mosaic-full.jpg", "public/mosaic-full.dzi")
+    image_creator.create("public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.jpg", "public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.dzi")
 
     #logger.debug( source_images.mosaic.inspect )
   end

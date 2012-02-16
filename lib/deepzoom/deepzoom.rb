@@ -62,7 +62,7 @@ class ImageCreator
     # iterate over all levels
     max_level(image_width, image_height).downto(0) do |level|
       width, height = image.columns, image.rows
-      puts "level #{level} is #{width} x #{height}"
+      Rails.logger.debug("level #{level} is #{width} x #{height}")
 
       current_level_dir = File.join(levels_root_dir, level.to_s)
       FileUtils.mkdir_p(current_level_dir)
