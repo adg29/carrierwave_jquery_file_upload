@@ -1,4 +1,5 @@
 require 'RMagick'
+require 'deepzoom'
 include Magick
  
 class MosaicGenerator
@@ -88,7 +89,7 @@ class MosaicGenerator
       :unit_count => source_ids.length, 
       :columns => @@columns,
       :rows => source_ids.length/@@columns,
-      :city_id => city_id,
+      :city_id => city_id
     )
     mosaic_full = ImageList.new
     1.upto(10000/source_images.length) do
@@ -108,14 +109,27 @@ class MosaicGenerator
       Rails.logger.debug( 'row_chunk and rectangle' )
       Rails.logger.debug( row_chunk )
       image.page = Rectangle.new(image.columns,image.rows,0,y_offset)
-      Rails.logger.debug( image.page )
       row_chunk = row_chunk + 1
     end
     end
 
     #source_images.mosaic.write('public/mosaic.jpg')
-    mosaic_full.mosaic.write('public/mosaic-full.jpg')
     @mosaic_instance.save
+    mosaic_full.mosaic.write('public/mosaic-full.jpg')
+
+    image_creator = ImageCreator.new
+
+    # Custom settings
+    image_creator.tile_size = 372 
+    image_creator.tile_overlap = 0 
+    image_creator.tile_format = "png"
+    image_creator.image_quality = 1.0
+    image_creator.copy_metadata = false 
+
+    # convert
+    Rails.logger.debug('DEEPZOOOOOM')
+    image_creator.create("public/mosaic-full.jpg", "public/mosaic-full.dzi")
+
     #logger.debug( source_images.mosaic.inspect )
   end
   
