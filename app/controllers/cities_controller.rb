@@ -1,4 +1,15 @@
 class CitiesController < ApplicationController
+
+  # GET /cities/1
+  # GET /cities/1.json
+  def interactive 
+    @city = City.find_by_name!(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
+
   # GET /cities/latest
   # GET /cities/latest.json
   def latest 
@@ -24,6 +35,7 @@ class CitiesController < ApplicationController
   # GET /cities/1
   # GET /cities/1.json
   def show
+    # id actually contains the city name
     @city = City.find_by_name!(params[:id])
 
     respond_to do |format|

@@ -2,6 +2,9 @@ CarrierwaveJqueryFileUpload::Application.routes.draw do
   resources :pictures
 
   resources :cities do
+    member do
+      get 'interactive'
+    end
     collection do
       get 'latest'
     end
