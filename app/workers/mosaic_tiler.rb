@@ -23,27 +23,31 @@
 # for the specific language governing rights and limitations under the
 # License.
 
-class ImageCreator
+class MosaicTiler 
+  RMAGICK_ENABLE_MANAGED_MEMORY = true
+  require "rubygems"
+  require "RMagick"
   require  "fileutils"
+  include Magick
+
+  @queue = :mosaic_tiler_queue
 
   # Properties
   attr_accessor :image_quality, :tile_size, :tile_overlap, :tile_format, :copy_metadata
 
-  # Constructor
-  def initialize(tile_size = 254, tile_overlap = 1, tile_format = nil,
-                 image_quality = 0.8, copy_metadata = false)
-    @tile_size = tile_size
-    @tile_overlap = tile_overlap
-    @tile_format = tile_format
-    @image_quality = image_quality
-    @copy_metadata = copy_metadata
-  end
+  @@tile_size = 372 
+  @@tile_overlap = 0 
+  @@tile_format = "jpg"
+  @@image_quality = 0.7 
+  @@copy_metadata = false 
 
-  def create(source, image_obj,destination)
+  def self.perform(source,destination)
     # load image
-    image = image_obj #Magick::Image::read(source).first
-    # remove image metadata if required
-    image.strip! unless @copy_metadata
+    image = Magick::Image::read(source).first
+    Rails.logger.debug( 'CREATE' )
+    Rails.logger.debug( image.inspect )
+     # remove image metadata if required
+    image.strip! unless @@copy_metadata
     # store image dimensions
     Rails.logger.debug("store image dimensions columns #{image.columns} rows #{image.rows}")
     image_width, image_height = image.columns, image.rows
@@ -54,7 +58,7 @@ class ImageCreator
     levels_root_dir = File.join(root_dir, basename + "_files")
 
     # auto select tile format if necessary
-    @tile_format = image_ext if @tile_format == nil
+    @@tile_format = image_ext if @@tile_format == nil
 
     # iterate over all levels
     max_level(image_width, image_height).downto(0) do |level|
@@ -67,19 +71,17 @@ class ImageCreator
       # iterate over columns
       x, col_count = 0, 0
       while x < width
-        Rails.logger.debug('col+count')
-        Rails.logger.debug(col_count)
         # iterate over rows
         y, row_count = 0, 0
         while y < height
-          dest_path = File.join(current_level_dir, "#{col_count}_#{row_count}.#{@tile_format}")
-          tile_width, tile_height = tile_dimensions(x, y, @tile_size, @tile_overlap)
+          dest_path = File.join(current_level_dir, "#{col_count}_#{row_count}.#{@@tile_format}")
+          tile_width, tile_height = tile_dimensions(x, y, @@tile_size, @@tile_overlap)
           #puts "tile_width #{tile_width} tile_height #{tile_height}"
-          save_cropped_image(image, dest_path, x, y, tile_width, tile_height, @image_quality * 100)
-          y += (tile_height - (2 * @tile_overlap))
+          save_cropped_image(image, dest_path, x, y, tile_width, tile_height, @@image_quality * 100)
+          y += (tile_height - (2 * @@tile_overlap))
           row_count += 1
         end
-        x += (tile_width - (2 * @tile_overlap))
+        x += (tile_width - (2 * @@tile_overlap))
         col_count += 1
       end
       image.resize!(0.5)
@@ -87,9 +89,9 @@ class ImageCreator
 
     # generate XML descriptor and write manifest file
     write_manifest_xml(destination,
-                       :tile_size    => @tile_size,
-                       :tile_overlap => @tile_overlap,
-                       :tile_format  => @tile_format,
+                       :tile_size    => @@tile_size,
+                       :tile_overlap => @@tile_overlap,
+                       :tile_format  => @@tile_format,
                        :width        => image_width,
                        :height       => image_height)
   end
@@ -97,7 +99,7 @@ class ImageCreator
 
   # Debug: Given path to Deep Zoom Image (DZI) XML manifest,
   #        deletes manifest and tiles folder
-  def delete(path)
+  def self.delete(path)
     basename, ext = splitext(File.basename(path))
     root_dir = File.dirname(path)
     levels_root_dir = File.join(root_dir, basename + "_files")
@@ -116,7 +118,7 @@ protected
   # Center tiles have overlapping on each side.
   # Borders have no overlapping on the border side and overlapping on all other sides.
   # Corners have only overlapping on the right and lower border.
-  def tile_dimensions(x, y, tile_size, tile_overlap)
+  def self.tile_dimensions(x, y, tile_size, tile_overlap)
     overlapping_tile_size = tile_size + (2 * tile_overlap)
     border_tile_size      = tile_size + tile_overlap
 
@@ -128,7 +130,7 @@ protected
 
   # Calculates how often an image with given dimension can
   # be divided by two until 1x1 px are reached.
-  def max_level(width, height)
+  def self.max_level(width, height)
     return (Math.log([width, height].max) / Math.log(2)).ceil
   end
 
@@ -140,7 +142,7 @@ protected
   #         x, y: offset from upper left corner of source image.
   #         width, height: width and height of cropped image.
   #         quality: compression level 0 - 100, lower number means higher compression.
-  def save_cropped_image(src, dest, x, y, width, height, quality)
+  def self.save_cropped_image(src, dest, x, y, width, height, quality)
     if src.is_a? Magick::Image
       img = src
     else
@@ -155,7 +157,7 @@ protected
 
 
   # Writes Deep Zoom XML manifest file
-  def write_manifest_xml(path, properties)
+  def self.write_manifest_xml(path, properties)
     properties = { :xmlns => "http://schemas.microsoft.com/deepzoom/2008" }.merge properties
     xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
           "<Image TileSize=\"#{properties[:tile_size]}\" Overlap=\"#{properties[:tile_overlap]}\" " +
@@ -169,9 +171,11 @@ protected
 
   # Returns filename (without path and extension) and its extension as array.
   # path/to/file.txt -> ["file", "txt"]
-  def splitext(path)
+  def self.splitext(path)
     extension = File.extname(path).gsub(".", "")
     filename  = File.basename(path, "." + extension)
     return filename, extension
   end
 end
+
+

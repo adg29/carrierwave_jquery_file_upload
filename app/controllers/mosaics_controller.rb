@@ -12,6 +12,11 @@ class MosaicsController < ApplicationController
     end
   end
 
+  def self.tile(source,destination)
+    logger.debug('TILEEEE')
+    Resque.enqueue( MosaicTiler, source, destination )
+  end
+
   # GET /mosaics/latest
   # GET /mosaics/latest.json
   def latest 

@@ -12,19 +12,19 @@
 </p>
 
 <script>	
-		var params = {};
-		var allvars = 	'mosaicDataPath=/cities/<%= @city.name %>/mosaics/latest.xml&'
-						+'loc_code=en_de&'
-						+'currentCityId=city-<%= @city.id %>&'
-						+'unitSize=6&'
-						+'mosaicWidth=744&'
-						+'mosaicHeight=516&'
-						+'layoutDataUrl=/assets/layoutdata.xml&'
-						+'assetUrl=/assets/resource.swf&'
-						+'mosaic_image=/assets/pagoda-new.jpg&'
-						+'mosaicPath=/mosaics&';
+	var params = {};
+	var allvars = 	'mosaicDataPath=/cities/<%= @city.name %>/mosaics/latest.xml&'
+					+'loc_code=en_de&'
+					+'currentCityId=city-<%= @city.id %>/<%= @mosaic.id %>_files&'
+					+'unitSize=6&'
+					+'mosaicWidth=744&'
+					+'mosaicHeight=516&'
+					+'layoutDataUrl=/assets/layoutdata.xml&'
+					+'assetUrl=/assets/resource.swf&'
+					+'mosaic_image=/assets/pagoda-new.jpg&'
+					+'mosaicPath=/mosaics&';
         
-		params = {
+	params = {
             flashvars: allvars,
             wmode:"transparent",
             id:"swf_div",

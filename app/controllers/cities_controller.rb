@@ -8,6 +8,7 @@ class CitiesController < ApplicationController
     if params[:id].nil? || params[:id]=="interactive"
       logger.debug('INTERACT')
       @city = City.find_last_by_status('generated')
+      @mosaic = Mosaic.find_last_by_city_id(@city.id)
       logger.debug( @city.inspect )
     else
       logger.debug('dont INTERACT')

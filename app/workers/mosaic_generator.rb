@@ -1,6 +1,5 @@
 RMAGICK_ENABLE_MANAGED_MEMORY = true
 require 'RMagick'
-require 'deepzoom'
 include Magick
  
 class MosaicGenerator
@@ -118,20 +117,15 @@ class MosaicGenerator
     @mosaic_instance.save
 
     FileUtils.mkdir_p("public/mosaics/city-#{city_id}")
-    mosaic_full.mosaic.write("public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.jpg")
+    mosaic_full_obj = mosaic_full.mosaic
+    mosaic_full_obj.write("public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.jpg")
+    Rails.logger.debug( mosaic_full_obj.inspect )
 
-    image_creator = ImageCreator.new
 
-    # Custom settings
-    image_creator.tile_size = 372 
-    image_creator.tile_overlap = 0 
-    image_creator.tile_format = "png"
-    image_creator.image_quality = 1.0
-    image_creator.copy_metadata = false 
 
     # convert
     Rails.logger.debug('DEEPZOOOOOM')
-    image_creator.create("public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.jpg", mosaic_full.mosaic, "public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.dzi")
+    MosaicsController.tile("public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.jpg","public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.dzi" )
 
     #logger.debug( source_images.mosaic.inspect )
   end
