@@ -11,4 +11,36 @@
   <%= @city.status %>
 </p>
 
+<script>	
+		var params = {};
+		var allvars = 	'mosaicDataPath=xml/sample_data.xml&'
+						+'loc_code=en_de&'
+						+'currentCityId=1&'
+						+'unitSize=6&'
+						+'mosaicWidth=744&'
+						+'mosaicHeight=516&'
+						+'layoutDataUrl=xml/layoutdata.xml&'
+						+'assetUrl=swf/resource_bundle.swf&'
+						+'mosaic_image=images/pagoda-new.jpg';
+        
+		params = {
+            flashvars: allvars,
+            wmode:"transparent",
+            id:"swf_div",
+            scale:"noscale",
+            allowscriptaccess:"always"
+        };
+        
+        var attributes = {};
+        attributes = {
+            id:"swf_div",
+            name:"swf_div"
+        }
+
+		swfobject.embedSWF("swf/gallery_root.swf","swf_div","744","576","10.0.0","swf/expressInstall.swf",null,params,attributes);
+		</script>
+		
+<div id='swf_div' height='516' width='744'>
+</div>
+
 
