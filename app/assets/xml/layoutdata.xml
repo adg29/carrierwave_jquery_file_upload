@@ -49,4 +49,7 @@
 			<iconBtn id='zoom-out' label='Zoom Out' label_y='4' type='ui' icon="/assets/ui/zoom_out_icon.png" icon_x='0' icon_y='0' roll_icon="/assets/ui/zoom_out_icon.png" style_id="zoom-out" rollCol="0xFFFFFF9" normCol="0xFFFFFF"/>
 		</zoomout>
 	</grid>
+	<tileIOError>images/ui/tile404.jpg</tileIOError>
+	<peekIOError>images/ui/peek404.jpg</peekIOError>
+	<imageIOError>images/ui/image404.jpg</imageIOError>
  </layout>
