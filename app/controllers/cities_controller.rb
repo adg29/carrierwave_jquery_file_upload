@@ -3,7 +3,16 @@ class CitiesController < ApplicationController
   # GET /cities/1
   # GET /cities/1.json
   def interactive 
-    @city = City.find_by_name!(params[:id])
+    if params[:id].nil? || params[:id]=="interactive"
+      logger.debug('INTERACT')
+      logger.debug( params.inspect )
+      @city = City.find_last_by_status('generated')
+      logger.debug( @city.inspect )
+    else
+      logger.debug('dont INTERACT')
+      logger.debug( params.inspect )
+      @city = City.find_by_name(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -67,7 +76,7 @@ class CitiesController < ApplicationController
 
     respond_to do |format|
       if @city.save
-        format.html { redirect_to @city, notice: 'City was successfully created.' }
+        format.html { redirect_to city_url(@city.name), notice: 'City was successfully created.' }
         format.json { render json: @city, status: :created, location: @city }
       else
         format.html { render action: "new" }
