@@ -3,18 +3,18 @@
  <layout>
  	
 	<cities>
-		<city><ready>true</ready><open>false</open><id>1</id><label>Seoul</label></city>
-		<city><ready>true</ready><open>true</open><id>2</id><label>Mexico City</label></city>
-		<city><ready>false</ready><open>false</open><id>3</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>4</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>5</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>6</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>7</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>8</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>9</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>10</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>11</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>12</id><label>Not Available</label></city>
+		<city><ready>true</ready><open>false</open><id>city-1</id><label>Seoul</label></city>
+		<city><ready>true</ready><open>true</open><id>city-2</id><label>Mexico City</label></city>
+		<city><ready>false</ready><open>false</open><id>city-3</id><label>Not Available</label></city>
+		<city><ready>false</ready><open>false</open><id>city-4</id><label>Not Available</label></city>
+		<city><ready>false</ready><open>false</open><id>city-5</id><label>Not Available</label></city>
+		<city><ready>false</ready><open>false</open><id>city-6</id><label>Not Available</label></city>
+		<city><ready>false</ready><open>false</open><id>city-7</id><label>Not Available</label></city>
+		<city><ready>false</ready><open>false</open><id>city-8</id><label>Not Available</label></city>
+		<city><ready>false</ready><open>false</open><id>city-9</id><label>Not Available</label></city>
+		<city><ready>false</ready><open>false</open><id>city-10</id><label>Not Available</label></city>
+		<city><ready>false</ready><open>false</open><id>city-11</id><label>Not Available</label></city>
+		<city><ready>false</ready><open>false</open><id>city-12</id><label>Not Available</label></city>
 	</cities>
 	
 	<landing>
