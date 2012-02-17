@@ -24,6 +24,8 @@ var urlParams = {};
 		 })();
 function submitMedia(city_code,mediatype){
 	//if (mediatype!="video" && mediatype!="image"){return;};
+	
+	console.log("submitMedia"+city_code+"|"+mediatype);
 	pauseSwf();
 }
 
@@ -44,9 +46,8 @@ function setLanguage(loc_code){
  */
 function setCityMosaic(mosaic_code){
 	
-	//window.location =
-	console.log('SET CITY');
-	top.window.location = "https://apps.facebook.com/testing_url/"+"?city_id="+mosaic_code;
+	console.log("setCityMosaic"+mosaic_code);
+	//top.window.location = "https://apps.facebook.com/testing_url/"+"?city_id="+mosaic_code;
 }
 /*
  * Can bee used to implement tracking; will get called when app state changes 
