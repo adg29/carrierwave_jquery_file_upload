@@ -1,6 +1,11 @@
 <% content_for :head do %>
   <meta property="og:url" content="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.name.downcase %>/interactive"/>
   <meta property="og:title" content="<%= @city.name%> Mosaic Viewer"/>
+  <script type="text/javascript">
+  	var request_HTTP_HOST = "<%= request.env['HTTP_HOST'] %>";
+	var city_name = "<%= @city.name %>";
+  </script>
+  <%= javascript_include_tag "jquery.simplemodal-1.4.2" %>
 <% end %>
 <script type="text/javascript">	
 	var params = {};
