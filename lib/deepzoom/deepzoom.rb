@@ -42,10 +42,10 @@ class ImageCreator
     @copy_metadata = copy_metadata
   end
 
-  def create(source, destination)
+  def create(source, image_obj,destination)
     # load image
-    image = Magick::Image::read(source).first
-     # remove image metadata if required
+    image = image_obj #Magick::Image::read(source).first
+    # remove image metadata if required
     image.strip! unless @copy_metadata
     # store image dimensions
     Rails.logger.debug("store image dimensions columns #{image.columns} rows #{image.rows}")
@@ -70,6 +70,8 @@ class ImageCreator
       # iterate over columns
       x, col_count = 0, 0
       while x < width
+        Rails.logger.debug('col+count')
+        Rails.logger.debug(col_count)
         # iterate over rows
         y, row_count = 0, 0
         while y < height

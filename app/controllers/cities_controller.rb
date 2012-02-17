@@ -1,4 +1,15 @@
 class CitiesController < ApplicationController
+  # GET /cities/latest
+  # GET /cities/latest.json
+  def latest 
+    @city = City.find_by_status('open')
+    @picture = Picture.new
+    @picture.build_user
+
+    respond_to do |format|
+      format.html { render "pictures/new" }
+    end
+  end
   # GET /cities
   # GET /cities.json
   def index

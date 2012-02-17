@@ -1,6 +1,6 @@
 $(function () {
 
-    $('.fileupload-content').append('<div id="loading"></div>');
+    //$('.fileupload-content').append('<div id="loading"></div>');
 
     var inputs = $('#new_picture :input[type=text]');
     
@@ -30,6 +30,7 @@ $(function () {
     
     // 
     // Load existing files:
+    /*
     if( $('#fileupload form').length!=0 ){
 	    $.getJSON($('#fileupload form').prop('action'), function (files) {
 		var fu = $('#fileupload').data('fileupload');
@@ -46,6 +47,7 @@ $(function () {
 		    $('#loading').hide();
 	    });
     }
+    */
 
     // Open download dialogs via iframes,
     // to prevent aborting current uploads:
