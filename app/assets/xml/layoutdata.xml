@@ -29,24 +29,24 @@
  		</select>
 		<upload x='466'>
 			<loc_label></loc_label>
-			<photo id='upload_photo' x='60' label='' type='ui' icon="images/ui/photo_upload_icon.png" icon_x='0' icon_y='0' roll_icon="images/ui/photo_upload_icon_roll.png" rollCol="0xFFFFFF9" normCol="0xFFFFFF"/>
-			<video id='upload_video' x='107' label='' type='ui' icon="images/ui/video_upload_icon.png" icon_x='0' icon_y='0' roll_icon="images/ui/video_upload_icon_roll.png" rollCol="0xFFFFFF9" normCol="0xFFFFFF"/>
+			<photo id='upload_photo' x='60' label='' type='ui' icon="/assets/ui/photo_upload_icon.png" icon_x='0' icon_y='0' roll_icon="/assets/ui/photo_upload_icon_roll.png" rollCol="0xFFFFFF9" normCol="0xFFFFFF"/>
+			<video id='upload_video' x='107' label='' type='ui' icon="/assets/ui/video_upload_icon.png" icon_x='0' icon_y='0' roll_icon="/assets/ui/video_upload_icon_roll.png" rollCol="0xFFFFFF9" normCol="0xFFFFFF"/>
 		</upload>
 		<hint_bubble w='220'>
 		</hint_bubble>
 		<tray>
- 			<left id='left-city' x='40' y='19' label='' label_y='4' type='ui' icon="images/ui/arrow_left.png" icon_x='0' icon_y='0' roll_icon="images/ui/arrow_left.png" rollCol="0xFFFFFF9" normCol="0xFFFFFF"/>
- 			<right id='right-city' x='690' y='19' label='' label_y='4' type='ui' icon="images/ui/arrow_right.png" icon_x='0' icon_y='0' roll_icon="images/ui/arrow_right.png" rollCol="0xFFFFFF9" normCol="0xFFFFFF"/>
-			<background>images/ui/tray_bg.jpg</background>
+ 			<left id='left-city' x='40' y='19' label='' label_y='4' type='ui' icon="/assets/ui/arrow_left.png" icon_x='0' icon_y='0' roll_icon="/assets/ui/arrow_left.png" rollCol="0xFFFFFF9" normCol="0xFFFFFF"/>
+ 			<right id='right-city' x='690' y='19' label='' label_y='4' type='ui' icon="/assets/ui/arrow_right.png" icon_x='0' icon_y='0' roll_icon="/assets/ui/arrow_right.png" rollCol="0xFFFFFF9" normCol="0xFFFFFF"/>
+			<background>/assets/ui/tray_bg.jpg</background>
  		</tray>
 		<findme x='620' y='12'/>
  	</menu>
  	<grid>
 		<peek w='135' h='135'>
-		<image x='29' y='29'><![CDATA[images/ui/peek_icon.png]]></image>
+		<image x='29' y='29'><![CDATA[/assets/ui/peek_icon.png]]></image>
 		</peek>
 		<zoomout>
-			<iconBtn id='zoom-out' label='Zoom Out' label_y='4' type='ui' icon="images/ui/zoom_out_icon.png" icon_x='0' icon_y='0' roll_icon="images/ui/zoom_out_icon.png" style_id="zoom-out" rollCol="0xFFFFFF9" normCol="0xFFFFFF"/>
+			<iconBtn id='zoom-out' label='Zoom Out' label_y='4' type='ui' icon="/assets/ui/zoom_out_icon.png" icon_x='0' icon_y='0' roll_icon="/assets/ui/zoom_out_icon.png" style_id="zoom-out" rollCol="0xFFFFFF9" normCol="0xFFFFFF"/>
 		</zoomout>
 	</grid>
  </layout>
