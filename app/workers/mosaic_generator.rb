@@ -1,3 +1,4 @@
+RMAGICK_ENABLE_MANAGED_MEMORY = true
 require 'RMagick'
 require 'deepzoom'
 include Magick

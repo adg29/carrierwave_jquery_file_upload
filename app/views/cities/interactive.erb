@@ -13,15 +13,16 @@
 
 <script>	
 		var params = {};
-		var allvars = 	'mosaicDataPath=xml/sample_data.xml&'
+		var allvars = 	'mosaicDataPath=/cities/<%= @city.name %>/mosaics/latest.xml&'
 						+'loc_code=en_de&'
-						+'currentCityId=1&'
+						+'currentCityId=city-<%= @city.id %>&'
 						+'unitSize=6&'
 						+'mosaicWidth=744&'
 						+'mosaicHeight=516&'
-						+'layoutDataUrl=xml/layoutdata.xml&'
-						+'assetUrl=swf/resource_bundle.swf&'
-						+'mosaic_image=images/pagoda-new.jpg';
+						+'layoutDataUrl=/assets/layoutdata.xml&'
+						+'assetUrl=/assets/resource.swf&'
+						+'mosaic_image=/assets/pagoda-new.jpg&'
+						+'mosaicPath=/mosaics&';
         
 		params = {
             flashvars: allvars,
@@ -37,7 +38,7 @@
             name:"swf_div"
         }
 
-		swfobject.embedSWF("swf/gallery_root.swf","swf_div","744","576","10.0.0","swf/expressInstall.swf",null,params,attributes);
+		swfobject.embedSWF("/assets/gallery_root.swf","swf_div","744","576","10.0.0","/assets/expressInstall.swf",null,params,attributes);
 		</script>
 		
 <div id='swf_div' height='516' width='744'>

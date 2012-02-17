@@ -3,14 +3,14 @@ class CitiesController < ApplicationController
   # GET /cities/1
   # GET /cities/1.json
   def interactive 
+      logger.debug('PARAMS')
+      logger.debug( params.inspect )
     if params[:id].nil? || params[:id]=="interactive"
       logger.debug('INTERACT')
-      logger.debug( params.inspect )
       @city = City.find_last_by_status('generated')
       logger.debug( @city.inspect )
     else
       logger.debug('dont INTERACT')
-      logger.debug( params.inspect )
       @city = City.find_by_name(params[:id])
     end
 
