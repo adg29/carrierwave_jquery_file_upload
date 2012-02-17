@@ -2,20 +2,7 @@
   <meta property="og:url" content="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.name.downcase %>/interactive"/>
   <meta property="og:title" content="<%= @city.name%> Mosaic Viewer"/>
 <% end %>
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @city.name %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @city.status %>
-</p>
-
-<script>	
+<script type="text/javascript">	
 	var params = {};
 	var allvars = 	'mosaicDataPath=/cities/<%= @city.name %>/mosaics/latest.xml&'
 					+'loc_code=en_de&'
@@ -43,7 +30,7 @@
         }
 
 		swfobject.embedSWF("/assets/gallery_root.swf","swf_div","744","576","10.0.0","/assets/expressInstall.swf",null,params,attributes);
-		</script>
+</script>
 		
 <div id='swf_div' height='516' width='744'>
 </div>
