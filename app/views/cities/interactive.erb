@@ -1,6 +1,10 @@
+<% content_for :head do %>
+  <meta property="og:url" content="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.name.downcase %>/interactive"/>
+  <meta property="og:title" content="<%= @city.name%> Mosaic Viewer"/>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>FLASH GOES HERE</h1>
 <p>
   <b>Name:</b>
   <%= @city.name %>
@@ -43,5 +47,7 @@
 		
 <div id='swf_div' height='516' width='744'>
 </div>
+
+<div class="fb-comments" data-href="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.name.downcase %>/interactive" data-num-posts="2" data-width="470"></div>
 
 

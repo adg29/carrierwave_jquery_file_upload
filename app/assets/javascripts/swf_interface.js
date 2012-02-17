@@ -45,6 +45,7 @@ function setLanguage(loc_code){
 function setCityMosaic(mosaic_code){
 	
 	//window.location =
+	console.log('SET CITY');
 	top.window.location = "https://apps.facebook.com/testing_url/"+"?city_id="+mosaic_code;
 }
 /*
