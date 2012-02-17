@@ -1,7 +1,7 @@
 class Picture < ActiveRecord::Base
   belongs_to :city
   belongs_to :user, :autosave => true
-  attr_accessible :city_id, :title, :description, :file, :user_attributes
+  attr_accessible :city_id, :title, :description, :file, :user_attributes, :remote_file_url
   validates_presence_of :title, :description, :file
 
   accepts_nested_attributes_for :user

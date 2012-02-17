@@ -62,7 +62,35 @@ function mosaicStateUpdate(cityid,appstate,behaviortrigger,itemid){
  */
 function pauseSwf(){
 	try{
+		console.log('SIMPLE MODAL here');
 		$('#swf_div')[0].pauseSwf();
+		//$('#swf_div')[0].resumeSwf();
+		var src = "http://"+request_HTTP_HOST+"/cities/"+city_name+"/pictures/new";
+		$.modal('<iframe src="' + src + '" height="450" width="830" style="border:0">', {
+			closeHTML:"",
+			containerCss:{
+				backgroundColor:"#fff",
+				borderColor:"#fff",
+				height:450,
+				padding:0,
+				width:830
+			},
+			overlayClose:true,
+			onClose: function (dialog) {
+				dialog.data.fadeOut('slow', function () {
+					dialog.container.hide('slow', function () {
+						dialog.overlay.slideUp('slow', function () {
+							$.modal.close();
+							resumeSwf();
+						});
+					});
+				});
+			}
+		});
+// Closing animations
+$("#sample").modal({});
+		
+
 	} catch (e){}
 }
 
