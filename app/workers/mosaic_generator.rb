@@ -6,7 +6,7 @@ class MosaicGenerator
   @queue = :mosaic_queue
 
   @@image_width  = @image_height = 62 
-  @@columns      = 125 
+  @@columns      = 124 
   @@padding      = 0 
   @@full_rows_only = false 
   
@@ -117,10 +117,9 @@ class MosaicGenerator
     @mosaic_instance.save
 
     FileUtils.mkdir_p("public/mosaics/city-#{city_id}")
-    mosaic_full_obj = mosaic_full.mosaic
-    mosaic_full_obj.write("public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.jpg")
-    Rails.logger.debug( mosaic_full_obj.inspect )
-
+    
+    Rails.logger.debug('WRITE MOSAIC')
+    mosaic_full.mosaic.write("public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.jpg")
 
 
     # convert
