@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <root>
+ 	<en>
+	 	<default_current_city><![CDATA[Browse Cities]]></default_current_city>
+	 	<zoom><![CDATA[Zoom Out]]></zoom>
+		<close><![CDATA[Close]]></close>
+		<landing_headline><![CDATA[Your Mosaics.<br/>His Inspiration.]]></landing_headline>
+		<landing_body><![CDATA[Using only his eyes, ears and an Ultrabook™, will.i.am is visiting cities around the globe, collaborating with local talent to write and record one track for each city. All he needs from you is to add pics and videos<br/>to the mosaic as inspiration.]]></landing_body>
+		<hint_headline><![CDATA[ADD PICS AND VIDEOS]]></hint_headline>
+		<hint_body><![CDATA[to help build a mosaic for each<br/>city will.i.am visits.]]></hint_body>
+		<myupload_label><![CDATA[My Uploads]]></myupload_label>
+		<upload_label><![CDATA[Upload:]]></upload_label>
+		<join_btn_label><![CDATA[Join The Project]]></join_btn_label>
+		<find_btn_label><![CDATA[My Uploads]]></find_btn_label>
+		<by_label><![CDATA[By:]]></by_label>
+		<city0><![CDATA[Mexico City]]></city0>
+		<city1><![CDATA[Seoul]]></city1>
+		<city2><![CDATA[Not Available]]></city2>
+		<city3><![CDATA[Not Available]]></city3>
+		<city4><![CDATA[Not Available]]></city4>
+		<city5><![CDATA[Not Available]]></city5>
+		<city6><![CDATA[Not Available]]></city6>
+		<city7><![CDATA[Not Available]]></city7>
+		<city8><![CDATA[Not Available]]></city8>
+		<city9><![CDATA[Not Available]]></city9>
+		<city10><![CDATA[Not Available]]></city10>
+		<city11><![CDATA[Not Available]]></city11>
+	</en>
+	<fr>
+	 	<default_current_city><![CDATA[İllere Göz At]]></default_current_city>
+	 	<zoom><![CDATA[ZxxxxZoomy zoom]]></zoom>
+		<close><![CDATA[Close]]></close>
+		<landing_headline><![CDATA[Your Mosaics.<br/>His Inspiration.]]></landing_headline>
+		<landing_body><![CDATA[Using only his eyes, ears and an Ultrabook™, will.i.am is visiting cities around the globe, collaborating with local talent to write and record one track for each city. All he needs from you is to add pics and videos<br/>to the mosaic as inspiration.]]></landing_body>
+		<hint_headline><![CDATA[ADD PICS AND VIDEOS]]></hint_headline>
+		<hint_body><![CDATA[to help build a mosaic for each<br/>city will.i.am visits.]]></hint_body>
+		<myupload_label><![CDATA[My Uploads]]></myupload_label>
+		<upload_label><![CDATA[Upload:]]></upload_label>
+		<join_btn_label><![CDATA[Baguettes The Project whoa this]]></join_btn_label>
+		<find_btn_label><![CDATA[ze upload]]></find_btn_label>
+		<by_label><![CDATA[By Frenchie:]]></by_label>
+		<city0><![CDATA[lé Mexico Cty]]></city0>
+		<city1><![CDATA[Seoul]]></city1>
+		<city2><![CDATA[Not Available]]></city2>
+		<city3><![CDATA[Not Available]]></city3>
+		<city4><![CDATA[Not Available]]></city4>
+		<city5><![CDATA[Not Available]]></city5>
+		<city6><![CDATA[Not Available]]></city6>
+		<city7><![CDATA[Not Available]]></city7>
+		<city8><![CDATA[Not Available]]></city8>
+		<city9><![CDATA[Not Available]]></city9>
+		<city10><![CDATA[Not Available]]></city10>
+		<city11><![CDATA[Not Available]]></city11>
+	</fr>		
+ </root>
