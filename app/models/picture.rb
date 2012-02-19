@@ -36,14 +36,14 @@
     lw_secret_key = KCONF['lw_secret_key']
 	lw_modserver_url = KCONF['lw_modserver_url']
     # Instance values
-    now = (Time.now.to_f * 1000).to_int # To enforce unique on the tracking id
-	lw_seed = lw_id = lw_content_time_stamp = now
+    lw_seed = (Time.now.to_f * 1000).to_int # To enforce unique on the tracking id
+	lw_id = lw_content_time_stamp = lw_seed
     lw_hash_value = Digest::MD5.hexdigest("#{lw_secret_key}#{lw_seed}")
     lw_subject = title
     lw_body = description
     lw_content_id = id
     lw_author_id = 0	# Need to pull the user (facebook) id for the user submitting the content HARDCODED
-    lw_tracking_id = "#{id}_#{now}"
+    lw_tracking_id = "#{id}_#{lw_seed}"
     lw_content_url = KCONF['kbsp_server_url'] + file.url 
     lw_locale = "en_US" # Need to get locale along with user HARDCODED
 
@@ -52,7 +52,7 @@
     # AUTO APPROVE status to send is 208
 	xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject><![CDATA[#{lw_subject}]]></subject><body><![CDATA[#{lw_body}]]></body><content__id>#{lw_content_id}</content__id><author__id>#{lw_author_id}</author__id><content__url><![CDATA[#{lw_content_url}]]></content__url><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id><moderation__status>208</moderation__status></com.liveworld.moderation.web.struts.rest.ModerationContent>"
 	# AUTO REJECT status to send is 224
-	logger.info(xml)
+	# logger.info(xml)
 	
 	# Set up values for httparty post
 	options = {
