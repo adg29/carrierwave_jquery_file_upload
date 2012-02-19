@@ -44,7 +44,7 @@
     lw_content_id = id
     lw_author_id = 0	# Need to pull the user (facebook) id for the user submitting the content HARDCODED
     lw_tracking_id = "#{id}_#{now}"
-    lw_content_url = file.url 
+    lw_content_url = KCONF['kbsp_server_url'] + file.url 
     lw_locale = "en_US" # Need to get locale along with user HARDCODED
 
     #REAL/LIVE
@@ -146,9 +146,6 @@
 			end			
 		end
 	end
-	
-	# POST a Confirmation object to /EndPointClientAxis2/rest/confirmations.xml
-	# tracking__id is id in 
   end
 
   #one convenient method to pass jq_upload the necessary information
