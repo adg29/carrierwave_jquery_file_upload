@@ -36,13 +36,13 @@
     lw_secret_key = KCONF['lw_secret_key']
 	lw_modserver_url = KCONF['lw_modserver_url']
     # Instance values
-    lw_seed = lw_id = lw_content_time_stamp = (created_at.to_time.to_i * 1000)
+    now = (Time.now.to_f * 1000).to_int # To enforce unique on the tracking id
+	lw_seed = lw_id = lw_content_time_stamp = now
     lw_hash_value = Digest::MD5.hexdigest("#{lw_secret_key}#{lw_seed}")
     lw_subject = title
     lw_body = description
     lw_content_id = id
     lw_author_id = 0	# Need to pull the user (facebook) id for the user submitting the content HARDCODED
-    now = (Time.now.to_f * 1000).to_int # To enforce unique on the tracking id
     lw_tracking_id = "#{id}_#{now}"
     lw_content_url = file.url 
     lw_locale = "en_US" # Need to get locale along with user HARDCODED
