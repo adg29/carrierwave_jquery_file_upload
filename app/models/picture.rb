@@ -42,7 +42,7 @@
     lw_body = description
     lw_content_id = id
     lw_author_id = 0	# Need to pull the user (facebook) id for the user submitting the content HARDCODED
-    now = Time.now.to_i # To enforce unique on the tracking id, use the current timestamp and not the created_on value (??)
+    now = (Time.now.to_f * 1000).to_int # To enforce unique on the tracking id
     lw_tracking_id = "#{id}_#{now}"
     lw_content_url = file.url 
     lw_locale = "en_US" # Need to get locale along with user HARDCODED
@@ -76,7 +76,7 @@
 	lw_modserver_url = KCONF['lw_modserver_url']
 	
 	# Class values
-    lw_seed = DateTime.now.to_i * 1000
+    lw_seed = (Time.now.to_f * 1000).to_int
     lw_hash_value = Digest::MD5.hexdigest("#{lw_secret_key}#{lw_seed}")
   
 	data = {:query =>  	{ 
@@ -142,7 +142,7 @@
 				}
 				# Post confirmation to service
 				rsp = HTTParty.post("http://#{lw_modserver_url}/EndPointClientAxis2/rest/confirmations.xml", options)	
-				#logger.info("#{rsp.parsed_response} with STATUS #{rsp.response.code}")
+				logger.info("#{rsp.parsed_response} with STATUS #{rsp.response.code}")
 			end			
 		end
 	end
