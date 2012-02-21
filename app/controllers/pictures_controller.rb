@@ -45,13 +45,17 @@ class PicturesController < ApplicationController
   # POST /pictures.json
   def create
     @picture = Picture.new(params[:picture])
-
+    logger.debug('PICTURE SAVE')
+    logger.debug(@picture.file.inspect)
     respond_to do |format|
       if @picture.save
+       logger.debug( @picture.to_jq_upload )
+       logger.debug( 'PICTURE SAVED' )
        format.json { render :json => [ @picture.to_jq_upload ].to_json }
       else
       	logger.debug( @picture.to_json )
 	logger.debug( [ @picture.to_jq_upload.merge({ :error => @picture.errors.to_json }) ].to_json )
+       logger.debug( 'PICTURE NOT SAVED' )
         format.json { render :json => [ @picture.to_jq_upload.merge({ :error => @picture.errors.to_json }) ].to_json }
       end
     end

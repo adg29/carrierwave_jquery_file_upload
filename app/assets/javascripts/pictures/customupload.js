@@ -1,6 +1,14 @@
 (function ($) {
     'use strict';
 
+  $("#new_picture")
+      .live("ajax:before", function() { console.log('before') })
+      .live("ajax:beforeSend", function(xhr, settings) { console.log('beforeSend') })
+      .live("ajax:success", function(xhr, data, status) { console.log('success') })
+      .live("ajax:complete", function(xhr, status) { console.log('complete') })
+      .live("ajax:error", function(xhr, status, error) { console.log('error') })
+
+
   $.widget('blueimpUIX.fileupload', $.blueimpUI.fileupload, {
 
       options: {
@@ -26,26 +34,56 @@
           fileUploadButtonBar.find('.start')
               .button({icons: {primary: 'ui-icon-circle-arrow-e'}})
               .bind('click.' + ns, function (e) {
-                  e.preventDefault();
-                  filesList.find('.start button').click();
+		  if( filesList.find('.start button').length>0 ){
+			  e.preventDefault();
+			  filesList.find('.start button').click();
+		  }else{
+			  e.preventDefault();
+			  var picture_upload = {
+					  picture: {
+						remote_file_url: $('#picture_remote_file_url').val(),
+						title: $('#picture_title').val(),
+						description: $('#picture_description').val(),
+						city_id: $('#picture_city_id').val(),
+						user_attributes: {
+							name: $('#picture_user_attributes_name').val(),
+							locale: $('#picture_user_attributes_locale').val(),
+							fbid: $('#picture_user_attributes_fbid').val(),
+						}
+					  }
+					};
+			  var ytThumb = $.jYoutube( $('#picture_remote_file_url').val() );
+			  if( ytThumb !== null ) {
+			  	console.log('YOUTUBE thumb' + ytThumb);
+				picture_upload['picture']['video_url'] = $('#picture_remote_file_url').val();
+				picture_upload['picture']['remote_file_url'] = ytThumb;
+			  }
+
+			  console.log( picture_upload );
+
+			  $.ajax(
+			  {
+				type: 'POST',
+				url: '/pictures.json',
+				data: picture_upload,
+				success: function(r){
+					console.log('SUCCESS');
+					console.log(r);
+				},
+				error: function(r){
+					console.log('ERROR');
+					console.log(r);
+				}
+			  });
+
+		  }
+
               });
           fileUploadButtonBar.find('.cancel')
               .button({icons: {primary: 'ui-icon-cancel'}})
               .bind('click.' + ns, function (e) {
                   e.preventDefault();
                   filesList.find('.cancel button').click();
-              });
-          fileUploadButtonBar.find('.delete')
-              .button({icons: {primary: 'ui-icon-trash'}})
-              .bind('click.' + ns, function (e) {
-                  e.preventDefault();
-                  if (confirm("Are you sure you want to delete all files?")) {
-                    filesList.find('.delete').addClass("all");
-                    filesList.find('.all button').click();
-                  }
-                  else {
-                    return false;
-                  }
               });
       },
       

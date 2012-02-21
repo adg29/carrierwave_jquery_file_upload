@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120217173046) do
+ActiveRecord::Schema.define(:version => 20120221190327) do
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20120217173046) do
     t.integer  "moderation_status"
     t.integer  "user_id"
     t.integer  "city_id"
+    t.string   "video_url"
   end
 
   create_table "users", :force => true do |t|
