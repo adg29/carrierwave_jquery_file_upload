@@ -52,7 +52,7 @@
     # AUTO APPROVE status to send is 208
 	xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject><![CDATA[#{lw_subject}]]></subject><body><![CDATA[#{lw_body}]]></body><content__id>#{lw_content_id}</content__id><author__id>#{lw_author_id}</author__id><content__url><![CDATA[#{lw_content_url}]]></content__url><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id><moderation__status>208</moderation__status></com.liveworld.moderation.web.struts.rest.ModerationContent>"
 	# AUTO REJECT status to send is 224
-	# logger.info(xml)
+	#logger.info(xml)
 	
 	# Set up values for httparty post
 	options = {
@@ -94,7 +94,7 @@
 	# If you passed in one of the special moderation statuses, you will get back 0xD0 or 0xE0, whichever you sent.
 	# But for testing, you can set it to 208 (0xD0) to automatically approve the content or 224 (0xE0) to auto-reject
 	# Also need to build an array of successfully logged tracking ids (id)
-	logger.info("Ran retrieve moderated content")
+	#logger.info("retrieve moderated content THIS IS THE RESPONSE FROM GET")
 	#logger.info(rsp.parsed_response)
 	
 	rsp.each do | list, mod |
@@ -114,7 +114,7 @@
 					media = Picture.find_by_id(a['content__id'])
 					media.moderation_status = a['moderation__status']
 					if media.save
-						tids.push("#{a['id']}")
+						tids.push("#{a['tracking__id']}")
 					end
 				end
 			end	# end each
@@ -142,7 +142,10 @@
 				}
 				# Post confirmation to service
 				rsp = HTTParty.post("http://#{lw_modserver_url}/EndPointClientAxis2/rest/confirmations.xml", options)	
-				logger.info("#{rsp.parsed_response} with STATUS #{rsp.response.code}")
+				#logger.info("retrieve moderated content THIS IS THE XML WE POST BACK TO LIVEWORLD")
+				#logger.info(xml)
+				#logger.info("retrieve moderated content THIS IS THE RESPONSE WE GET FROM LIVEWORLD")
+				#logger.info("#{rsp.parsed_response} with STATUS #{rsp.response.code}")
 			end			
 		end
 	end
