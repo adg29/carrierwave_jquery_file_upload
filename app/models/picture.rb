@@ -7,7 +7,7 @@
   require "httparty"	# Required for posting to moderation service
 
   # ActiveRecord hook
-  after_save :send_for_moderation
+  after_create :send_for_moderation # Need to find another way to call send_for_moderation upon successful upload
 
   # Send information to moderator
   # REQUIRED FIELDS
@@ -52,7 +52,8 @@
     # AUTO APPROVE status to send is 208
 	xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject><![CDATA[#{lw_subject}]]></subject><body><![CDATA[#{lw_body}]]></body><content__id>#{lw_content_id}</content__id><author__id>#{lw_author_id}</author__id><content__url><![CDATA[#{lw_content_url}]]></content__url><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id><moderation__status>208</moderation__status></com.liveworld.moderation.web.struts.rest.ModerationContent>"
 	# AUTO REJECT status to send is 224
-	#logger.info(xml)
+	logger.info("THIS IS THE REQUEST WE SEND TO REQUEST MODERATION")
+	logger.info(xml)
 	
 	# Set up values for httparty post
 	options = {
@@ -63,9 +64,9 @@
 	}
 	
     rsp = HTTParty.post("http://#{lw_modserver_url}/EndPointClientAxis2/rest/moderation_contents.xml", options)
-
-	#logger.info(rsp.response.code) # 201
-    #logger.info(rsp.parsed_response)
+	logger.info("THIS IS THE RESPONSE FOR THE REQUEST WE SENT TO REQUEST MODERATION")
+	logger.info(rsp.parsed_response)
+	logger.info(rsp.response.code) # 201
   end
   
   def self.retrieve_moderated_content
@@ -88,14 +89,14 @@
 			}
 
 	rsp = HTTParty.get("http://#{lw_modserver_url}/EndPointClientAxis2/rest/moderation_contents.xml", data)	
-	# logger.info(rsp.parsed_response)
+	logger.info("THIS IS THE RESPONSE TO OUR GET REQUEST TO RETRIEVE MODERATED CONTENT")
+	logger.info(rsp.parsed_response)
+	logger.info(rsp.response.code) # 201
 	# get the id (content__id) for the picture and update the database with moderation__status
 	# Moderation status 0x10 (211) means it was approved, while 0x20 means it was rejected.  
 	# If you passed in one of the special moderation statuses, you will get back 0xD0 or 0xE0, whichever you sent.
 	# But for testing, you can set it to 208 (0xD0) to automatically approve the content or 224 (0xE0) to auto-reject
 	# Also need to build an array of successfully logged tracking ids (id)
-	#logger.info("retrieve moderated content THIS IS THE RESPONSE FROM GET")
-	#logger.info(rsp.parsed_response)
 	
 	rsp.each do | list, mod |
 		# If the set of retrieved records is not null
@@ -112,8 +113,8 @@
 				
 				records.each do |a|
 					media = Picture.find_by_id(a['content__id'])
-					media.moderation_status = a['moderation__status']
-					if media.save
+					#media.moderation_status = a['moderation__status']
+					if media.update_attribute('moderation_status', a['moderation__status'])
 						tids.push("#{a['tracking__id']}")
 					end
 				end
@@ -132,7 +133,6 @@
 				end
 				xml += tidStrs
 				xml +="</tracking__id></com.liveworld.moderation.web.struts.rest.Confirmation>"	
-				#logger.info("#{xml}")
 				# Set up values for httparty post
 				options = {
 				  :headers => {
@@ -142,10 +142,10 @@
 				}
 				# Post confirmation to service
 				rsp = HTTParty.post("http://#{lw_modserver_url}/EndPointClientAxis2/rest/confirmations.xml", options)	
-				#logger.info("retrieve moderated content THIS IS THE XML WE POST BACK TO LIVEWORLD")
-				#logger.info(xml)
-				#logger.info("retrieve moderated content THIS IS THE RESPONSE WE GET FROM LIVEWORLD")
-				#logger.info("#{rsp.parsed_response} with STATUS #{rsp.response.code}")
+				logger.info("THIS IS THE XML WE POST BACK TO LIVEWORLD")
+				logger.info(xml)
+				logger.info("THIS IS THE RESPONSE WE GET FROM LIVEWORLD AFTER POSTING CONFIRMATION")
+				logger.info("#{rsp.parsed_response} with STATUS #{rsp.response.code}")
 			end			
 		end
 	end
