@@ -13,6 +13,8 @@ gem 'fog'
 gem 'mini_magick'
 gem "best_in_place", :git => 'git://github.com/proton/best_in_place.git'
 
+gem 'whenever'
+
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
   gem 'coffee-rails', '~> 3.1.1'
