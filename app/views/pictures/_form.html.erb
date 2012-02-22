@@ -10,8 +10,23 @@
 			}
 		})
 		.blur(function(){
-			var yt_meta = gYoutube();
-			console.log(yt_meta);
+			$('#upload_start').css('display','block');
+			$('#description_input').css('display','block');
+			$('.fileupload-buttonbar').css('left',200);
+			$('.fileinput-button,#picture_file').css('display','none');
+			<% if @uploadtype=="a video" %>
+			if( $('#picture_remote_file_url').val().indexOf('youtube')!=-1 ){
+				var yt_meta = gYoutube();
+				console.log('youtube');
+				console.log(yt_meta);
+				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
+				$('.files .preview').html( '<div class="thumb_paste"><img src="'+yt_meta['picture']['remote_file_url']+'"/></div>');
+			}
+			<% else %>
+			console.log('paste');
+			$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
+			$('.files .preview').html( '<div class="thumb_paste"><img src="'+$('#picture_remote_file_url').val()+'"/></div>');
+			<% end %>
 		});
   	$('#picture_description')
 		.focus(function(){

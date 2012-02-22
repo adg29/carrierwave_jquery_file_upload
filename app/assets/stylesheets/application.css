@@ -70,6 +70,15 @@ textarea#picture_description{
 	float: left;
 }
 
+.thumb_paste{
+	width: 180px;
+	height: 100px;
+	overflow: hidden;
+}
+.thumb_paste img{
+	width: 180px;
+}
+
 .fb-comments.fb_iframe_widget{
 	left: 150px;
 }

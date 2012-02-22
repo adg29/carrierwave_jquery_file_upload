@@ -13,7 +13,7 @@ function gYoutube(){
 		  }
 		};
   var ytThumb = $.jYoutube( $('#picture_remote_file_url').val() );
-  if( ytThumb !== null ) {
+  if( ytThumb !== null && $('#picture_remote_file_url').val().indexOf('youtube')!=-1 ) {
 	picture_upload['picture']['video_url'] = $('#picture_remote_file_url').val();
 	picture_upload['picture']['remote_file_url'] = ytThumb;
   }
@@ -37,28 +37,58 @@ function gYoutube(){
       _initFileUploadButtonBar: function () {
           var fileUploadButtonBar = this.element.find('.fileupload-buttonbar'),
               filesList = this.element.find('.files'),
-              ns = this.options.namespace;
+              ns = this.options.namespace,
+	      fileUpload = this;
+
           this.element.find('.fileinput-button').each(function () {
               var fileInput = $(this).find('input:file');//.detach();
           });
           fileUploadButtonBar.find('.start')
               .button({icons: {primary: 'ui-icon-circle-arrow-e'}})
               .bind('click.' + ns, function (e) {
-		  if( filesList.find('.start button').length>0 ){
+		  if( filesList.find('.start button').length>0 && $('.thumb_paste').length==0 ){
 			  e.preventDefault();
 			  $('#picture_remote_file_url').val('');
 			  filesList.find('.start button').click();
 		  }else{
 			  e.preventDefault();
-			  gYouTube();
+			  var picture_upload = gYoutube();
 			  $.ajax(
 			  {
 				type: 'POST',
 				url: '/pictures.json',
 				data: picture_upload,
 				success: function(r){
-					console.log('SUCCESS');
+					console.log('SUCCESSU');
 					console.log(r);
+
+					$('#mosaic_copy').html('<h2>Upload Complete!</h2>');
+
+					$('.files').html( '' );
+
+					$('form#new_picture').fadeOut();
+					$('.fileupload-buttonbar').fadeOut();
+
+
+					    
+					    console.log('FU');
+					    console.log( fileUpload );
+					    var rDown = fileUpload._renderDownload([r])
+						.css('display', 'none')
+						.appendTo($(fileUpload.element).find('.files'))
+						.fadeIn(function () {
+						    console.log( 'FADE IN' );
+						    console.log( this );
+						    // Fix for IE7 and lower:
+						    $(this).show();
+							$('.template-download .preview')
+								.css('overflow','visible')
+								.css('width',350);
+							console.log( $('.template-download .preview') );
+						});
+
+
+
 				},
 				error: function(r){
 					console.log('ERROR');
@@ -134,4 +164,3 @@ function gYoutube(){
   });
   
 }(jQuery));
-

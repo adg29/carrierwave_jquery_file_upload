@@ -1,6 +1,6 @@
 $.extend({
   jYoutube: function( url, size ){
-    if(url === null){ return ""; }
+    if(url === null || url==""){ return ""; }
 
     size = (size === null) ? "big" : size;
     var vid;
@@ -78,7 +78,10 @@ $(function () {
 				if (file.error) {
 				    that._adjustMaxNumberOfFiles(1);
 				}
+
 				$(this).fadeOut(function () {
+				    console.log('renderDownload');
+				    console.log( file );
 				    that._renderDownload([file])
 					.css('display', 'none')
 					.replaceAll(this)
@@ -88,8 +91,6 @@ $(function () {
 						$('.template-download .preview')
 							.css('overflow','visible')
 							.css('width',350);
-						console.log('PREVIEW SHOW');
-						console.log( $('.template-download .preview') );
 
 					});
 				});
@@ -104,7 +105,6 @@ $(function () {
 					$('.template-download .preview')
 						.css('overflow','visible')
 						.css('width',350);
-					console.log('PREVIEW SHOW');
 					console.log( $('.template-download .preview') );
 				});
 			}
