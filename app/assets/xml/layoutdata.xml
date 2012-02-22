@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Layout Info/paths for display not related to images -->
  <layout>
- 	
-	<cities>
-		<city><ready>true</ready><open>false</open><id>city-1</id><label>Seoul</label></city>
-		<city><ready>true</ready><open>true</open><id>city-2</id><label>Mexico City</label></city>
-		<city><ready>false</ready><open>false</open><id>city-3</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>city-4</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>city-5</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>city-6</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>city-7</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>city-8</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>city-9</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>city-10</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>city-11</id><label>Not Available</label></city>
-		<city><ready>false</ready><open>false</open><id>city-12</id><label>Not Available</label></city>
-	</cities>
-	
+
 	<landing>
  		<image>images/landing/landingconolidated.jpg</image>
 		<headline x='80' y='115' w='300' string_id='landing_headline'/>
