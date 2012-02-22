@@ -93,7 +93,15 @@ $("#sample").modal({});
 
 	} catch (e){}
 }
-
+/*
+ * different user logs in; or on log out: pass an ivalid id like -1
+ * swf will modify findme behaviors for this mosaic.
+ */
+function setUserId(s){
+	try{
+		$('#swf_div')[0].setUserId(s);
+	} catch (e){}
+}
 
 /*
  * calls Swf to resume from paused state.
