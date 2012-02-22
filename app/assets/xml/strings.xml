@@ -13,9 +13,9 @@
 		<join_btn_label><![CDATA[Join The Project]]></join_btn_label>
 		<find_btn_label><![CDATA[My Uploads]]></find_btn_label>
 		<by_label><![CDATA[By:]]></by_label>
-		<city0><![CDATA[Mexico City]]></city0>
-		<city1><![CDATA[Seoul]]></city1>
-		<city2><![CDATA[Not Available]]></city2>
+		<city0><![CDATA[Seoul]]></city0>
+		<city1><![CDATA[Mexico City]]></city1>
+		<city2><![CDATA[Hong Kong]]></city2>
 		<city3><![CDATA[Not Available]]></city3>
 		<city4><![CDATA[Not Available]]></city4>
 		<city5><![CDATA[Not Available]]></city5>
@@ -26,21 +26,21 @@
 		<city10><![CDATA[Not Available]]></city10>
 		<city11><![CDATA[Not Available]]></city11>
 	</en>
-	<fr>
-	 	<default_current_city><![CDATA[İllere Göz At]]></default_current_city>
-	 	<zoom><![CDATA[ZxxxxZoomy zoom]]></zoom>
-		<close><![CDATA[Close]]></close>
+	<ko>
+	 	<default_current_city><![CDATA[멕시코 시티]]></default_current_city>
+	 	<zoom><![CDATA[축소]]></zoom>
+		<close><![CDATA[가까운]]></close>
 		<landing_headline><![CDATA[Your Mosaics.<br/>His Inspiration.]]></landing_headline>
 		<landing_body><![CDATA[Using only his eyes, ears and an Ultrabook™, will.i.am is visiting cities around the globe, collaborating with local talent to write and record one track for each city. All he needs from you is to add pics and videos<br/>to the mosaic as inspiration.]]></landing_body>
-		<hint_headline><![CDATA[ADD PICS AND VIDEOS]]></hint_headline>
-		<hint_body><![CDATA[to help build a mosaic for each<br/>city will.i.am visits.]]></hint_body>
-		<myupload_label><![CDATA[My Uploads]]></myupload_label>
-		<upload_label><![CDATA[Upload:]]></upload_label>
+		<hint_headline><![CDATA[포토 갤러리 사진 갤러리와 동영상 추가]]></hint_headline>
+		<hint_body><![CDATA[각 도시 will.i.am 방문을위한 모자이크를 구축하는 데 도움이 있습니다.]]></hint_body>
+		<myupload_label><![CDATA[내 업로드]]></myupload_label>
+		<upload_label><![CDATA[업로드:]]></upload_label>
 		<join_btn_label><![CDATA[Baguettes The Project whoa this]]></join_btn_label>
-		<find_btn_label><![CDATA[ze upload]]></find_btn_label>
-		<by_label><![CDATA[By Frenchie:]]></by_label>
-		<city0><![CDATA[lé Mexico Cty]]></city0>
-		<city1><![CDATA[Seoul]]></city1>
+		<find_btn_label><![CDATA[내 업로드]]></find_btn_label>
+		<by_label><![CDATA[작성자 :]]></by_label>
+		<city0><![CDATA[멕시코 시티]]></city0>
+		<city1><![CDATA[서울]]></city1>
 		<city2><![CDATA[Not Available]]></city2>
 		<city3><![CDATA[Not Available]]></city3>
 		<city4><![CDATA[Not Available]]></city4>
@@ -51,5 +51,5 @@
 		<city9><![CDATA[Not Available]]></city9>
 		<city10><![CDATA[Not Available]]></city10>
 		<city11><![CDATA[Not Available]]></city11>
-	</fr>		
+	</ko>		
  </root>
