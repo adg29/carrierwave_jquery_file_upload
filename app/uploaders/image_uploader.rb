@@ -28,14 +28,26 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process :resize_to_fit => [800, 600]
+
+  def quantize
+    manipulate! do |img|
+      img = img.quantize(256, Magick::GRAYColorspace)
+    end
+  end
+
+  process :resize_to_fill => [700, 420]
 
   version :thumb do
-    process :resize_to_fit => [80, 80]
+    process :resize_to_fill => [135, 135]
+    process :quantize
+  end
+
+  version :rollover do
+    process :resize_to_fill => [135, 135]
   end
   
   version :medium do
-    process :resize_to_fit => [200, 200]
+    process :resize_to_fill => [350, 195]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -51,7 +63,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   def filename 
     if original_filename 
       @name ||= Digest::MD5.hexdigest(File.dirname(current_path))
-      "#{model.id}-#{@name}.#{file.extension}"
+      "#{@name}.#{file.extension}"
     end
   end
   

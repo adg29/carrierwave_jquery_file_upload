@@ -1,19 +1,45 @@
 <%= content_for :head do %>
   <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css", :id => "theme" %>
   <%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" %>
+  <script type="text/javascript">
+  $(function(){
+  	$('#picture_remote_file_url')
+		.focus(function(){
+			if( $(this).val().substr(0,5)=="Paste" ){
+				$(this).val('');
+			}
+		})
+		.blur(function(){
+			var yt_meta = gYoutube();
+			console.log(yt_meta);
+		});
+  	$('#picture_description')
+		.focus(function(){
+			if( $(this).val().substr(0,3)=="Add" ){
+				$(this).val('');
+			}
+		})
+  });
+  </script>
 <% end %>
+
+<div id="fileuser">
+	<div id="fbavatar"></div>
+	<div id="fbavatar_copy">
+		<h1 id="fbusername"></h1>
+		<div id="mosaic_copy">
+		Join the mosaic by submitting <%= @uploadtype %> that best represents you and your city.
+		</div>
+	</div>
+</div>
 
 <div id="fileupload">
   <%= form_for @picture, :html => { :multipart => true } do |f| %>
-      <div class="field">
-        <%= f.label :title %><br />
-        <%= f.text_field :title %>
-      </div>
-      <br />
-      <div class="field">
-        <%= f.label :description %><br />
-        <%= f.text_field :description %>
-      </div>
+      <%= f.label :remote_file_url, "Link Image" %>
+      <p>
+	<%= f.text_field :remote_file_url , :value => "Paste #{@uploadtype} link here"%>
+      </p>
+
       <div class="field">
         <%= f.hidden_field :city_id ,:value => @city.id %>
       </div>
@@ -29,23 +55,21 @@
 	      </div>
       <% end %>
       <br />
-      <p>
-      	<%= f.label :remote_file_url, "or image URL" %>
-	<%= f.text_field :remote_file_url %>
-      </p>
+      
+      <div class="fileupload-buttonbar" style="<% if( @uploadtype=="a video") %>display: none;<% end %>">
+          <div id="description_input" class="field">
+              <%= f.text_area :description , :value => 'Add a caption to your upload' %>
+          </div>
 
-      <div class="fileupload-buttonbar">
           <label class="fileinput-button">
-              <span>Add files...</span>
-                <%= f.file_field :file %>
+	      Or, Upload Image <br/>
           </label>
-          <button type="submit" class="start">Start upload</button>
-          <button type="reset" class="cancel">Cancel upload</button>
-          <button type="button" class="delete">Delete files</button>
+          <%= f.file_field :file %>
+          <button id="upload_start" type="submit" class="start">Add Image</button>
       </div>
   <% end %>
   <div class="fileupload-content">
-      <table class="files"></table>
+      <div class="files"></div>
       <div class="fileupload-progressbar"></div>
   </div>
 </div>

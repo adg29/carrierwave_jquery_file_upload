@@ -61,7 +61,7 @@ class MosaicTiler
     @@tile_format = image_ext if @@tile_format == nil
 
     # iterate over all levels
-    max_level(image_width, image_height).downto(0) do |level|
+    for level in [max_level(image_width, image_height),1]
       width, height = image.columns, image.rows
       Rails.logger.debug("level #{level} is #{width} x #{height}")
 
@@ -84,7 +84,7 @@ class MosaicTiler
         x += (tile_width - (2 * @@tile_overlap))
         col_count += 1
       end
-      image.resize!(0.5)
+      image.resize!(0.096774)
     end
 
     # generate XML descriptor and write manifest file

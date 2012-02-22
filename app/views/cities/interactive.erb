@@ -11,7 +11,8 @@
 	var params = {};
 	var allvars = 	'mosaicDataPath=/cities/<%= @city.name %>/mosaics/latest.xml&'
 					+'loc_code=en_de&'
-					+'currentCityId=city-<%= @city.id %>/<%= @mosaic.id %>_files&'
+					+'currentCityId=city-<%= @city.id %>&'
+					+'currentMosaicId=<%= @mosaic.id %>_files&'
 					+'unitSize=6&'
 					+'mosaicWidth=744&'
 					+'mosaicHeight=516&'

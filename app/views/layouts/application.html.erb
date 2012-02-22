@@ -33,6 +33,10 @@
 	console.log( $('#picture_user_attributes_fbid').val(kb.FBUser.id) );
 	console.log( $('#picture_user_attributes_name').val(kb.FBUser.name) );
 	console.log( $('#picture_user_attributes_locale').val(kb.FBUser.locale) );
+
+	var fbprofilepic = 'http://graph.facebook.com/'+kb.FBUser.id+'/picture';
+	$('#fbavatar').html('<img src="'+fbprofilepic+'"/>');
+	$('#fbusername').html(kb.FBUser.name);
     }
 
     window.fbAsyncInit = function() {

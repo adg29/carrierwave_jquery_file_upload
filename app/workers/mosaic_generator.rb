@@ -6,7 +6,7 @@ class MosaicGenerator
   @queue = :mosaic_queue
 
   @@image_width  = @image_height = 62 
-  @@columns      = 125 
+  @@columns      = 124 
   @@padding      = 0 
   @@full_rows_only = false 
   
@@ -61,7 +61,11 @@ class MosaicGenerator
     source_ids = []
     source_images.each_with_index do |image,index| 
       filename = image.filename.split('/')[-1]
-      fileid = filename.split('-')[0].split('_')[1]
+      Rails.logger.debug('FIND ID')
+      @picture_source = Picture.find_by_file(filename.split('_')[1])
+      Rails.logger.debug(@picture_source.inspect)
+      #fileid = filename.split('-')[0].split('_')[1]
+      fileid = @picture_source.id
       source_ids.push( fileid )
       Rails.logger.debug('like THIS id')
       Rails.logger.debug(fileid)
@@ -94,7 +98,7 @@ class MosaicGenerator
     mosaic_full = ImageList.new
     1.upto(10000/source_images.length) do
       mosaic_full.push( mosaic.copy )
-      @mosaic_instance.unit_list +=  source_ids.join(',')
+      @mosaic_instance.unit_list +=  ',' + source_ids.join(',')
       @mosaic_instance.unit_count +=  source_ids.length
       @mosaic_instance.rows +=  source_ids.length/@@columns
     end
@@ -117,10 +121,9 @@ class MosaicGenerator
     @mosaic_instance.save
 
     FileUtils.mkdir_p("public/mosaics/city-#{city_id}")
-    mosaic_full_obj = mosaic_full.mosaic
-    mosaic_full_obj.write("public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.jpg")
-    Rails.logger.debug( mosaic_full_obj.inspect )
-
+    
+    Rails.logger.debug('WRITE MOSAIC')
+    mosaic_full.mosaic.write("public/mosaics/city-#{city_id}/#{@mosaic_instance.id}.jpg")
 
 
     # convert

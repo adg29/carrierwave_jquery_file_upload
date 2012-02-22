@@ -23,10 +23,42 @@ var urlParams = {};
 		      urlParams[d(e[1])] = d(e[2]);
 		 })();
 function submitMedia(city_code,mediatype){
-	//if (mediatype!="video" && mediatype!="image"){return;};
-	
 	console.log("submitMedia"+city_code+"|"+mediatype);
 	pauseSwf();
+	//if (mediatype!="video" && mediatype!="image"){return;};
+	try{
+			var uploadtype = "";
+			if( mediatype=="video") uploadtype="?video=accept";
+			console.log('SIMPLE MODAL here');
+			$('#swf_div')[0].pauseSwf();
+			var src = "http://"+request_HTTP_HOST+"/cities/"+city_name+"/pictures/new"+uploadtype;
+			$.modal('<iframe src="' + src + '" height="340" width="390" style="border:0">', {
+				closeHTML:"",
+				containerCss:{
+					backgroundColor:"fff",
+					width: 420,
+					height:360,
+					padding:0
+				},
+				overlayClose:true,
+				onClose: function (dialog) {
+					dialog.data.fadeOut('slow', function () {
+						dialog.container.hide('slow', function () {
+							dialog.overlay.slideUp('slow', function () {
+								$.modal.close();
+								resumeSwf();
+							});
+						});
+					});
+				}
+			});
+
+			// Closing animations
+			$("#sample").modal({});
+			
+
+		} catch (e){}
+	
 }
 
 
@@ -60,38 +92,8 @@ function mosaicStateUpdate(cityid,appstate,behaviortrigger,itemid){
 /*
  * calls Swf pause function...(like when displaying a modal above)
  */
-function pauseSwf(){
-	try{
-		console.log('SIMPLE MODAL here');
-		$('#swf_div')[0].pauseSwf();
-		//$('#swf_div')[0].resumeSwf();
-		var src = "http://"+request_HTTP_HOST+"/cities/"+city_name+"/pictures/new";
-		$.modal('<iframe src="' + src + '" height="450" width="830" style="border:0">', {
-			closeHTML:"",
-			containerCss:{
-				backgroundColor:"#fff",
-				borderColor:"#fff",
-				height:450,
-				padding:0,
-				width:830
-			},
-			overlayClose:true,
-			onClose: function (dialog) {
-				dialog.data.fadeOut('slow', function () {
-					dialog.container.hide('slow', function () {
-						dialog.overlay.slideUp('slow', function () {
-							$.modal.close();
-							resumeSwf();
-						});
-					});
-				});
-			}
-		});
-// Closing animations
-$("#sample").modal({});
-		
-
-	} catch (e){}
+function pauseSwf(d){
+	
 }
 /*
  * different user logs in; or on log out: pass an ivalid id like -1
@@ -116,6 +118,7 @@ function resumeSwf(){
 
 function jslog(s){
 	try{
+		console.log('LOG');
 		console.log(s);
 	} catch (e){};
 }
