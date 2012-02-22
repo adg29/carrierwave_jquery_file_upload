@@ -19,3 +19,57 @@
 	height:128px;
 	background-image: url(../assets/spinner.gif);
 }
+
+
+#fileupload{
+	clear: both;
+}
+
+.fileupload-buttonbar,
+.fileupload-content.ui-widget-content{
+	float: right;
+	position: absolute;
+}
+
+.fileupload-content.ui-widget-content{
+	border: none;
+	background: none;
+	left: 0px;
+}
+
+.files{
+	margin: 0px;
+}
+
+.files .preview{
+	width: 180px;
+	height: 100px;
+	overflow: hidden;
+}
+
+#upload_start{
+	display: none;
+}
+
+.start button,
+.cancel button{
+	display: none;
+}
+
+#description_input{
+	display: none;
+}
+
+textarea#picture_description{
+	width: 150px;
+	height: 50px;
+}
+
+#fbavatar_copy,
+#fbavatar{
+	float: left;
+}
+
+.fb-comments.fb_iframe_widget{
+	left: 150px;
+}

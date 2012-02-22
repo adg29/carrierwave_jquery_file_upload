@@ -2,7 +2,7 @@ class Picture < ActiveRecord::Base
   belongs_to :city
   belongs_to :user, :autosave => true
   attr_accessible :city_id, :title, :description, :file, :user_attributes, :remote_file_url, :video_url
-  validates_presence_of :title, :description, :file
+  validates_presence_of :description, :file
 
   accepts_nested_attributes_for :user
 
@@ -36,7 +36,9 @@ class Picture < ActiveRecord::Base
     "city_id" => read_attribute(:city_id),
     "size" => file.size,
     "url" => file.url,
+    "medium_url" => file.medium.url,
     "thumbnail_url" => file.thumb.url,
+    "rollover_url" => file.rollover.url,
     "delete_url" => picture_path(:id),
     "delete_type" => "DELETE" 
    }

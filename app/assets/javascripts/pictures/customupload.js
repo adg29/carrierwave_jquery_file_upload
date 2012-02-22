@@ -1,13 +1,27 @@
+function gYoutube(){
+  var picture_upload = {
+		  picture: {
+			remote_file_url: $('#picture_remote_file_url').val(),
+			title: $('#picture_title').val(),
+			description: $('#picture_description').val(),
+			city_id: $('#picture_city_id').val(),
+			user_attributes: {
+				name: $('#picture_user_attributes_name').val(),
+				locale: $('#picture_user_attributes_locale').val(),
+				fbid: $('#picture_user_attributes_fbid').val(),
+			}
+		  }
+		};
+  var ytThumb = $.jYoutube( $('#picture_remote_file_url').val() );
+  if( ytThumb !== null ) {
+	picture_upload['picture']['video_url'] = $('#picture_remote_file_url').val();
+	picture_upload['picture']['remote_file_url'] = ytThumb;
+  }
+
+  return picture_upload;
+}
 (function ($) {
     'use strict';
-
-  $("#new_picture")
-      .live("ajax:before", function() { console.log('before') })
-      .live("ajax:beforeSend", function(xhr, settings) { console.log('beforeSend') })
-      .live("ajax:success", function(xhr, data, status) { console.log('success') })
-      .live("ajax:complete", function(xhr, status) { console.log('complete') })
-      .live("ajax:error", function(xhr, status, error) { console.log('error') })
-
 
   $.widget('blueimpUIX.fileupload', $.blueimpUI.fileupload, {
 
@@ -24,43 +38,19 @@
           var fileUploadButtonBar = this.element.find('.fileupload-buttonbar'),
               filesList = this.element.find('.files'),
               ns = this.options.namespace;
-          fileUploadButtonBar
-              .addClass('ui-widget-header ui-corner-top');
           this.element.find('.fileinput-button').each(function () {
-              var fileInput = $(this).find('input:file').detach();
-              $(this).button({icons: {primary: 'ui-icon-plusthick'}})
-                  .append(fileInput);
+              var fileInput = $(this).find('input:file');//.detach();
           });
           fileUploadButtonBar.find('.start')
               .button({icons: {primary: 'ui-icon-circle-arrow-e'}})
               .bind('click.' + ns, function (e) {
 		  if( filesList.find('.start button').length>0 ){
 			  e.preventDefault();
+			  $('#picture_remote_file_url').val('');
 			  filesList.find('.start button').click();
 		  }else{
 			  e.preventDefault();
-			  var picture_upload = {
-					  picture: {
-						remote_file_url: $('#picture_remote_file_url').val(),
-						title: $('#picture_title').val(),
-						description: $('#picture_description').val(),
-						city_id: $('#picture_city_id').val(),
-						user_attributes: {
-							name: $('#picture_user_attributes_name').val(),
-							locale: $('#picture_user_attributes_locale').val(),
-							fbid: $('#picture_user_attributes_fbid').val(),
-						}
-					  }
-					};
-			  var ytThumb = $.jYoutube( $('#picture_remote_file_url').val() );
-			  if( ytThumb !== null ) {
-			  	console.log('YOUTUBE thumb' + ytThumb);
-				picture_upload['picture']['video_url'] = $('#picture_remote_file_url').val();
-				picture_upload['picture']['remote_file_url'] = ytThumb;
-			  }
-
-			  console.log( picture_upload );
-
+			  gYouTube();
 			  $.ajax(
 			  {
 				type: 'POST',
@@ -119,21 +109,18 @@
               rows = $();
           $.each(files, function (index, file) {
               file = that._uploadTemplateHelper(file);
-              var row = $('<tr class="template-upload">' + 
-                  '<td class="preview"></td>' +
-                  '<td class="name"></td>' +
-                  '<td class="size"></td>' +
+              var row = $('<div class="template-upload">' + 
+                  '<div class="preview"></div>' +
+
                   (file.error ?
-                      '<td class="error" colspan="2"></td>'
+                      '<div class="error"></div>'
                   :
-                      '<td class="progress"><div></div></td>' +
-                      '<td class="start"><button>Start</button></td>'
+                      '<div class="start"><button>Start</button></div>'
                   ) + 
-                  '<td class="cancel"><button>Cancel</button></td>' +
-                  '</tr>');
-              row.find('.name').text(file.name);
-              row.find('.size').text(file.sizef);
+                  '<div class="cancel"><button>Cancel</button></div>' +
+                  '</div>');
               if (file.error) {
+	      	  console.log( file.error );
                   row.addClass('ui-state-error');
                   row.find('.error').text(
                       that.options.errorMessages[file.error] || file.error
@@ -147,3 +134,4 @@
   });
   
 }(jQuery));
+

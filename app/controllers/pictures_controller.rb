@@ -26,6 +26,12 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   # GET /pictures/new.json
   def new
+    if params[:video]=="accept"
+      @uploadtype = "a video" 
+    else
+      @uploadtype = "an image" 
+    end 
+
     @city = City.find_by_name(params[:city_id])
     @picture = Picture.new
     @picture.build_user
