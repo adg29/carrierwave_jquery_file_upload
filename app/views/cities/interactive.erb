@@ -4,7 +4,10 @@
   <script type="text/javascript">
   	var request_HTTP_HOST = "<%= request.env['HTTP_HOST'] %>";
 	var city_name = "<%= @city.name %>";
-  </script>
+	var city_id = "<%= @city.id %>";
+	var city_mosaic = "/mosaics/city-<%= @city.id %>/<%= @mosaic.id %>.jpg";  
+   </script>
+
   <%= javascript_include_tag "jquery.simplemodal-1.4.2" %>
 <% end %>
 <script type="text/javascript">	

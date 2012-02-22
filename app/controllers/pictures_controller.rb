@@ -32,7 +32,7 @@ class PicturesController < ApplicationController
       @uploadtype = "an image" 
     end 
 
-    @city = City.find_by_name(params[:city_id])
+    @city = City.find_by_id(params[:city_id])
     @picture = Picture.new
     @picture.build_user
 

@@ -8,6 +8,7 @@ CarrierwaveJqueryFileUpload::Application.routes.draw do
     end
     member do
       get 'interactive'
+      get 'mosaic'
     end
     resources :pictures
     resources :mosaics do

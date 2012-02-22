@@ -6,6 +6,11 @@
     <%= javascript_include_tag :application %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
+  <script type="text/javascript">
+  	var request_HTTP_HOST = "<%= request.env['HTTP_HOST'] %>";
+	var facebook_app_url = "http://apps.facebook.com/368266769857206";
+  	var mosaic_fb_share = false;
+  </script>
   </head>
   <body>
   <div id="fb-root"></div>
@@ -19,20 +24,15 @@
 				id : response.id,
 				locale : response.locale
 			    };
-		console.log('Good to see you, ' + response.name + ', aka '+ response.id);
-		console.log('Looks like your locale is  ' + response.locale + '.');
-		console.log( response );  
-
 		kb.FBUser_populate_form();
 	});
 
     }
 
     kb.FBUser_populate_form = function(){
-	console.log('Set FB form values');
-	console.log( $('#picture_user_attributes_fbid').val(kb.FBUser.id) );
-	console.log( $('#picture_user_attributes_name').val(kb.FBUser.name) );
-	console.log( $('#picture_user_attributes_locale').val(kb.FBUser.locale) );
+	$('#picture_user_attributes_fbid').val(kb.FBUser.id);
+	$('#picture_user_attributes_name').val(kb.FBUser.name);
+	$('#picture_user_attributes_locale').val(kb.FBUser.locale);
 
 	var fbprofilepic = 'http://graph.facebook.com/'+kb.FBUser.id+'/picture';
 	$('#fbavatar').html('<img src="'+fbprofilepic+'"/>');
@@ -55,7 +55,6 @@
 	    // the user's ID, a valid access token, a signed
 	    // request, and the time the access token 
 	    // and signed request each expire
-	    console.log('Welcome!  Fetching your information.... ');
 	    kb.FBGraphFetch();
 	  } else { //if (response.status === 'not_authorized') {
 	    // the user is logged in to Facebook, 
@@ -63,10 +62,8 @@
 	    // Additional initialization code here
 	     FB.login(function(response) {
 	       if (response.authResponse) {
-		 console.log('Welcome!  Fetching your information.... ');
 	       	 kb.FBGraphFetch();
 	       } else {
-		 console.log('User cancelled login or did not fully authorize.');
 	       }
 	     }, {scope: 
 		  'email',
