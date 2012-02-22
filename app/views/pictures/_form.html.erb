@@ -19,6 +19,8 @@
 				var yt_meta = gYoutube();
 				console.log('youtube');
 				console.log(yt_meta);
+				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
+				$('.files .preview').html( '<div class="thumb_paste"><img src="'+yt_meta['picture']['remote_file_url']+'"/></div>');
 			}
 			<% else %>
 			console.log('paste');
