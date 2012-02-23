@@ -14,7 +14,7 @@
 	var params = {};
 	var allvars = '';	
 	function FBUser_swfInitialize(){
-		allvars = 'mosaicDataPath=/cities/<%= @city.name %>/mosaics/latest.xml&'
+		allvars = 'mosaicDataPath=/cities/<%= @city.id %>/mosaics/latest.xml&'
 						+'cities_status=cities.xml&'
 						+'loc_code=en_de&'
 						+'currentCityId=city-<%= @city.id %>&'
