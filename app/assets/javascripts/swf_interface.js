@@ -106,7 +106,7 @@ function fb_callback(response) {
 
 
 function joinTheProjectClick(){
-	
+	setCityMosaic(1);
 }
 
 /*
