@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><%= content_for?(:title) ? yield(:title) : "jQuery-File-Upload" %></title>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag :application %>
@@ -38,6 +39,7 @@
 	var fbprofilepic = 'http://graph.facebook.com/'+kb.FBUser.id+'/picture';
 	$('#fbavatar').html('<img src="'+fbprofilepic+'"/>');
 	$('#fbusername').html(kb.FBUser.name);
+        Cufon.replace($('h2.cufon-intel'));
     }
 
     window.fbAsyncInit = function() {

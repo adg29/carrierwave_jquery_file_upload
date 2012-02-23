@@ -13,20 +13,19 @@
 		<join_btn_label><![CDATA[Join The Project]]></join_btn_label>
 		<find_btn_label><![CDATA[My Uploads]]></find_btn_label>
 		<by_label><![CDATA[By:]]></by_label>
-		<city-1><![CDATA[Seoul]]></city-1>
-		<city-2><![CDATA[Mexico City]]></city-2>
-		<city-3><![CDATA[Hong Kong]]></city-3>
-		<city-4><![CDATA[Not Available]]></city-4>
-		<city-5><![CDATA[Not Available]]></city-5>
-		<city-6><![CDATA[Not Available]]></city-6>
-		<city-7><![CDATA[Not Available]]></city-7>
-		<city-8><![CDATA[Not Available]]></city-8>
-		<city-9><![CDATA[Not Available]]></city-9>
-		<city-10><![CDATA[Not Available]]></city-10>
-		<city-11><![CDATA[Not Available]]></city-11>
-		<city-12><![CDATA[Not Available]]></city-12>
+		<city0><![CDATA[Seoul]]></city0>
+		<city1><![CDATA[Mexico City]]></city1>
+		<city2><![CDATA[Hong Kong]]></city2>
+		<city3><![CDATA[Not Available]]></city3>
+		<city4><![CDATA[Not Available]]></city4>
+		<city5><![CDATA[Not Available]]></city5>
+		<city6><![CDATA[Not Available]]></city6>
+		<city7><![CDATA[Not Available]]></city7>
+		<city8><![CDATA[Not Available]]></city8>
+		<city9><![CDATA[Not Available]]></city9>
+		<city10><![CDATA[Not Available]]></city10>
+		<city11><![CDATA[Not Available]]></city11>
 	</en>
-	<!--
 	<ko>
 	 	<default_current_city><![CDATA[멕시코 시티]]></default_current_city>
 	 	<zoom><![CDATA[축소]]></zoom>
@@ -52,5 +51,5 @@
 		<city9><![CDATA[Not Available]]></city9>
 		<city10><![CDATA[Not Available]]></city10>
 		<city11><![CDATA[Not Available]]></city11>
-	</ko>-->	
+	</ko>		
  </root>

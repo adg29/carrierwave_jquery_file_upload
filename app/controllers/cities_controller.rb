@@ -15,6 +15,9 @@ class CitiesController < ApplicationController
     end
 
     @mosaic = Mosaic.find_last_by_city_id(@city.id)
+    if @mosaic.nil?
+      @mosaic = Mosaic.find(:last)
+    end
 
     respond_to do |format|
       format.html # show.html.erb

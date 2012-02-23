@@ -1,8 +1,13 @@
 <%= content_for :head do %>
   <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css", :id => "theme" %>
   <%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" %>
+  <script src="/assets/cufon.js" type="text/javascript"></script>
+  <script src="/assets/neosansintel.js" type="text/javascript"></script>
+  
   <script type="text/javascript">
   $(function(){
+        Cufon.replace($('.cufon-intel'));
+        Cufon.replace($('form label'));
   	$('#picture_remote_file_url')
 		.focus(function(){
 			if( $(this).val().substr(0,5)=="Paste" ){
@@ -47,8 +52,8 @@
 <div id="fileuser">
 	<div id="fbavatar"></div>
 	<div id="fbavatar_copy">
-		<h1 id="fbusername"></h1>
-		<div id="mosaic_copy">
+		<h2 class="cufon-intel" id="fbusername"></h2>
+		<div class="cufon-intel" id="mosaic_copy">
 		Join the mosaic by submitting <%= @uploadtype %> that best represents you and your city.
 		</div>
 	</div>
