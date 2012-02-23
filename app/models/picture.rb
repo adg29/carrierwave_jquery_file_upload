@@ -23,12 +23,13 @@ class Picture < ActiveRecord::Base
 
   def sync_picture_user
     self.user_id = self.user.id
-=======
+  end
+
   require "digest"	# Required for md5 hashing
   require "httparty"	# Required for posting to moderation service
 
   # ActiveRecord hook
-  after_create :send_for_moderation # Need to find another way to call send_for_moderation upon successful upload
+  after_create :send_for_moderation 
 
   # Send information to moderator
   # REQUIRED FIELDS
@@ -69,9 +70,9 @@ class Picture < ActiveRecord::Base
     lw_locale = "en_US" # Need to get locale along with user HARDCODED
 
     #REAL/LIVE
-	#xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject><![CDATA[#{lw_subject}]]></subject><body><![CDATA[#{lw_body}]]></body><content__id>#{lw_content_id}</content__id><author__id>#{lw_author_id}</author__id><content__url><![CDATA[#{lw_content_url}]]></content__url><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id><moderation__status>0</moderation__status></com.liveworld.moderation.web.struts.rest.ModerationContent>"
+	xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject><![CDATA[#{lw_subject}]]></subject><body><![CDATA[#{lw_body}]]></body><content__id>#{lw_content_id}</content__id><author__id>#{lw_author_id}</author__id><content__url><![CDATA[#{lw_content_url}]]></content__url><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id><moderation__status>0</moderation__status></com.liveworld.moderation.web.struts.rest.ModerationContent>"
     # AUTO APPROVE status to send is 208
-	xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject><![CDATA[#{lw_subject}]]></subject><body><![CDATA[#{lw_body}]]></body><content__id>#{lw_content_id}</content__id><author__id>#{lw_author_id}</author__id><content__url><![CDATA[#{lw_content_url}]]></content__url><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id><moderation__status>208</moderation__status></com.liveworld.moderation.web.struts.rest.ModerationContent>"
+	#xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject><![CDATA[#{lw_subject}]]></subject><body><![CDATA[#{lw_body}]]></body><content__id>#{lw_content_id}</content__id><author__id>#{lw_author_id}</author__id><content__url><![CDATA[#{lw_content_url}]]></content__url><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id><moderation__status>208</moderation__status></com.liveworld.moderation.web.struts.rest.ModerationContent>"
 	# AUTO REJECT status to send is 224
 	logger.info("THIS IS THE REQUEST WE SEND TO REQUEST MODERATION")
 	logger.info(xml)
@@ -170,7 +171,6 @@ class Picture < ActiveRecord::Base
 			end			
 		end
 	end
->>>>>>> f444eea8d06c58e4160fb085cd40d840806a2756:app/models/picture.rb
   end
 
   #one convenient method to pass jq_upload the necessary information
