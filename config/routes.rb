@@ -1,5 +1,10 @@
 CarrierwaveJqueryFileUpload::Application.routes.draw do
   resources :pictures
+  resources :users do
+    member do
+      get 'fbuser'
+    end
+  end
 
   resources :cities do
     collection do
