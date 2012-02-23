@@ -3,6 +3,11 @@
   <%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" %>
   <script src="/assets/cufon.js" type="text/javascript"></script>
   <script src="/assets/neosansintel.js" type="text/javascript"></script>
+  <style>
+	.files{
+		margin: 0px;
+	}
+  </style>
   
   <script type="text/javascript">
   $(function(){
@@ -25,10 +30,12 @@
 				$('.fileupload-buttonbar').css('display','block');
 				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
 				$('.files .preview').html( '<div class="thumb_paste"><img src="'+yt_meta['picture']['remote_file_url']+'"/></div>');
+				Cufon.replace();
 			}
 			<% else %>
-			$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
-			$('.files .preview').html( '<div class="thumb_paste"><img src="'+$('#picture_remote_file_url').val()+'"/></div>');
+				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
+				$('.files .preview').html( '<div class="thumb_paste"><img src="'+$('#picture_remote_file_url').val()+'"/></div>');
+				Cufon.replace();
 			<% end %>
 		});
 

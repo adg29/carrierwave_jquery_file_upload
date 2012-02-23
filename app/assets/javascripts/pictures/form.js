@@ -65,7 +65,8 @@ $(function () {
 			});
 	    	},
 		done: function (e, data) {
-			$('#mosaic_copy').html('<h2>Upload Complete!</h2>');
+			$('#mosaic_copy').html('<h2 class="cufon-intel">Upload Complete!</h2>');
+			Cufon.replace($('#mosaic_copy'));
 
 			$('form#new_picture').fadeOut();
 			$('.fileupload-buttonbar').fadeOut();
@@ -88,6 +89,7 @@ $(function () {
 					.fadeIn(function () {
 					    // Fix for IE7 and lower:
 					    $(this).show();
+						Cufon.replace($('.cufon-intel'));
 						$('.template-download .preview')
 							.css('overflow','visible')
 							.css('width',350);
@@ -102,10 +104,10 @@ $(function () {
 				.fadeIn(function () {
 				    // Fix for IE7 and lower:
 				    $(this).show();
+					Cufon.replace($('.cufon-intel'));
 					$('.template-download .preview')
 						.css('overflow','visible')
 						.css('width',350);
-					console.log( $('.template-download .preview') );
 				});
 			}
 

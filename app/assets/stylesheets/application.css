@@ -22,8 +22,24 @@ h1{
 	color: #fff;
 }
 
+h2.cufon-intel{
+	margin: 0px;
+}
+
 .page_picture_upload form label{
 	color: #fff;
+	font-size: 14px;
+}
+.page_picture_upload form input,
+.page_picture_upload form textarea{
+	font-family: tahoma;
+	font-size: 10px;
+	background: #fff;
+	width: 320px;
+}
+
+.page_picture_upload form input#mosaic_fb_share{
+	width: 15px;
 }
 
 #loading {
@@ -53,9 +69,6 @@ h1{
 	left: 0px;
 }
 
-.files{
-	margin: 0px;
-}
 
 .files .preview{
 	width: 180px;
@@ -100,6 +113,12 @@ textarea#picture_description{
 }
 .thumb_paste img{
 	width: 180px;
+	position: relative;
+	top: -50px;
+}
+
+.template-download .preview.cufon-intel{
+	font-size: 10px;
 }
 
 .fb-comments.fb_iframe_widget{
