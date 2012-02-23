@@ -24,3 +24,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 	gem 'therubyracer'
 end
+
+group :development do
+  gem 'seed_dump'
+end

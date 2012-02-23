@@ -17,7 +17,7 @@
 		allvars = 'mosaicDataPath=/cities/<%= @city.id %>/mosaics/latest.xml&'
 						+'cities_status=cities.xml&'
 						+'loc_code=en_de&'
-						+'currentCityId=city-<%= @city.id %>&'
+						+'currentCityId=<% if @city_none %>none<%else%>city-<%=@city.id%><% end %>&'
 						+'currentMosaicId=<%= @mosaic.id %>_files&'
 						+'usersurl=/users.xml&'
 						+'unitSize=6&'
@@ -54,7 +54,18 @@
 <div id='swf_div' height='516' width='744'>
 </div>
 
-<div id="page_footer_global"></div>
+<div id="page_footer_global">
+	<div id="">
+	</div>
+	<div id="">
+	</div>
+	<div id="">
+	</div>
+	<div id="">
+	</div>
+	<div id="">
+	</div>
+</div>
 
 <div class="fb-comments" data-href="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.id %>/interactive" data-num-posts="2" data-width="470"></div>
 

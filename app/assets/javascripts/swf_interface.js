@@ -106,7 +106,8 @@ function fb_callback(response) {
 
 
 function joinTheProjectClick(){
-	setCityMosaic(1);
+	top.window.location = "http://apps.facebook.com/368266769857206/?controller=cities&id="+city_id+"&action=interactive";
+	
 }
 
 /*
