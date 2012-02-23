@@ -5,7 +5,16 @@ body{
 	margin: 0px;
 }
 body.page_picture_upload{
-	background-color: #00aeef;
+	background: #00aeef;
+}
+
+#page_footer_global{
+	background: url(/assets/upload-modal-global.png) 0 -17px;
+	width: 399px;
+	height: 25px;
+	position: absolute;
+	left: 0px;
+	top: 325px;
 }
 
 a img{border:none;}
