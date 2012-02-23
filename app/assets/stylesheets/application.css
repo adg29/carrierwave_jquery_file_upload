@@ -65,9 +65,16 @@ textarea#picture_description{
 	height: 50px;
 }
 
+#fileuser{
+	width: 350px;
+}
 #fbavatar_copy,
 #fbavatar{
 	float: left;
+}
+#fbavatar_copy{
+	width: 250px;
+	padding-left: 10px;
 }
 
 .thumb_paste{
@@ -81,4 +88,5 @@ textarea#picture_description{
 
 .fb-comments.fb_iframe_widget{
 	left: 150px;
+	top: 60px;
 }
