@@ -113,14 +113,15 @@ function setLanguage(loc_code){
 		$('#swf_div')[0].setLanguage(loc_code);
 	} catch (e){}
 }
-
+function joinTheProjectClick(){
+	//setCityMosaic();
+}
 /*
  * called when user has changed mosaics/different city has been selected.
  */
 function setCityMosaic(mosaic_code){
 	
 	console.log("setCityMosaic"+mosaic_code);
-
 	top.window.location = "http://apps.facebook.com/368266769857206/?controller=cities&id="+mosaic_code.split('-')[1]+"&action=interactive";
 }
 /*
