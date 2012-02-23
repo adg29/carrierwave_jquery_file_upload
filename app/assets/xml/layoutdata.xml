@@ -3,7 +3,7 @@
  <layout>
 
 	<landing>
- 		<image>/assets/landing/images/landing/landingconolidated.jpg</image>
+ 		<image>/assets/landing/landingconolidated.jpg</image>
 		<headline x='80' y='115' w='300' string_id='landing_headline'/>
 		<bodycopy x='80' y='200' w='250' string_id='landing_body'/>
 		<joinbtn x='80' y='420'/>

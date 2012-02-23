@@ -7,6 +7,7 @@ class CitiesController < ApplicationController
       logger.debug( params.inspect )
     if params[:id].nil? || params[:id]=="interactive"
       logger.debug('INTERACT')
+      @city_none = true;
       @city = City.find_last_by_status('generated')
       logger.debug( @city.inspect )
     else
