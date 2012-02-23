@@ -20,7 +20,7 @@ class MosaicsController < ApplicationController
   # GET /mosaics/latest
   # GET /mosaics/latest.json
   def latest 
-    @city = City.find_by_name(params['city_id'])
+    @city = City.find_by_id(params['city_id'])
 
     @mosaic = Mosaic.find( :last )
     if @mosaic.nil?
