@@ -11,7 +11,7 @@ class CitiesController < ApplicationController
       logger.debug( @city.inspect )
     else
       logger.debug('dont INTERACT')
-      @city = City.find_by_name(params[:id])
+      @city = City.find_by_id(params[:id])
     end
 
     @mosaic = Mosaic.find_last_by_city_id(@city.id)
@@ -32,6 +32,18 @@ class CitiesController < ApplicationController
       format.html { render "pictures/new" }
     end
   end
+
+  # GET /cities/1/mosaic.json
+  def mosaic 
+    @city = City.find_by_id(params[:id])
+
+    @mosaic_url = Mosaic.latest_mosaic_by_city(@city.id)
+
+    respond_to do |format|
+      format.json { render json: @mosaic_url }
+    end
+  end
+
   # GET /cities
   # GET /cities.json
   def index
@@ -40,6 +52,7 @@ class CitiesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @cities }
+      format.xml{ render xml: @cities }
     end
   end
 
@@ -47,7 +60,7 @@ class CitiesController < ApplicationController
   # GET /cities/1.json
   def show
     # id actually contains the city name
-    @city = City.find_by_name!(params[:id])
+    @city = City.find_by_id!(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -78,7 +91,7 @@ class CitiesController < ApplicationController
 
     respond_to do |format|
       if @city.save
-        format.html { redirect_to city_url(@city.name), notice: 'City was successfully created.' }
+        format.html { redirect_to city_url(@city.id), notice: 'City was successfully created.' }
         format.json { render json: @city, status: :created, location: @city }
       else
         format.html { render action: "new" }

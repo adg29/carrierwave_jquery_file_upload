@@ -1,5 +1,10 @@
 CarrierwaveJqueryFileUpload::Application.routes.draw do
   resources :pictures
+  resources :users do
+    member do
+      get 'fbuser'
+    end
+  end
 
   resources :cities do
     collection do
@@ -8,6 +13,7 @@ CarrierwaveJqueryFileUpload::Application.routes.draw do
     end
     member do
       get 'interactive'
+      get 'mosaic'
     end
     resources :pictures
     resources :mosaics do

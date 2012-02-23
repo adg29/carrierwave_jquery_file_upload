@@ -4,47 +4,56 @@
   <script type="text/javascript">
   	var request_HTTP_HOST = "<%= request.env['HTTP_HOST'] %>";
 	var city_name = "<%= @city.name %>";
-  </script>
+	var city_id = "<%= @city.id %>";
+	var city_mosaic = "/mosaics/city-<%= @city.id %>/<%= @mosaic.id %>.jpg";  
+   </script>
+
   <%= javascript_include_tag "jquery.simplemodal-1.4.2" %>
 <% end %>
 <script type="text/javascript">	
 	var params = {};
-	var allvars = 	'mosaicDataPath=/cities/<%= @city.name %>/mosaics/latest.xml&'
-					+'cities_status=cities.xml&'
-					+'loc_code=en_de&'
-					+'currentCityId=city-<%= @city.id %>&'
-					+'currentMosaicId=<%= @mosaic.id %>_files&'
-					+'usersurl=users.xml&'
-					+'unitSize=6&'
-					+'mosaicWidth=744&'
-					+'mosaicHeight=516&'
-					+'layoutDataUrl=/assets/layoutdata.xml&'
-					+'assetUrl=/assets/resource.swf&'
-					+'mosaic_image=/assets/pagoda-new.jpg&'
-					+'mosaicPath=/mosaics&'
-					+'stringsUrl=/assets/strings.xml&'
-					+'baseUrl=/uploads/picture/file/&'
-					+'userId=1';
-        
-	params = {
-            flashvars: allvars,
-            wmode:"transparent",
-            id:"swf_div",
-            scale:"noscale",
-            allowscriptaccess:"always"
-        };
-        
-        var attributes = {};
-        attributes = {
-            id:"swf_div",
-            name:"swf_div"
-        }
+	var allvars = '';	
+	function FBUser_swfInitialize(){
+		allvars = 'mosaicDataPath=/cities/<%= @city.name %>/mosaics/latest.xml&'
+						+'cities_status=cities.xml&'
+						+'loc_code=en_de&'
+						+'currentCityId=city-<%= @city.id %>&'
+						+'currentMosaicId=<%= @mosaic.id %>_files&'
+						+'unitSize=6&'
+						+'mosaicWidth=744&'
+						+'mosaicHeight=516&'
+						+'layoutDataUrl=/assets/layoutdata.xml&'
+						+'assetUrl=/assets/resource.swf&'
+						+'mosaic_image=/assets/pagoda-new.jpg&'
+						+'mosaicPath=/mosaics&'
+						+'stringsUrl=/assets/strings.xml&'
+						+'baseUrl=/uploads/picture/file/&'
+						+'userId='+kb.FBUser.id;
+		
+		params = {
+		    flashvars: allvars,
+		    wmode:"transparent",
+		    id:"swf_div",
+		    scale:"noscale",
+		    allowscriptaccess:"always"
+		};
 
-		swfobject.embedSWF("/assets/gallery_root.swf","swf_div","744","576","10.0.0","/assets/expressInstall.swf",null,params,attributes);
+		console.log( allvars );
+		
+		var attributes = {};
+		attributes = {
+		    id:"swf_div",
+		    name:"swf_div"
+		}
+
+			swfobject.embedSWF("/assets/gallery_root.swf","swf_div","744","576","10.0.0","/assets/expressInstall.swf",null,params,attributes);
+	}
 </script>
 		
 <div id='swf_div' height='516' width='744'>
 </div>
+
+<div id="page_footer_global"></div>
 
 <div class="fb-comments" data-href="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.name.downcase %>/interactive" data-num-posts="2" data-width="470"></div>
 

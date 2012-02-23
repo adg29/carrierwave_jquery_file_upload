@@ -29,24 +29,62 @@ function submitMedia(city_code,mediatype){
 	try{
 			var uploadtype = "";
 			if( mediatype=="video") uploadtype="?video=accept";
-			console.log('SIMPLE MODAL here');
 			$('#swf_div')[0].pauseSwf();
-			var src = "http://"+request_HTTP_HOST+"/cities/"+city_name+"/pictures/new"+uploadtype;
-			$.modal('<iframe src="' + src + '" height="340" width="390" style="border:0">', {
-				closeHTML:"",
+			var src = "http://"+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
+			$.modal('<iframe src="' + src + '" height="350" width="399" style="border:0">', {
+				closeHTML:"close",
 				containerCss:{
-					backgroundColor:"fff",
+					background:"url(/assets/upload-modal-global.png) no-repeat transparent",
 					width: 420,
 					height:360,
-					padding:0
+					paddingTop: 15,
+					paddingBottom: 5 
 				},
+
 				overlayClose:true,
-				onClose: function (dialog) {
+				onOpen: function(dialog){
+					console.log('DIALOG');
+					console.log( dialog );
+					console.log(parent.window);
+					console.log(window);
+					console.log('fb share mosaic')
+					console.log(window.mosaic_fb_share);
+					dialog.overlay.fadeIn('slow', function () {
+						dialog.data.hide();
+						dialog.container.fadeIn('slow', function () {
+							dialog.data.slideDown('slow');
+						});
+					});
+
+				},
+				onClose: function(dialog) {
+					console.log('DIALOG');
+					console.log( dialog );
 					dialog.data.fadeOut('slow', function () {
 						dialog.container.hide('slow', function () {
 							dialog.overlay.slideUp('slow', function () {
 								$.modal.close();
-								resumeSwf();
+								console.log('TOSHARE');
+								console.log( window );
+								console.log(window.mosaic_fb_share);
+								if( window.mosaic_fb_share===true){
+								// calling the API ...
+								var obj = {
+								  method: 'feed',
+								  link: facebook_app_url + '/?controller=cities&id='+city_id+'&action=interative',
+								  picture: request_HTTP_HOST + "/" + city_mosaic,
+								  name: city_name + ' Intel Mosaic with Will.i.am',
+								  caption: 'Join the mosaic by submitting media that best represents you and your city.',
+								  description: ''
+								};
+								console.log(obj);
+
+								FB.ui(obj, fb_callback);
+								}else{
+  									resumeSwf();
+								}
+
+
 							});
 						});
 					});
@@ -62,6 +100,9 @@ function submitMedia(city_code,mediatype){
 }
 
 
+function fb_callback(response) {
+  resumeSwf();
+}
 
 /*
  * called on user select of language drop down. 
@@ -79,7 +120,8 @@ function setLanguage(loc_code){
 function setCityMosaic(mosaic_code){
 	
 	console.log("setCityMosaic"+mosaic_code);
-	//top.window.location = "https://apps.facebook.com/testing_url/"+"?city_id="+mosaic_code;
+
+	top.window.location = "http://apps.facebook.com/368266769857206/?controller=cities&id="+mosaic_code.split('-')[1]+"&action=interactive";
 }
 /*
  * Can bee used to implement tracking; will get called when app state changes 

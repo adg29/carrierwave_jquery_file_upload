@@ -17,23 +17,29 @@
 			<% if @uploadtype=="a video" %>
 			if( $('#picture_remote_file_url').val().indexOf('youtube')!=-1 ){
 				var yt_meta = gYoutube();
-				console.log('youtube');
-				console.log(yt_meta);
+				$('.fileupload-buttonbar').css('display','block');
 				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
 				$('.files .preview').html( '<div class="thumb_paste"><img src="'+yt_meta['picture']['remote_file_url']+'"/></div>');
 			}
 			<% else %>
-			console.log('paste');
 			$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
 			$('.files .preview').html( '<div class="thumb_paste"><img src="'+$('#picture_remote_file_url').val()+'"/></div>');
 			<% end %>
 		});
+
   	$('#picture_description')
 		.focus(function(){
 			if( $(this).val().substr(0,3)=="Add" ){
 				$(this).val('');
 			}
 		})
+	$('#mosaic_fb_share').change(function(){
+		if( $(this).is(':checked') ){
+			parent.mosaic_fb_share = true;
+		}else{
+			parent.mosaic_fb_share = false;
+		}
+	});
   });
   </script>
 <% end %>
@@ -53,7 +59,11 @@
       <%= f.label :remote_file_url, "Link Image" %>
       <p>
 	<%= f.text_field :remote_file_url , :value => "Paste #{@uploadtype} link here"%>
+
       </p>
+	<%= check_box_tag 'mosaic_fb_share', 'yes', false, :class => 'mosaic_fb_share'  %>
+	<%= label_tag 'Share city on your wall' %>
+
 
       <div class="field">
         <%= f.hidden_field :city_id ,:value => @city.id %>
@@ -91,3 +101,5 @@
 
 <%= render :partial => "pictures/template-upload" %>
 <%= render :partial => "pictures/template-download" %>
+
+<div id="modal_footer"></div>
