@@ -31,14 +31,16 @@ function submitMedia(city_code,mediatype){
 			if( mediatype=="video") uploadtype="?video=accept";
 			$('#swf_div')[0].pauseSwf();
 			var src = "http://"+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
-			$.modal('<iframe src="' + src + '" height="340" width="390" style="border:0">', {
-				closeHTML:"",
+			$.modal('<iframe src="' + src + '" height="350" width="420" style="border:0">', {
+				closeHTML:"close",
 				containerCss:{
-					backgroundColor:"fff",
+					background:"url(/assets/upload-modal-global.png) transparent",
 					width: 420,
 					height:360,
-					padding:0
+					paddingTop: 15,
+					paddingBottom: 5 
 				},
+
 				overlayClose:true,
 				onOpen: function(dialog){
 					console.log('DIALOG');

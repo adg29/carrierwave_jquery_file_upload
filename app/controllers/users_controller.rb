@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+
+  def record_not_found(exception=nil)
+    render :xml => { :message => exception.message, :status => 404 }
+  end
   # GET /users
   # GET /users.json
   def index
@@ -27,7 +32,13 @@ class UsersController < ApplicationController
   # GET /users/1/fbuser.json
   # GET /users/1/fbuser.xml
   def fbuser
-    @user = User.find_by_fbid(params[:id])
+    @user = User.find_by_fbid!(params[:id])
+
+      logger.debug('not found')
+      logger.debug( @user.inspect )
+    if( @user.nil? )	
+      logger.debug('error')
+    end
 
     respond_to do |format|
       format.html # show.html.erb

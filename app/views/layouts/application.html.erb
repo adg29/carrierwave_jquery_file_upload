@@ -12,7 +12,7 @@
   	var mosaic_fb_share = false;
   </script>
   </head>
-  <body>
+  <body <%= "class='page_picture_upload'" unless (params[:action]!="new" && params[:controller]!="pictures") %>>
   <div id="fb-root"></div>
   <script>
 

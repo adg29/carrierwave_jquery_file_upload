@@ -1,8 +1,11 @@
 body{
-	background-color: #00aeef;
+	background-color: #daebf5;
 	font-family:Verdana,Helvetica,Arial;
 	font-size:14px;
 	margin: 0px;
+}
+body.page_picture_upload{
+	background-color: #00aeef;
 }
 
 a img{border:none;}
