@@ -1,0 +1,20 @@
+development:
+  lw_system_id: 'Intel_UAT'
+  lw_customer_id: 'Intel'
+  lw_secret_key: 123456
+  lw_modserver_url: 'modserver-v1-11-uat.stage.liveworld.com'
+  kbsp_server_url: "http://review.kbsp.com:3000"
+
+test:
+  lw_system_id: 'Intel_UAT'
+  lw_customer_id: 'Intel'
+  lw_secret_key: 123456
+  lw_modserver_url: 'modserver-v1-11-uat.stage.liveworld.com'
+  kbsp_server_url: "http://review.kbsp.com:3000"
+
+production:
+  lw_system_id: 'Intel_Will.I.Am'
+  lw_customer_id: 'Intel'
+  lw_secret_key: 'b1llAd@M$'
+  lw_modserver_url: 'modserver-mercury.moderators.liveworld.com'
+  kbsp_server_url: "http://review.kbsp.com:3000"
