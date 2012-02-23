@@ -49,17 +49,35 @@
 
 			swfobject.embedSWF("/assets/gallery_root.swf","swf_div","744","576","10.0.0","/assets/expressInstall.swf",null,params,attributes);
 	}
+
+	$(function(){
+		$('#intel_about a').click(function(e){
+			e.preventDefault();
+			$.modal('<iframe src="http://www.youtube.com/embed/zWKVSXkrWUc" width="640" height="340" style="border:0">', {
+				containerCss:{
+					width: 640,
+					height:360,
+					padding:0
+				},
+				overlayClose:true
+			});
+		})
+
+	});
 </script>
 		
 <div id='swf_div' height='516' width='744'>
 </div>
 
 <div id="page_footer_global">
-	<div id="">
+	<div id="fb_like_container">
+		<div class="fb-like" data-href="http://apps.facebook.com/368266769857206/?controller=cities&amp;id=1&amp;action=interactive" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
 	</div>
-	<div id="">
+	<div id="intel_about">
+		<a href="#ultrabook-video">&nbsp;</a>
 	</div>
-	<div id="">
+	<div id="william_listen">
+		<a href="http://intel.com" target="_blank">&nbsp;</a>
 	</div>
 	<div id="">
 	</div>
@@ -70,3 +88,5 @@
 <div class="fb-comments" data-href="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.id %>/interactive" data-num-posts="2" data-width="470"></div>
 
 
+<div id="intel_about_video" style="display: none;">
+</div>

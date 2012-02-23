@@ -10,6 +10,8 @@
  //= require shadowbox
 */
 
+#simplemodal-data,
+#simplemodal-container,
 #simplemodal-container iframe{
 	overflow-y: hidden;
 	overflow-x: hidden;
@@ -41,17 +43,6 @@ h2.cufon-intel{
 .page_picture_upload form input#mosaic_fb_share{
 	width: 15px;
 }
-
-#loading {
-	top: 50%;
-	margin-bottom: 25px;
-	margin-left: 45%;
-	margin-right: 45%;
-	width:128px;
-	height:128px;
-	background-image: url(../assets/spinner.gif);
-}
-
 
 #fileupload{
 	clear: both;
@@ -119,6 +110,31 @@ textarea#picture_description{
 
 .template-download .preview.cufon-intel{
 	font-size: 10px;
+}
+
+#fb_like_container{
+	width: 125px;
+	height: 38px;
+	margin-left: 20px;
+	margin-top: 9px;
+}
+
+#intel_about a{
+	display: block;
+	width: 275px;
+	height: 38px;
+	position: absolute;
+	top: 0px;
+	left: 125px;
+}
+
+#william_listen a{
+	display: block;
+	width: 249px;
+	height: 38px;
+	position: absolute;
+	top: 0px;
+	left: 400px;
 }
 
 .fb-comments.fb_iframe_widget{
