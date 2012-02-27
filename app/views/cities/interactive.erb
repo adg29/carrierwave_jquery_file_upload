@@ -52,6 +52,7 @@
 
 	$(function(){
 		$('#intel_about a').click(function(e){
+			_gaq.push(['_trackEvent', 'bottomnav', 'video', 'watch']);
 			e.preventDefault();
 			$.modal('<iframe src="http://www.youtube.com/embed/zWKVSXkrWUc" width="640" height="340" style="border:0">', {
 				containerCss:{
@@ -76,7 +77,7 @@
 	<div id="intel_about">
 		<a href="#ultrabook-video">&nbsp;</a>
 	</div>
-	<div id="william_listen">
+	<div id="william_listen" onClick="javascript:_gaq.push(['_trackEvent', 'bottomnav', 'audio', 'listen'])">
 		<a href="http://intel.com" target="_blank">&nbsp;</a>
 	</div>
 	<div id="">
