@@ -106,7 +106,7 @@ function fb_callback(response) {
 
 
 function joinTheProjectClick(){
-	top.window.location = "http://apps.facebook.com/368266769857206/?controller=cities&id="+city_id+"&action=interactive";
+	top.window.location = facebook_app_url + "/?controller=cities&id="+city_id+"&action=interactive";
 	
 }
 
@@ -127,7 +127,7 @@ function setCityMosaic(mosaic_code){
 	
 	console.log("setCityMosaic"+mosaic_code);
 
-	top.window.location = "http://apps.facebook.com/368266769857206/?controller=cities&id="+mosaic_code+"&action=interactive";
+	top.window.location = facebook_app_url + "/?controller=cities&id="+mosaic_code+"&action=interactive";
 }
 /*
  * Can bee used to implement tracking; will get called when app state changes 

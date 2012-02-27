@@ -9,7 +9,7 @@
     <%= yield(:head) %>
   <script type="text/javascript">
   	var request_HTTP_HOST = "<%= request.env['HTTP_HOST'] %>";
-	var facebook_app_url = "http://apps.facebook.com/368266769857206";
+	var facebook_app_url = "<%= KCONF['fb_app_url'] %>"; 
   	var mosaic_fb_share = false;
   </script>
   </head>
@@ -44,7 +44,7 @@
 
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : '368266769857206', // App ID
+        appId      : '<%= KCONF['fb_app_id'] %>', // App ID
         channelUrl : '//<%= request.env['HTTP_HOST'] %>/channel.html', // Channel File
         status     : true, // check login status
         cookie     : true, // enable cookies to allow the server to access the session

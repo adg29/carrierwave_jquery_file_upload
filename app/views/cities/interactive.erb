@@ -1,11 +1,11 @@
 <% content_for :head do %>
-  <meta property="og:url" content="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.name.downcase %>/interactive"/>
+  <meta property="og:url" content="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.id %>/interactive"/>
   <meta property="og:title" content="<%= @city.name%> Mosaic Viewer"/>
   <script type="text/javascript">
   	var request_HTTP_HOST = "<%= request.env['HTTP_HOST'] %>";
 	var city_name = "<%= @city.name %>";
 	var city_id = "<%= @city.id %>";
-	var city_mosaic = "/mosaics/city-<%= @city.id %>/<%= @mosaic.id %>.jpg";  
+	var city_mosaic = "/mosaics/city-<%= @city.id %>/<%= @mosaic.id unless @mosaic.nil? %>.jpg";  
    </script>
 
   <%= javascript_include_tag "jquery.simplemodal-1.4.2" %>
@@ -18,7 +18,7 @@
 						+'cities_status=cities.xml&'
 						+'loc_code=en_de&'
 						+'currentCityId=<% if @city_none %>none<%else%>city-<%=@city.id%><% end %>&'
-						+'currentMosaicId=<%= @mosaic.id %>_files&'
+						+'currentMosaicId=<%= @mosaic.id unless @mosaic.nil? %>_files&'
 						+'usersurl=/users.xml&'
 						+'unitSize=6&'
 						+'mosaicWidth=744&'

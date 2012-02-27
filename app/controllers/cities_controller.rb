@@ -8,7 +8,7 @@ class CitiesController < ApplicationController
     if params[:id].nil? || params[:id]=="interactive"
       logger.debug('INTERACT')
       @city_none = true;
-      @city = City.find_last_by_status('generated')
+      @city = City.find_last_by_status('open')
       logger.debug( @city.inspect )
     else
       logger.debug('dont INTERACT')
@@ -17,7 +17,7 @@ class CitiesController < ApplicationController
 
     @mosaic = Mosaic.find_last_by_city_id(@city.id)
     if @mosaic.nil?
-      @mosaic = Mosaic.find(:last)
+      @mosaic = Mosaic.find_by_city_id(0)
     end
 
     respond_to do |format|

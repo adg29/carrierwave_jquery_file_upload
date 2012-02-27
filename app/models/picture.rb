@@ -1,16 +1,22 @@
 class Picture < ActiveRecord::Base
+  require "digest"	# Required for md5 hashing
+  require "httparty"	# Required for posting to moderation service
+  include Rails.application.routes.url_helpers
+
   belongs_to :city
   belongs_to :user, :autosave => true
   attr_accessible :city_id, :title, :description, :file, :user_attributes, :remote_file_url, :video_url
   validates_presence_of :description, :file
 
-  accepts_nested_attributes_for :user
 
-  include Rails.application.routes.url_helpers
+  # ActiveRecord hook
+  after_create :send_for_moderation # Need to find another way to call send_for_moderation upon successful upload
+  before_save :sync_picture_user
+
+  accepts_nested_attributes_for :user
 
   mount_uploader :file, ImageUploader
 
-  before_save :sync_picture_user
   
   def as_json(options={})
     super(:include => :user)
@@ -23,12 +29,7 @@ class Picture < ActiveRecord::Base
 
   def sync_picture_user
     self.user_id = self.user.id
-=======
-  require "digest"	# Required for md5 hashing
-  require "httparty"	# Required for posting to moderation service
-
-  # ActiveRecord hook
-  after_create :send_for_moderation # Need to find another way to call send_for_moderation upon successful upload
+  end
 
   # Send information to moderator
   # REQUIRED FIELDS
@@ -170,7 +171,6 @@ class Picture < ActiveRecord::Base
 			end			
 		end
 	end
->>>>>>> f444eea8d06c58e4160fb085cd40d840806a2756:app/models/picture.rb
   end
 
   #one convenient method to pass jq_upload the necessary information
