@@ -96,7 +96,7 @@ class MosaicGenerator
       :city_id => city_id
     )
     mosaic_full = ImageList.new
-    1.upto(10000/source_images.length) do
+    1.upto(10584/source_images.length) do
       mosaic_full.push( mosaic.copy )
       @mosaic_instance.unit_list +=  ',' + source_ids.join(',')
       @mosaic_instance.unit_count +=  source_ids.length

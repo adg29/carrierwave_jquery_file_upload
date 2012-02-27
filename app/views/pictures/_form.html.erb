@@ -20,6 +20,7 @@
 			}
 		})
 		.blur(function(){
+			if ( $(this).val()=="" ) return;
 			$('#upload_start').css('display','block');
 			$('#description_input').css('display','block');
 			$('.fileupload-buttonbar').css('left',200);
@@ -30,6 +31,13 @@
 				$('.fileupload-buttonbar').css('display','block');
 				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
 				$('.files .preview').html( '<div class="thumb_paste"><img src="'+yt_meta['picture']['remote_file_url']+'"/></div>');
+				Cufon.replace();
+			}
+			else if( $('#picture_remote_file_url').val().indexOf('vimeo')!=-1 ){
+				var vimeo_meta = gVimeo();
+				console.log(vimeo_meta);
+				$('.fileupload-buttonbar').css('display','block');
+				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
 				Cufon.replace();
 			}
 			<% else %>

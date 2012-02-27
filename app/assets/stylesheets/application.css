@@ -141,3 +141,9 @@ textarea#picture_description{
 	left: 150px;
 	top: 60px;
 }
+
+#intel_tos{
+	position: relative;
+	left: 150px;
+	top: 90px;
+}
