@@ -22,10 +22,32 @@ var urlParams = {};
 		    while (e = r.exec(q))
 		      urlParams[d(e[1])] = d(e[2]);
 		 })();
+		 
+		 
+//Tracking
+ var _gaq = _gaq || [];
+ _gaq.push(['_setAccount', 'UA-29233609-1']);
+ _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+function trackMosaicEvent(eventId,mediaType,evtSource){
+	var cCityId = (city_id!=undefined && city_id!='') ? "city-"+city_id : "city-1";
+	var mt = (evtSource!="") ? evtSource+"-"+mediaType : mediaType;
+
+	_gaq.push(['_trackEvent', cCityId, eventId, mt]);
+	
+}
+
 function submitMedia(city_code,mediatype){
 	console.log("submitMedia"+city_code+"|"+mediatype);
+	trackMosaicEvent('upload',mcode,'topnav');
 	pauseSwf();
-	//if (mediatype!="video" && mediatype!="image"){return;};
+
 	try{
 			var uploadtype = "";
 			if( mediatype=="video") {
@@ -44,7 +66,7 @@ function submitMedia(city_code,mediatype){
 					paddingTop: 15,
 					paddingBottom: 5 
 				},
-
+				position: [60,],
 				overlayClose:true,
 				onOpen: function(dialog){
 					dialog.overlay.fadeIn('slow', function () {

@@ -55,6 +55,7 @@
 		//Cufon.replace($('#intel_use'));
 
 		$('#intel_about a').click(function(e){
+			trackMosaicEvent('watch','video','bottomnav');
 			e.preventDefault();
 			$.modal('<iframe src="http://www.youtube.com/embed/zWKVSXkrWUc" width="640" height="340" style="border:0">', {
 				containerCss:{
@@ -102,7 +103,7 @@
 	<div id="intel_about">
 		<a href="#ultrabook-video">&nbsp;</a>
 	</div>
-	<div id="william_listen">
+	<div id="william_listen" onClick="javascript:trackMosaicEvent('listen','audio','bottomnav');)">
 		<a href="http://www.intel.com/content/www/us/en/ultrabook/ultrabook-project/ultrabook-project.html?globe" target="_blank">&nbsp;</a>
 	</div>
 	<div id="">
