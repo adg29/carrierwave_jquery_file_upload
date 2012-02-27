@@ -1,4 +1,4 @@
-function gYoutube(){
+function gPictureForm(){
   var picture_upload = {
 		  picture: {
 			remote_file_url: $('#picture_remote_file_url').val(),
@@ -12,6 +12,52 @@ function gYoutube(){
 			}
 		  }
 		};
+
+		if( $('#picture_remote_file_url').val().indexOf('vimeo')!=-1 || $('#picture_remote_file_url').val().indexOf('youtube')!=-1  ){
+				
+			picture_upload['picture']['video_url'] = $('#picture_remote_file_url').val();
+			picture_upload['picture']['remote_file_url'] = $('.thumb_paste img').attr('src');
+		}
+	return picture_upload;
+}
+function gVimeo(){
+  var picture_upload = gPictureForm();
+    var id = 0;
+    var vimeo_meta = "";
+    var url = $('#picture_remote_file_url').val();
+
+	if (url.match(/(http)?(s\.)?:\/\/(www\.)?vimeo.com\/[0-9]+/)) {
+	    console.log('vimeo url');
+	    console.log( url.split('/') );
+	    id = url.split('/')[3];
+	    console.log(id);
+	} else if (url.match(/^vimeo.com\/channels\/[\d\w]+#[0-9]+/)) {
+	    id = url.split('#')[1];
+	} else if (url.match(/vimeo.com\/groups\/[\d\w]+\/videos\/[0-9]+/)) {
+	    id = url.split('/')[4];
+	} else {
+	    throw new Error('Unsupported Vimeo URL');
+	}
+
+     
+     console.log('FINALLLy');
+     console.log(id);
+
+    $.ajax({
+	url: 'http://vimeo.com/api/v2/video/' + id + '.json',
+	dataType: 'jsonp',
+	success: function(data) {
+	     var vimeo_medium = data[0].thumbnail_medium;
+	     var vimeo_large = data[0].thumbnail_large;
+	     $('.files .preview').html( '<div class="thumb_paste"><img src="'+vimeo_medium+'"/></div>');
+		picture_upload['picture']['video_url'] = $('#picture_remote_file_url').val();
+		picture_upload['picture']['remote_file_url'] = vimeo_large;
+	}
+    });
+  return picture_upload;
+}
+function gYoutube(){
+  var picture_upload = gPictureForm();
   var ytThumb = $.jYoutube( $('#picture_remote_file_url').val() );
   if( ytThumb !== null && $('#picture_remote_file_url').val().indexOf('youtube')!=-1 ) {
 	picture_upload['picture']['video_url'] = $('#picture_remote_file_url').val();
@@ -52,7 +98,7 @@ function gYoutube(){
 			  filesList.find('.start button').click();
 		  }else{
 			  e.preventDefault();
-			  var picture_upload = gYoutube();
+			  var picture_upload = gPictureForm();
 			  $.ajax(
 			  {
 				type: 'POST',
