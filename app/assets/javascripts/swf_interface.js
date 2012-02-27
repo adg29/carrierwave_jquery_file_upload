@@ -34,15 +34,18 @@ var urlParams = {};
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-function trackMosaicEvent(city_id,eventId,mediaType,evtSource){
-	console.log("tracking:"+city_id+"|"+eventId+"|"+mediaType+"|"+evtSource);
-	_gaq.push(['_trackEvent', city_id, eventId, mediaType, evtSource]);
+  
+function trackMosaicEvent(eventId,mediaType,evtSource){
+	var cCityId = (city_id!=undefined && city_id!='') ? "city-"+city_id : "city-1";
+	var mt = (evtSource!="") ? evtSource+"-"+mediaType : mediaType;
+	//console.log("TRACKING>"+cCityId+"|"+eventId+"|"+mt);
+	_gaq.push(['_trackEvent', cCityId, eventId, mt]);
+	
 }
-
 
 function submitMedia(city_code,mediatype){
 	console.log("submitMedia"+city_code+"|"+mediatype);
-	trackMosaicEvent(city_code,'upload',mcode,'topnav');
+	trackMosaicEvent('upload',mcode,'topnav');
 	pauseSwf();
 	//if (mediatype!="video" && mediatype!="image"){return;};
 	try{
