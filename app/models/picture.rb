@@ -10,8 +10,9 @@ class Picture < ActiveRecord::Base
 
 
   # ActiveRecord hook
-  after_create :send_for_moderation # Need to find another way to call send_for_moderation upon successful upload
-  before_save :sync_picture_user
+	# Need to find another way to call send_for_moderation upon successful upload
+  after_create :send_for_moderation   
+	before_save :sync_picture_user
 
   accepts_nested_attributes_for :user
 
