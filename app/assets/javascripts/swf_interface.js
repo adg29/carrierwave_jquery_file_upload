@@ -38,7 +38,7 @@ var urlParams = {};
 function trackMosaicEvent(eventId,mediaType,evtSource){
 	var cCityId = (city_id!=undefined && city_id!='') ? "city-"+city_id : "city-1";
 	var mt = (evtSource!="") ? evtSource+"-"+mediaType : mediaType;
-	//console.log("TRACKING>"+cCityId+"|"+eventId+"|"+mt);
+
 	_gaq.push(['_trackEvent', cCityId, eventId, mt]);
 	
 }
@@ -47,7 +47,7 @@ function submitMedia(city_code,mediatype){
 	console.log("submitMedia"+city_code+"|"+mediatype);
 	trackMosaicEvent('upload',mcode,'topnav');
 	pauseSwf();
-	//if (mediatype!="video" && mediatype!="image"){return;};
+
 	try{
 			var uploadtype = "";
 			if( mediatype=="video") uploadtype="?video=accept";
