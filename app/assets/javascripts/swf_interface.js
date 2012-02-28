@@ -34,7 +34,13 @@ var urlParams = {};
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-  
+
+
+function trackMediaSubmit(s){
+  	var mtype = (s.indexOf('video')!=-1) ? 'video' : 'photo';
+  	trackMosaicEvent('upload',mtype,'submit');
+ }
+
 function trackMosaicEvent(eventId,mediaType,evtSource){
 	var mt = (evtSource!="") ? evtSource+"-"+mediaType : mediaType;
 	_gaq.push(['_trackEvent', "city-"+window.city_id_code, eventId, mt]);
@@ -74,8 +80,8 @@ function submitMedia(city_code,mediatype){
 
 				},
 				onClose: function(dialog) {
-					console.log('DIALOG');
-					console.log( dialog );
+					//console.log('DIALOG');
+					//console.log( dialog );
 					dialog.data.fadeOut('slow', function () {
 						dialog.container.hide('slow', function () {
 							dialog.overlay.slideUp('slow', function () {
@@ -90,7 +96,7 @@ function submitMedia(city_code,mediatype){
 								  caption: 'Join the mosaic by submitting media that best represents you and your city.',
 								  description: ''
 								};
-								console.log(obj);
+								//console.log(obj);
 
 								FB.ui(obj, fb_callback);
 								}else{
@@ -179,7 +185,7 @@ function resumeSwf(){
 
 function jslog(s){
 	try{
-		console.log('LOG');
-		console.log(s);
+		//console.log('LOG');
+		//console.log(s);
 	} catch (e){};
 }
