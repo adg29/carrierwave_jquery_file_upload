@@ -41,7 +41,7 @@ function trackMosaicEvent(eventId,mediaType,evtSource){
 }
 
 function submitMedia(city_code,mediatype){
-	trackMosaicEvent('upload',mcode,'topnav');
+	trackMosaicEvent('upload',mediatype,'topnav');
 	pauseSwf();
 
 	try{
