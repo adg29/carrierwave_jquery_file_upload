@@ -3,7 +3,7 @@ development:
   lw_customer_id: 'Intel'
   lw_secret_key: 123456
   lw_modserver_url: 'modserver-v1-11-uat.stage.liveworld.com'
-  kbsp_server_url: "http://review.kbsp.com:3000"
+  kbsp_server_url: "http://review.kbsp.com:4001"
   fb_app_id: 300396973355596
   fb_app_secret: "bf5fc779a078df2442b90002057d78ee"
   fb_app_url: "http://apps.facebook.com/300396973355596"
