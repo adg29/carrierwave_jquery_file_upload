@@ -159,8 +159,8 @@ function mosaicStateUpdate(cityid,appstate,behaviortrigger,itemid){
 /*
  * calls Swf pause function...(like when displaying a modal above)
  */
-function pauseSwf(d){
-	
+function pauseSwf(){
+	$('#swf_div')[0].pauseSwf();
 }
 /*
  * different user logs in; or on log out: pass an ivalid id like -1
