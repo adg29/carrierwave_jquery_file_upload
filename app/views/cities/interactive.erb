@@ -8,7 +8,8 @@
   	var request_HTTP_HOST = "<%= request.env['HTTP_HOST'] %>";
 	var city_name = "<%= @city.name %>";
 	var city_id = "<%= @city.id %>";
-	var city_mosaic = "/mosaics/city-<%= @city.id %>/<%= @mosaic.id unless @mosaic.nil? %>.jpg";  
+	var city_mosaic = "/mosaics/city-<%= @city.id %>/<%= @mosaic.id %>.jpg";
+	window.city_id_code = "<%= @city.id %>";
    </script>
 
   <%= javascript_include_tag "jquery.simplemodal-1.4.2" %>
@@ -63,6 +64,7 @@
 					height:360,
 					padding:0
 				},
+				position: [80,],
 				overlayClose:true
 			});
 		})

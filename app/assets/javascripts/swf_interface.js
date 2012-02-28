@@ -36,16 +36,12 @@ var urlParams = {};
   })();
   
 function trackMosaicEvent(eventId,mediaType,evtSource){
-	var cCityId = (city_id!=undefined && city_id!='') ? "city-"+city_id : "city-1";
 	var mt = (evtSource!="") ? evtSource+"-"+mediaType : mediaType;
-
-	_gaq.push(['_trackEvent', cCityId, eventId, mt]);
-	
+	_gaq.push(['_trackEvent', "city-"+window.city_id_code, eventId, mt]);
 }
 
 function submitMedia(city_code,mediatype){
-	console.log("submitMedia"+city_code+"|"+mediatype);
-	trackMosaicEvent('upload',mcode,'topnav');
+	trackMosaicEvent('upload',mediatype,'topnav');
 	pauseSwf();
 
 	try{
@@ -142,7 +138,7 @@ function setLanguage(loc_code){
  */
 function setCityMosaic(mosaic_code){
 	
-	console.log("setCityMosaic"+mosaic_code);
+
 
 	top.window.location = facebook_app_url + "/?controller=cities&id="+mosaic_code+"&action=interactive";
 }
