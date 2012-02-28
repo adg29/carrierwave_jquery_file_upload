@@ -62,12 +62,14 @@ class Picture < ActiveRecord::Base
     lw_seed = (Time.now.to_f * 1000).to_int # To enforce unique on the tracking id
 	lw_id = lw_content_time_stamp = lw_seed
     lw_hash_value = Digest::MD5.hexdigest("#{lw_secret_key}#{lw_seed}")
-    lw_subject = title
+    lw_subject = description
     lw_body = description
     lw_content_id = id
     lw_author_id = 0	# Need to pull the user (facebook) id for the user submitting the content HARDCODED
     lw_tracking_id = "#{id}_#{lw_seed}"
-    lw_content_url = KCONF['kbsp_server_url'] + file.url 
+    #lw_content_url = KCONF['kbsp_server_url'] + file.url 
+		media_name = read_attribute(:file)
+		lw_content_url = KCONF['kbsp_server_url'] + "/uploads/picture/file/city-#{city_id}/#{media_name}"
     lw_locale = "en_US" # Need to get locale along with user HARDCODED
 
     #REAL/LIVE
@@ -77,7 +79,7 @@ class Picture < ActiveRecord::Base
 	# AUTO REJECT status to send is 224
 	logger.info("THIS IS THE REQUEST WE SEND TO REQUEST MODERATION")
 	logger.info(xml)
-	
+
 	# Set up values for httparty post
 	options = {
 	  :headers => {
