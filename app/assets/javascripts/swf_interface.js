@@ -36,9 +36,8 @@ var urlParams = {};
   })();
   
 function trackMosaicEvent(eventId,mediaType,evtSource){
-	var cCityId = (window.city_id_code!=undefined && window.city_id_code!='') ? "city-"+window.city_id_code : "city-1";
 	var mt = (evtSource!="") ? evtSource+"-"+mediaType : mediaType;
-	_gaq.push(['_trackEvent', cCityId, eventId, mt]);
+	_gaq.push(['_trackEvent', "city-"+window.city_id_code, eventId, mt]);
 }
 
 function submitMedia(city_code,mediatype){
