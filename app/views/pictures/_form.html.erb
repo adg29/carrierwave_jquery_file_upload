@@ -61,6 +61,7 @@
 		}
 	});
   });
+  
   </script>
 <% end %>
 
@@ -110,7 +111,7 @@
 	      Or, Upload Image <br/>
           </label>
           <%= f.file_field :file %>
-          <button id="upload_start" type="submit" class="start" onClick="javascript:trackMosaicEvent('upload','"<% if( @uploadtype=="a video") %>video<% end %><%else%>photo<% end %>"','submit')">Add Image</button>
+          <button id="upload_start" type="submit" class="start" onClick="javascript:trackMediaSubmit('<% @uploadtype %>')">Add Image</button>
       </div>
   <% end %>
   <div class="fileupload-content">

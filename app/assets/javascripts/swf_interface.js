@@ -34,11 +34,18 @@ var urlParams = {};
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-  
+
+
+function trackMediaSubmit(s){
+  	var mtype = (s.indexOf('video')!=-1) ? 'video' : 'photo';
+  	trackMosaicEvent('upload',mtype,'submit');
+ }
+
 function trackMosaicEvent(eventId,mediaType,evtSource){
 	var mt = (evtSource!="") ? evtSource+"-"+mediaType : mediaType;
 	_gaq.push(['_trackEvent', "city-"+window.city_id_code, eventId, mt]);
 }
+
 
 function submitMedia(city_code,mediatype){
 	trackMosaicEvent('upload',mediatype,'topnav');
