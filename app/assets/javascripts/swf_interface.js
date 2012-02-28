@@ -50,7 +50,11 @@ function submitMedia(city_code,mediatype){
 
 	try{
 			var uploadtype = "";
-			if( mediatype=="video") uploadtype="?video=accept";
+			if( mediatype=="video") {
+				uploadtype="?video=accept";
+				$('label[for="picture_remote_file_url"]').html('Link Video');
+				Cufon.replace( $('label[for="picture_remote_file_url"]') );
+			}
 			$('#swf_div')[0].pauseSwf();
 			var src = "http://"+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
 			$.modal('<iframe src="' + src + '" height="350" width="399" style="border:0">', {
@@ -65,12 +69,6 @@ function submitMedia(city_code,mediatype){
 				position: [60,],
 				overlayClose:true,
 				onOpen: function(dialog){
-					console.log('DIALOG');
-					console.log( dialog );
-					console.log(parent.window);
-					console.log(window);
-					console.log('fb share mosaic')
-					console.log(window.mosaic_fb_share);
 					dialog.overlay.fadeIn('slow', function () {
 						dialog.data.hide();
 						dialog.container.fadeIn('slow', function () {
@@ -86,9 +84,6 @@ function submitMedia(city_code,mediatype){
 						dialog.container.hide('slow', function () {
 							dialog.overlay.slideUp('slow', function () {
 								$.modal.close();
-								console.log('TOSHARE');
-								console.log( window );
-								console.log(window.mosaic_fb_share);
 								if( window.mosaic_fb_share===true){
 								// calling the API ...
 								var obj = {
