@@ -65,7 +65,7 @@ class Picture < ActiveRecord::Base
     lw_subject = description
     lw_body = description
     lw_content_id = id
-    lw_author_id = 0	# Need to pull the user (facebook) id for the user submitting the content HARDCODED
+    lw_author_id = user.name
     lw_tracking_id = "#{id}_#{lw_seed}"
     #lw_content_url = KCONF['kbsp_server_url'] + file.url 
 		media_name = read_attribute(:file)
@@ -73,14 +73,14 @@ class Picture < ActiveRecord::Base
     lw_locale = "en_US" # Need to get locale along with user HARDCODED
 
     #REAL/LIVE
-	xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject><![CDATA[#{lw_subject}]]></subject><body><![CDATA[#{lw_body}]]></body><content__id>#{lw_content_id}</content__id><content__type>image</content__type><author__id>#{lw_author_id}</author__id><content__url><![CDATA[#{lw_content_url}]]></content__url><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id><moderation__status>0</moderation__status></com.liveworld.moderation.web.struts.rest.ModerationContent>"
+	xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject><![CDATA[#{lw_subject}]]></subject><body><![CDATA[#{lw_body}]]></body><content__id>#{lw_content_id}</content__id><content__type>image</content__type><author__id><![CDATA[#{lw_author_id}]]></author__id><content__url><![CDATA[#{lw_content_url}]]></content__url><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id><moderation__status>0</moderation__status></com.liveworld.moderation.web.struts.rest.ModerationContent>"
     # AUTO APPROVE status to send is 208
 	#xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject><![CDATA[#{lw_subject}]]></subject><body><![CDATA[#{lw_body}]]></body><content__id>#{lw_content_id}</content__id><content__type>image</content__type><author__id>#{lw_author_id}</author__id><content__url><![CDATA[#{lw_content_url}]]></content__url><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id><moderation__status>208</moderation__status></com.liveworld.moderation.web.struts.rest.ModerationContent>"
 	# AUTO REJECT status to send is 224
 	logger.info("THIS IS THE REQUEST WE SEND TO REQUEST MODERATION")
 	logger.info(xml)
 
-	# Set up values for httparty post
+  # Set up values for httparty post
 	options = {
 	  :headers => {
 		"Content-Type" => "application/xml"
