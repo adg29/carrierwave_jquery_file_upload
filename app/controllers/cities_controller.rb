@@ -1,7 +1,5 @@
 class CitiesController < ApplicationController
 
-  # GET /cities/1
-  # GET /cities/1.json
   def interactive 
       logger.debug('PARAMS')
       logger.debug( params.inspect )

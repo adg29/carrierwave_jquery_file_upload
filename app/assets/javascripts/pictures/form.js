@@ -60,9 +60,6 @@ $(function () {
 			$('#description_input').css('display','block');
 			$('.fileupload-buttonbar').css('left',200);
 			$('.fileinput-button,#picture_file').css('display','none');
-			$.each(data.files, function (index, file) {
-				
-			});
 	    	},
 		done: function (e, data) {
 			$('#mosaic_copy').html('<h2 class="cufon-intel">Upload Complete!</h2>');

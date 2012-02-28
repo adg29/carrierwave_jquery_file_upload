@@ -1,6 +1,9 @@
 <% content_for :head do %>
-  <meta property="og:url" content="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.name.downcase %>/interactive"/>
-  <meta property="og:title" content="<%= @city.name%> Mosaic Viewer"/>
+  <meta property="og:type" content="company"/>
+  <meta property="og:title" content="Intel Ultrabook Project"/>
+  <meta property="og:description" content="Your city. His inspiration."/>
+  <meta property="og:url" content="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.id %>/interactive"/>
+  <meta property="og:image" content="http://<%= request.env['HTTP_HOST'] %>/mosaics/city-<%= @city.id %>/<%= @mosaic.id %>.jpg"/>
   <script type="text/javascript">
   	var request_HTTP_HOST = "<%= request.env['HTTP_HOST'] %>";
 	var city_name = "<%= @city.name %>";
@@ -16,7 +19,7 @@
 	var allvars = '';	
 	function FBUser_swfInitialize(){
 		allvars = 'mosaicDataPath=/cities/<%= @city.id %>/mosaics/latest.xml&'
-						+'cities_status=cities.xml&'
+						+'cities_status=/cities.xml&'
 						+'loc_code=en_de&'
 						+'currentCityId=<% if @city_none %>none<%else%>city-<%=@city.id%><% end %>&'
 						+'currentMosaicId=<%= @mosaic.id %>_files&'
@@ -40,8 +43,6 @@
 		    allowscriptaccess:"always"
 		};
 
-		console.log( allvars );
-		
 		var attributes = {};
 		attributes = {
 		    id:"swf_div",
@@ -52,6 +53,8 @@
 	}
 
 	$(function(){
+		//Cufon.replace($('#intel_use'));
+
 		$('#intel_about a').click(function(e){
 			trackMosaicEvent('watch','video','bottomnav');
 			e.preventDefault();
@@ -66,6 +69,29 @@
 			});
 		})
 
+		$('#intel_use').click(function(e){
+			e.preventDefault();
+			$("#intel_tos_content").modal({
+				overlayClose:true,
+				onOpen: function (dialog) {
+					dialog.overlay.fadeIn('slow', function () {
+						dialog.data.hide();
+						dialog.container.fadeIn('slow', function () {
+							dialog.data.slideDown('slow');
+						});
+					});
+				},
+				containerCss:{
+					background: '#DAEBF5',
+					width: 640,
+					height:360,
+					padding:0
+				}
+				});
+					
+		});
+
+
 	});
 </script>
 		
@@ -74,13 +100,13 @@
 
 <div id="page_footer_global">
 	<div id="fb_like_container">
-		<div class="fb-like" data-href="http://apps.facebook.com/368266769857206/?controller=cities&amp;id=1&amp;action=interactive" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
+		<div class="fb-like" data-href="http://review.kbsp.com:4000/cities/<%= @city.id %>/interactive" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
 	</div>
 	<div id="intel_about">
 		<a href="#ultrabook-video">&nbsp;</a>
 	</div>
 	<div id="william_listen" onClick="javascript:trackMosaicEvent('listen','audio','bottomnav');)">
-		<a href="http://intel.com" target="_blank">&nbsp;</a>
+		<a href="http://www.intel.com/content/www/us/en/ultrabook/ultrabook-project/ultrabook-project.html?globe" target="_blank">&nbsp;</a>
 	</div>
 	<div id="">
 	</div>
@@ -91,5 +117,9 @@
 <div class="fb-comments" data-href="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.id %>/interactive" data-num-posts="2" data-width="470"></div>
 
 
-<div id="intel_about_video" style="display: none;">
+<div id="intel_tos">
+	<a id="intel_use" href="#terms-of-use">Terms of Use & Privacy</a>
+</div>
+<div id="intel_tos_content" style="display: none;">
+	<%= render :template => 'pictures/_legal' %>
 </div>
