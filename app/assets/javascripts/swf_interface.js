@@ -80,8 +80,8 @@ function submitMedia(city_code,mediatype){
 
 				},
 				onClose: function(dialog) {
-					console.log('DIALOG');
-					console.log( dialog );
+					//console.log('DIALOG');
+					//console.log( dialog );
 					dialog.data.fadeOut('slow', function () {
 						dialog.container.hide('slow', function () {
 							dialog.overlay.slideUp('slow', function () {
@@ -96,7 +96,7 @@ function submitMedia(city_code,mediatype){
 								  caption: 'Join the mosaic by submitting media that best represents you and your city.',
 								  description: ''
 								};
-								console.log(obj);
+								//console.log(obj);
 
 								FB.ui(obj, fb_callback);
 								}else{
@@ -185,7 +185,7 @@ function resumeSwf(){
 
 function jslog(s){
 	try{
-		console.log('LOG');
-		console.log(s);
+		//console.log('LOG');
+		//console.log(s);
 	} catch (e){};
 }
