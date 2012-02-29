@@ -8,7 +8,7 @@ function gPictureForm(){
 			user_attributes: {
 				name: $('#picture_user_attributes_name').val(),
 				locale: $('#picture_user_attributes_locale').val(),
-				fbid: $('#picture_user_attributes_fbid').val(),
+				fbid: $('#picture_user_attributes_fbid').val()
 			}
 		  }
 		};
