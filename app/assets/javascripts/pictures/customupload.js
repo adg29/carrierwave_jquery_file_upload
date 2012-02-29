@@ -27,10 +27,7 @@ function gVimeo(){
     var url = $('#picture_remote_file_url').val();
 
 	if (url.match(/(http)?(s\.)?:\/\/(www\.)?vimeo.com\/[0-9]+/)) {
-	    console.log('vimeo url');
-	    console.log( url.split('/') );
 	    id = url.split('/')[3];
-	    console.log(id);
 	} else if (url.match(/^vimeo.com\/channels\/[\d\w]+#[0-9]+/)) {
 	    id = url.split('#')[1];
 	} else if (url.match(/vimeo.com\/groups\/[\d\w]+\/videos\/[0-9]+/)) {
@@ -40,8 +37,6 @@ function gVimeo(){
 	}
 
      
-     console.log('FINALLLy');
-     console.log(id);
 
     $.ajax({
 	url: 'http://vimeo.com/api/v2/video/' + id + '.json',
@@ -105,10 +100,8 @@ function gYoutube(){
 				url: '/pictures.json',
 				data: picture_upload,
 				success: function(r){
-					console.log('SUCCESSU');
-					console.log(r);
-
-					$('#mosaic_copy').html('<h2>Upload Complete!</h2>');
+					$('#mosaic_copy').html('<h3 class="cufon-intel">Upload Complete!</h3>');
+					Cufon.replace($('#mosaic_copy'));
 
 					$('.files').html( '' );
 
@@ -117,20 +110,18 @@ function gYoutube(){
 
 
 					    
-					    console.log('FU');
-					    console.log( fileUpload );
 					    var rDown = fileUpload._renderDownload([r])
 						.css('display', 'none')
 						.appendTo($(fileUpload.element).find('.files'))
 						.fadeIn(function () {
-						    console.log( 'FADE IN' );
-						    console.log( this );
 						    // Fix for IE7 and lower:
 						    $(this).show();
 							$('.template-download .preview')
 								.css('overflow','visible')
 								.css('width',350);
-							console.log( $('.template-download .preview') );
+							Cufon.replace($('.preview'));
+							$('.fileupload-content')
+								.css('marginLeft',15);
 						});
 
 
@@ -172,7 +163,6 @@ function gYoutube(){
                   type: button.attr('data-type'),
                   dataType: e.data.fileupload.options.dataType
               });
-              console.info($(this).parent());
             }
             else {
               return false;

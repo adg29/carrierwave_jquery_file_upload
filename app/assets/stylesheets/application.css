@@ -24,6 +24,7 @@ h1{
 	color: #fff;
 }
 
+h3.cufon-intel,
 h2.cufon-intel{
 	margin: 0px;
 }
@@ -67,6 +68,18 @@ h2.cufon-intel{
 	overflow: hidden;
 }
 
+.preview a[rel="shadowbox[gallery]"]{
+	width: 350px;
+	margin-top: 8px;
+	display: block;
+}
+.preview a[rel="shadowbox[gallery]"] img{
+	display: block;
+	margin: auto;
+}
+
+
+
 #upload_start{
 	display: none;
 }
@@ -105,7 +118,6 @@ textarea#picture_description{
 .thumb_paste img{
 	width: 180px;
 	position: relative;
-	top: -50px;
 }
 
 .template-download .preview.cufon-intel{
