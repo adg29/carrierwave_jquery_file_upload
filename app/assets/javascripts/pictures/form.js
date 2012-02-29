@@ -55,7 +55,6 @@ $(function () {
 			    		})
 					.data('data', data);
 
-			console.log('drop or add');
 			$('#upload_start').css('display','block');
 			$('#description_input').css('display','block');
 			$('.fileupload-buttonbar').css('left',200);
@@ -78,8 +77,6 @@ $(function () {
 				}
 
 				$(this).fadeOut(function () {
-				    console.log('renderDownload');
-				    console.log( file );
 				    that._renderDownload([file])
 					.css('display', 'none')
 					.replaceAll(this)
@@ -90,6 +87,8 @@ $(function () {
 						$('.template-download .preview')
 							.css('overflow','visible')
 							.css('width',350);
+						$('.fileupload-content')
+							.css('marginLeft',15);
 
 					});
 				});

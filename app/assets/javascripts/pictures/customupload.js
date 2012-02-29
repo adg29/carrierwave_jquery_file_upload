@@ -85,7 +85,6 @@ function gYoutube(){
               var fileInput = $(this).find('input:file');//.detach();
           });
           fileUploadButtonBar.find('.start')
-              .button({icons: {primary: 'ui-icon-circle-arrow-e'}})
               .bind('click.' + ns, function (e) {
 		  if( filesList.find('.start button').length>0 && $('.thumb_paste').length==0 ){
 			  e.preventDefault();

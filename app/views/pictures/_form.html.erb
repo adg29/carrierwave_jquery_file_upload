@@ -125,12 +125,11 @@
 	  <br/>
 	<%= check_box_tag 'mosaic_fb_share', 'yes', false, :class => 'mosaic_fb_share'  %>
 	  <%= label_tag 'Share city on your wall' %>
-          <button id="upload_start" type="submit" class="start" onClick="javascript:trackMosaicEvent('upload','"<% if( @uploadtype=="a video") %>video<% else %>photo<% end %>"','submit')">Add Image</button>
+          <button id="upload_start" type="submit" class="start" onClick="javascript:trackMosaicEvent('upload','"<% if( @uploadtype=="a video") %>video<% else %>photo<% end %>"','submit')"></button>
       </div>
   <% end %>
   <div class="fileupload-content">
       <div class="files"></div>
-      <div class="fileupload-progressbar"></div>
   </div>
 </div>
 
