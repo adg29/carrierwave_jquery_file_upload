@@ -27,12 +27,23 @@
 			}
 		})
 		.blur(function(){
-			if ( $(this).val()=="" ) return;
 			$('#upload_start').css('display','block');
 			$('#description_input').css('display','block');
 			$('.fileupload-buttonbar').css('left',200);
 			$('.fileinput-button,#picture_file').css('display','none');
 			<% if @uploadtype=="a video" %>
+			if ( $(this).val()=="" ) {
+				$('#picture_remote_file_url').val('Paste a YouTube or Vimeo video link here');
+				$('#upload_start').css('display','none');
+				$('#description_input').css('display','none');
+				$('.fileupload-buttonbar').css('left',0);
+				$('.thumb_paste').html('');
+				$('.mosaic_fb_share').css('display','none');
+				$('label[for="Share_city_on_your_wall"]').css('display','none');
+				return;
+			}
+			$('.mosaic_fb_share').css('display','inline');
+			$('label[for="Share_city_on_your_wall"]').css('display','inline');
 			if( $('#picture_remote_file_url').val().indexOf('youtube')!=-1 ){
 				var yt_meta = gYoutube();
 				$('.fileupload-buttonbar').css('display','block');
@@ -125,7 +136,7 @@
 	  <br/>
 	<%= check_box_tag 'mosaic_fb_share', 'yes', false, :class => 'mosaic_fb_share'  %>
 	  <%= label_tag 'Share city on your wall' %>
-          <button id="upload_start" type="submit" class="start" onClick="javascript:trackMosaicEvent('upload','"<% if( @uploadtype=="a video") %>video<% else %>photo<% end %>"','submit')"></button>
+          <button id="upload_start" type="submit" class="start" onClick="javascript:trackMosaicEvent('upload','<% if( @uploadtype=="a video") %>video<% else %>photo<% end %>','submit')"></button>
       </div>
   <% end %>
   <div class="fileupload-content">
