@@ -8,6 +8,7 @@ gem 'carrierwave'
 gem 'resque'
 gem 'ruby-debug19', :require => 'ruby-debug'
 gem 'whenever'
+gem 'devise' 
 
 
 gem 'crack' #"~> 0.1.8"
