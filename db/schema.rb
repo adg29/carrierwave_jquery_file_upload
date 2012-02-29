@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(:version => 20120228172311) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "city_id"
-    t.string   "tiles_status"
   end
 
   create_table "pictures", :force => true do |t|

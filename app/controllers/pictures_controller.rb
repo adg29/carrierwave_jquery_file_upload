@@ -1,5 +1,15 @@
 class PicturesController < ApplicationController
 
+  before_filter(:only => [:index, :new, :edit, :create, :destroy]) do |controller|
+    authenticate_admin #unless controller.request.format.xml?
+  end
+
+  def authenticate_admin
+    if (current_admin.nil?) 
+      redirect_to(root_path) 
+    end
+  end
+
   # GET /pictures
   # GET /pictures.json
   def index

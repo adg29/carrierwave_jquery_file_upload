@@ -1,5 +1,15 @@
 class MosaicsController < ApplicationController
 
+  before_filter(:only => [:index, :new, :edit, :create, :destroy, :generate]) do |controller|
+    authenticate_admin #unless controller.request.format.xml?
+  end
+
+  def authenticate_admin
+    if (current_admin.nil?) 
+      redirect_to(root_path) 
+    end
+  end
+
   # GET /cities/:city_id/mosaics/generate
   # GET /cities/:city_id/mosaics/generate.json
   def generate
