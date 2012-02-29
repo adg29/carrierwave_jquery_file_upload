@@ -52,6 +52,9 @@ $(function () {
 					.fadeIn(function () {
 						// Fix for IE7 and lower:
 						$(this).show();
+						if(BrowserDetect.browser=="Safari" || BrowserDetect.browser=="Explorer"){
+							$('.template-upload .preview').html('<img src="/assets/preview-fpo.jpg" />');
+						}
 			    		})
 					.data('data', data);
 
