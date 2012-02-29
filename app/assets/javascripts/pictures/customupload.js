@@ -109,7 +109,6 @@ function gYoutube(){
 					$('.fileupload-buttonbar').fadeOut();
 
 
-					   console.log('VIDEOOO'); 
 					    var rDown = fileUpload._renderDownload([r])
 						.css('display', 'none')
 						.appendTo($(fileUpload.element).find('.files'))

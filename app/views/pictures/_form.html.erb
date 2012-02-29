@@ -17,6 +17,9 @@
 	<% else %>
 		$('label[for="picture_remote_file_url"]').html('Link Video');
 		Cufon.replace( $('label[for="picture_remote_file_url"]') );
+		$('#upload_start')
+			.css('backgroundPosition','-2px -30px');
+			console.log('bg POST');
 	<% end %>
         Cufon.replace($('.cufon-intel'));
         Cufon.replace($('form label'));
