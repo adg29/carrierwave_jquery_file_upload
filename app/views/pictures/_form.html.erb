@@ -11,6 +11,13 @@
   
   <script type="text/javascript">
   $(function(){
+	<% if @uploadtype!="a video" %>
+		$('#picture_remote_file_url').css('display','none');
+		$('label[for="picture_remote_file_url"]').css('display','none');
+	<% else %>
+		$('label[for="picture_remote_file_url"]').html('Link Video');
+		Cufon.replace( $('label[for="picture_remote_file_url"]') );
+	<% end %>
         Cufon.replace($('.cufon-intel'));
         Cufon.replace($('form label'));
   	$('#picture_remote_file_url')
@@ -35,7 +42,6 @@
 			}
 			else if( $('#picture_remote_file_url').val().indexOf('vimeo')!=-1 ){
 				var vimeo_meta = gVimeo();
-				console.log(vimeo_meta);
 				$('.fileupload-buttonbar').css('display','block');
 				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
 				Cufon.replace();
@@ -76,14 +82,19 @@
 </div>
 
 <div id="fileupload">
+  <%
+	if @uploadtype=="a video" 
+	  @upload_string = "a YouTube or Vimeo video"
+	else 
+	  @upload_string = @uploadtype 
+	end
+  %>
   <%= form_for @picture, :html => { :multipart => true } do |f| %>
       <%= f.label :remote_file_url, "Link Image" %>
       <p>
-	<%= f.text_field :remote_file_url , :value => "Paste #{@uploadtype} link here"%>
+	<%= f.text_field :remote_file_url , :value => "Paste " + @upload_string + " link here"%>
 
       </p>
-	<%= check_box_tag 'mosaic_fb_share', 'yes', false, :class => 'mosaic_fb_share'  %>
-	<%= label_tag 'Share city on your wall' %>
 
 
       <div class="field">
@@ -108,9 +119,12 @@
           </div>
 
           <label class="fileinput-button">
-	      Or, Upload Image <br/>
+	      Upload Image <br/>
           </label>
           <%= f.file_field :file %>
+	  <br/>
+	<%= check_box_tag 'mosaic_fb_share', 'yes', false, :class => 'mosaic_fb_share'  %>
+	  <%= label_tag 'Share city on your wall' %>
           <button id="upload_start" type="submit" class="start" onClick="javascript:trackMosaicEvent('upload','"<% if( @uploadtype=="a video") %>video<% else %>photo<% end %>"','submit')">Add Image</button>
       </div>
   <% end %>

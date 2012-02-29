@@ -54,8 +54,6 @@ function submitMedia(city_code,mediatype){
 			var uploadtype = "";
 			if( mediatype=="video") {
 				uploadtype="?video=accept";
-				$('label[for="picture_remote_file_url"]').html('Link Video');
-				Cufon.replace( $('label[for="picture_remote_file_url"]') );
 			}
 			$('#swf_div')[0].pauseSwf();
 			var src = "http://"+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
@@ -74,6 +72,13 @@ function submitMedia(city_code,mediatype){
 					dialog.overlay.fadeIn('slow', function () {
 						dialog.data.hide();
 						dialog.container.fadeIn('slow', function () {
+							if( mediatype!="video" ){
+								$('#picture_remote_file_url').css('display','none');
+								$('label[for="picture_remote_file_url"]').css('display','none');
+							}else{
+								$('label[for="picture_remote_file_url"]').html('Link Video');
+								Cufon.replace( $('label[for="picture_remote_file_url"]') );
+							}
 							dialog.data.slideDown('slow');
 						});
 					});
