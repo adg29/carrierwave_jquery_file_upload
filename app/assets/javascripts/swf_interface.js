@@ -70,6 +70,7 @@ function submitMedia(city_code,mediatype){
 				overlayClose:true,
 				onOpen: function(dialog){
 					dialog.overlay.fadeIn('slow', function () {
+						document.getElementById("simplemodal-overlay").onclick = function(){window.mosaic_fb_share = false;};
 						dialog.data.hide();
 						dialog.container.fadeIn('slow', function () {
 							if( mediatype!="video" ){
@@ -82,7 +83,7 @@ function submitMedia(city_code,mediatype){
 							dialog.data.slideDown('slow');
 						});
 					});
-
+					dialog.overlay.onClick= function (){window.mosaic_fb_share = false;}
 				},
 				onClose: function(dialog) {
 					//console.log('DIALOG');
@@ -130,8 +131,8 @@ function fb_callback(response) {
 
 
 function joinTheProjectClick(){
-	top.window.location = facebook_app_url + "/?controller=cities&id="+city_id+"&action=interactive";
-	
+	top.window.location.href = facebook_app_url + "/?controller=cities&id="+city_id+"&action=interactive";
+	//window.top.location = facebook_app_url + "/?controller=cities&id="+city_id+"&action=interactive"; 
 }
 
 /*
