@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20120221190327) do
     t.integer  "rows"
     t.integer  "columns"
     t.integer  "unit_count"
-    t.text     "unit_list"
+    t.text     "unit_list",  :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "city_id"

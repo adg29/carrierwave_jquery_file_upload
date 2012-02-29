@@ -12,8 +12,17 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: cjfu_development
+  database: mosaic_development
   pool: 5
-  username: username 
-  password: username 
+  username: kbsp
+  password: 8NquqM\ck-b3
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: mosaic_production
+  pool: 5
+  username: kbsp
+  password: 8NquqM\ck-b3
 
