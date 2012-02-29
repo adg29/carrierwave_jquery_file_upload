@@ -131,8 +131,11 @@ function fb_callback(response) {
 
 
 function joinTheProjectClick(){
-	top.window.location.href = facebook_app_url + "/?controller=cities&id="+city_id+"&action=interactive";
-	//window.top.location = facebook_app_url + "/?controller=cities&id="+city_id+"&action=interactive"; 
+	try {
+		top.window.location.href = facebook_app_url + "/?controller=cities&id=" + city_id + "&action=interactive";
+	} catch (e){
+		window.top.location = facebook_app_url + "/?controller=cities&id=" + city_id + "&action=interactive";
+	} 
 }
 
 /*
