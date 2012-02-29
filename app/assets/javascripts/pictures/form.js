@@ -76,7 +76,7 @@ $(function () {
 				var file = ($.isArray(data.result) &&
 					data.result[index]) || {error: 'emptyResult'};
 				if (file.error) {
-				    that._adjustMaxNumberOfFiles(1);
+				    //that._adjustMaxNumberOfFiles(1);
 				}
 
 				$(this).fadeOut(function () {
