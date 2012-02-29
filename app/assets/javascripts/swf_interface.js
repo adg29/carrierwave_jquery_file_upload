@@ -94,7 +94,7 @@ function submitMedia(city_code,mediatype){
 								  picture: request_HTTP_HOST + "/" + city_mosaic,
 								  name: city_name + ' Intel Mosaic with Will.i.am',
 								  caption: 'Join the mosaic by submitting media that best represents you and your city.',
-								  description: ''
+								  description: 'Your City. His Inspiration.<br/>I just posted content to the Intel Ultrabook TM project. Inspiration for will.i.am.'
 								};
 								//console.log(obj);
 
@@ -159,8 +159,8 @@ function mosaicStateUpdate(cityid,appstate,behaviortrigger,itemid){
 /*
  * calls Swf pause function...(like when displaying a modal above)
  */
-function pauseSwf(d){
-	
+function pauseSwf(){
+	$('#swf_div')[0].pauseSwf();
 }
 /*
  * different user logs in; or on log out: pass an ivalid id like -1
