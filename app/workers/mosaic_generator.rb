@@ -20,7 +20,28 @@ class MosaicGenerator
        img = img.crop_resized(@@image_width, @image_height)
      end
      
+     Rails.logger.debug( city_id )
      source_images = ImageList.new(*Dir.glob("public/tmp/mc-tmp/thumb_*"))
+     pictures_approved = Picture.find_all_by_city_id_and_moderation_status(city_id,19,:select=>'city_id, file, moderation_status')
+
+     Rails.logger.debug( "APPROVED in #{city_id}" )
+     Rails.logger.debug( pictures_approved ) 
+     files_approved = pictures_approved.map{ |a| a.file }
+
+     source_images.to_a.each_with_index do|img,i|
+       Rails.logger.debug( i )
+       Rails.logger.debug( img )
+       filename = img.filename.split('_')
+
+       Rails.logger.debug( "#{filename[1]} in approved" )
+       Rails.logger.debug( 'Approved array' )
+       Rails.logger.debug( files_approved )
+       if !(files_approved.include? filename[1]) 	
+	Rails.logger.debug( "delete at #{i}" )
+        source_images.delete_at(i)
+       end
+     end
+
      source_images_o = source_images.copy
 
      Rails.logger.debug( 'SOURCE IMAGES' )
@@ -51,24 +72,17 @@ class MosaicGenerator
      1.upto((source_copy_count-1)*source_length) do
        if !source_images_o.to_a.sample.nil?
          source_images.push( (source_images_o.to_a.sample).copy )        
-	 Rails.logger.debug( source_images.length )
+	 #Rails.logger.debug( source_images.length )
        end
      end
-    
-    Rails.logger.debug('can you map picture ids from this imagelist')
-    Rails.logger.debug(source_images.inspect)
     
     source_ids = []
     source_images.each_with_index do |image,index| 
       filename = image.filename.split('/')[-1]
-      Rails.logger.debug('FIND ID')
       @picture_source = Picture.find_by_file(filename.split('_')[1])
       Rails.logger.debug(@picture_source.inspect)
-      #fileid = filename.split('-')[0].split('_')[1]
       fileid = @picture_source.id
       source_ids.push( fileid )
-      Rails.logger.debug('like THIS id')
-      Rails.logger.debug(fileid)
     end
 
     Rails.logger.debug('ALL THESE')
