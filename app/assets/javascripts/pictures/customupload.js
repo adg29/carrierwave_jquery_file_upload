@@ -71,7 +71,8 @@ function gYoutube(){
               maxFileSize: 'File is too big',
               minFileSize: 'File is too small',
               acceptFileTypes: 'Filetype not allowed',
-              maxNumberOfFiles: 'Max number of files exceeded'
+              maxNumberOfFiles: 'Max number of files exceeded',
+	      file: 'Media input field can\'t be blank'
           }
       },
       
@@ -108,7 +109,7 @@ function gYoutube(){
 					$('.fileupload-buttonbar').fadeOut();
 
 
-					    
+					   console.log('VIDEOOO'); 
 					    var rDown = fileUpload._renderDownload([r])
 						.css('display', 'none')
 						.appendTo($(fileUpload.element).find('.files'))
