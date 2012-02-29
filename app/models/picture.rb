@@ -65,17 +65,17 @@ class Picture < ActiveRecord::Base
     lw_subject = description
     lw_body = description
     lw_content_id = id
+		media_name = read_attribute(:file)
 		if video_url.nil?
 		  lw_content_type = "image"
+			lw_content_url = KCONF['kbsp_server_url'] + "/uploads/picture/file/city-#{city_id}/#{media_name}"
 		else
 			lw_content_type = "video"
+			lw_content_url = video_url
 		end
     lw_author_id = user.name
 		lw_tracking_id = "#{id}_#{lw_seed}"
-    #lw_content_url = KCONF['kbsp_server_url'] + file.url 
-		media_name = read_attribute(:file)
-		lw_content_url = KCONF['kbsp_server_url'] + "/uploads/picture/file/city-#{city_id}/#{media_name}"
-    lw_locale = "en_US" # Need to get locale along with user HARDCODED
+		lw_locale = "en_US" # Need to get locale along with user HARDCODED
 
     #REAL/LIVE
 	xml = "<com.liveworld.moderation.web.struts.rest.ModerationContent><seed>#{lw_seed}</seed><hash__value>#{lw_hash_value}</hash__value><subject><![CDATA[#{lw_subject}]]></subject><body><![CDATA[#{lw_body}]]></body><content__id>#{lw_content_id}</content__id><content__type>#{lw_content_type}</content__type><author__id><![CDATA[#{lw_author_id}]]></author__id><content__url><![CDATA[#{lw_content_url}]]></content__url><locale>#{lw_locale}</locale><system__id>#{lw_system_id}</system__id><tracking__id>#{lw_tracking_id}</tracking__id><content__time__stamp>#{lw_content_time_stamp}</content__time__stamp><customer__id>#{lw_customer_id}</customer__id><moderation__status>0</moderation__status></com.liveworld.moderation.web.struts.rest.ModerationContent>"
