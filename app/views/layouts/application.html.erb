@@ -27,7 +27,8 @@
 			    };
 		kb.FBUser_populate_form();
 		
-		if (FBUser_swfInitialize){
+		//will be undefined in the form iframe.
+		if (FBUser_swfInitialize!=undefined){
 			FBUser_swfInitialize();
 		}
 	});
