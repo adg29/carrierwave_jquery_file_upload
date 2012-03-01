@@ -66,7 +66,7 @@ function submitMedia(city_code,mediatype){
 					paddingTop: 15,
 					paddingBottom: 5 
 				},
-				position: [60,],
+				position: [60,260],
 				overlayClose:true,
 				onOpen: function(dialog){
 					dialog.overlay.fadeIn('slow', function () {
