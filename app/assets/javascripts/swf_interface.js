@@ -70,8 +70,6 @@ function submitMedia(city_code,mediatype){
 				overlayClose:true,
 				onOpen: function(dialog){
 					dialog.overlay.fadeIn('slow', function () {
-						
-						
 						dialog.data.hide();
 						dialog.container.fadeIn('slow', function () {
 							if( mediatype!="video" ){
