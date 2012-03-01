@@ -91,7 +91,7 @@ function submitMedia(city_code,mediatype){
 							dialog.overlay.slideUp('slow', function () {
 								$.modal.close();
 								console.log("onclose>"+window.onConfirmPanel);
-								if( window.mosaic_fb_share==true && window.onConfirmPanel == true){
+								if( window.mosaic_fb_share==true){
 								
 								// calling the API ...
 								var obj = {
