@@ -64,12 +64,13 @@ $(function () {
 			$('.fileinput-button,#picture_file').css('display','none');
 	    	},
 		done: function (e, data) {
+			window.onConfirmPanel == true;
 			$('#mosaic_copy').html('<h2 class="cufon-intel">Upload Complete!</h2>');
 			Cufon.replace($('#mosaic_copy'));
 			
 			
 			//on Success, allow the fb_share bool to live on outside of modal click.
-			window.onConfirmPanel == true;
+			
 			
 			$('form#new_picture').fadeOut();
 			$('.fileupload-buttonbar').fadeOut();
