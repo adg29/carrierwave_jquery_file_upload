@@ -89,7 +89,7 @@ function submitMedia(city_code,mediatype){
 						dialog.container.hide('slow', function () {
 							dialog.overlay.slideUp('slow', function () {
 								$.modal.close();
-								
+								//if( window.mosaic_fb_share===true){
 								if( window.mosaic_fb_share===true && window.onConfirmPanel == true){
 								// calling the API ...
 								var obj = {

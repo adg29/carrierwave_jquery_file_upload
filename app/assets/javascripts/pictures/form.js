@@ -64,7 +64,7 @@ $(function () {
 			$('.fileinput-button,#picture_file').css('display','none');
 	    	},
 		done: function (e, data) {
-			window.onConfirmPanel == true;
+			window.onConfirmPanel = true;
 			$('#mosaic_copy').html('<h2 class="cufon-intel">Upload Complete!</h2>');
 			Cufon.replace($('#mosaic_copy'));
 			
