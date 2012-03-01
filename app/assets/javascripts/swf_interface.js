@@ -50,6 +50,10 @@ function submitMedia(city_code,mediatype){
 	trackMosaicEvent('upload',mediatype,'topnav');
 	pauseSwf();
 	window.onConfirmPanel = false;
+	function setSrc(){
+		var src = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
+	   $('#uploadmodaliframe').attr("src", s);
+	}
 	//console.log("onopen>"+window.onConfirmPanel);
 	try{
 			var uploadtype = "";
@@ -59,7 +63,7 @@ function submitMedia(city_code,mediatype){
 			$('#swf_div')[0].pauseSwf();
 			var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "https://";
 			var src = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
-			$.modal('<iframe src="' + src + '" height="350" width="399" style="border:0">', {
+			$.modal('<iframe id="uploadmodaliframe" src="" height="350" width="399" style="border:0">', {
 				closeHTML:"close",
 				containerCss:{
 					background:"url(/assets/upload-modal-global.png) no-repeat transparent",
@@ -67,6 +71,9 @@ function submitMedia(city_code,mediatype){
 					height:360,
 					paddingTop: 15,
 					paddingBottom: 5 
+				},
+				onShow: function(dialog) {
+					setSrc();
 				},
 				position: [60,260],
 				overlayClose:true,
