@@ -11,12 +11,18 @@
   
   <script type="text/javascript">
   $(function(){
+	$('#video-submit').live('click',function(e){
+		e.preventDefault();
+	});
 	<% if @uploadtype!="a video" %>
 		$('#picture_remote_file_url').css('display','none');
 		$('label[for="picture_remote_file_url"]').css('display','none');
 	<% else %>
+		$('<button id="video-submit"></button>').insertBefore('#fb-name');
 		$('label[for="picture_remote_file_url"]').html('Link Video');
 		Cufon.replace( $('label[for="picture_remote_file_url"]') );
+		$('#upload_start')
+			.css('backgroundPosition','-2px -30px');
 	<% end %>
         Cufon.replace($('.cufon-intel'));
         Cufon.replace($('form label'));
@@ -40,6 +46,7 @@
 				$('.thumb_paste').html('');
 				$('.mosaic_fb_share').css('display','none');
 				$('label[for="Share_city_on_your_wall"]').css('display','none');
+				$("#video-submit").fadeIn();
 				return;
 			}
 			$('.mosaic_fb_share').css('display','inline');
@@ -49,12 +56,14 @@
 				$('.fileupload-buttonbar').css('display','block');
 				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
 				$('.files .preview').html( '<div class="thumb_paste"><img src="'+yt_meta['picture']['remote_file_url']+'"/></div>');
+				$("#video-submit").css('display','none');
 				Cufon.replace();
 			}
 			else if( $('#picture_remote_file_url').val().indexOf('vimeo')!=-1 ){
 				var vimeo_meta = gVimeo();
 				$('.fileupload-buttonbar').css('display','block');
 				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
+				$("#video-submit").css('display','none');
 				Cufon.replace();
 			}
 			<% else %>

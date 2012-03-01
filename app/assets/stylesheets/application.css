@@ -10,6 +10,13 @@
  //= require shadowbox
 */
 
+#video-submit{
+	background-image: url(/assets/video-submit.png);
+	width: 155px;
+	height: 29px;
+	border: none;
+	margin-top: 5px;
+}
 #upload_start{
 	background-image: url(/assets/upload-add-button.png);
 	width: 155px;
