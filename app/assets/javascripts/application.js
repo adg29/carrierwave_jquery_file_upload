@@ -10,6 +10,7 @@
 //= require jquery.iframe-transport
 //= require jquery.fileupload
 //= require jquery.fileupload-ui
+//= require jquery.simplemodal-1.4.2
 //= require shadowbox
 //= require pictures/customupload
 //= require pictures/form
