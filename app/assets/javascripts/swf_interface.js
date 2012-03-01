@@ -90,8 +90,9 @@ function submitMedia(city_code,mediatype){
 						dialog.container.hide('slow', function () {
 							dialog.overlay.slideUp('slow', function () {
 								$.modal.close();
+								
 								console.log("onclose>"+window.onConfirmPanel);
-								if( window.mosaic_fb_share==true){
+								if( window.mosaic_fb_share==true && window.onConfirmPanel){
 								
 								// calling the API ...
 								var obj = {
@@ -122,6 +123,11 @@ function submitMedia(city_code,mediatype){
 	
 }
 
+//setter from child iframe...
+function setOnConfirmPanel(val){
+	window.onConfirmPanel = val;
+	console.log("setter called from child>"+val);
+}
 
 function fb_callback(response) {
   resumeSwf();
