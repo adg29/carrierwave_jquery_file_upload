@@ -143,9 +143,10 @@ class Picture < ActiveRecord::Base
 				
 				records.each do |a|
 					media = Picture.find_by_id(a['content__id'])
-					#media.moderation_status = a['moderation__status']
-					if media.update_attribute('moderation_status', a['moderation__status'])
-						tids.push("#{a['tracking__id']}")
+					if !media.nil?
+					  if media.update_attribute('moderation_status', a['moderation__status'])
+						  tids.push("#{a['tracking__id']}")
+					  end
 					end
 				end
 			end	# end each

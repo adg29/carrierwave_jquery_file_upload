@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
-  before_filter(:only => [:index, :new, :edit, :create, :destroy]) do |controller|
+  before_filter(:only => [:index, :edit, :destroy]) do |controller|
     authenticate_admin unless controller.request.format.xml?
   end
 
