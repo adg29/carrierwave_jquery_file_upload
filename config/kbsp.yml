@@ -21,3 +21,6 @@ production:
   lw_secret_key: 'b1llAd@M$'
   lw_modserver_url: 'modserver-mercury.moderators.liveworld.com'
   kbsp_server_url: "http://review.kbsp.com:3000"
+  fb_app_id: 368266769857206 
+  fb_app_secret: "97e6810b213db44571930f3b823d4ba8"
+  fb_app_url: "https://ultrabookonfb.intel.com/"

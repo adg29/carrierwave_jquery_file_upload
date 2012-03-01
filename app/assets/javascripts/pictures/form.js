@@ -66,7 +66,11 @@ $(function () {
 		done: function (e, data) {
 			$('#mosaic_copy').html('<h2 class="cufon-intel">Upload Complete!</h2>');
 			Cufon.replace($('#mosaic_copy'));
-
+			
+			
+			//on Success, allow the fb_share bool to live on outside of modal click.
+			document.getElementById("simplemodal-overlay").onclick = function(){window.mosaic_fb_share = window.mosaic_fb_share;};
+			
 			$('form#new_picture').fadeOut();
 			$('.fileupload-buttonbar').fadeOut();
 
