@@ -17,6 +17,7 @@
 	<% if @uploadtype!="a video" %>
 		$('#picture_remote_file_url').css('display','none');
 		$('label[for="picture_remote_file_url"]').css('display','none');
+                $('#picture_file').customFileInput();
 	<% else %>
 		$('<button id="video-submit"></button>').insertBefore('#fb-name');
 		$('label[for="picture_remote_file_url"]').html('Link Video');
