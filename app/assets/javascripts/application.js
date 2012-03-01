@@ -11,6 +11,7 @@
 //= require jquery.fileupload
 //= require jquery.fileupload-ui
 //= require jquery.simplemodal-1.4.2
+//= require jquery.fileinput
 //= require shadowbox
 //= require pictures/customupload
 //= require pictures/form
