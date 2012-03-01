@@ -152,10 +152,7 @@ function setLanguage(loc_code){
  * called when user has changed mosaics/different city has been selected.
  */
 function setCityMosaic(mosaic_code){
-	
-
-
-	top.window.location = facebook_app_url + "/?controller=cities&id="+mosaic_code+"&action=interactive";
+	//top.window.location = facebook_app_url + "/?controller=cities&id="+mosaic_code+"&action=interactive";
 }
 /*
  * Can bee used to implement tracking; will get called when app state changes 
