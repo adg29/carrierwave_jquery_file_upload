@@ -71,6 +71,7 @@ function submitMedia(city_code,mediatype){
 				onOpen: function(dialog){
 					dialog.overlay.fadeIn('slow', function () {
 						//document.getElementById("simplemodal-overlay").onclick = function(){window.mosaic_fb_share = false;};
+						window.onConfirmPanel = false;
 						dialog.data.hide();
 						dialog.container.fadeIn('slow', function () {
 							if( mediatype!="video" ){
@@ -91,7 +92,7 @@ function submitMedia(city_code,mediatype){
 						dialog.container.hide('slow', function () {
 							dialog.overlay.slideUp('slow', function () {
 								$.modal.close();
-								if( window.mosaic_fb_share===true){
+								if( window.mosaic_fb_share===true && window.onConfirmPanel == true){
 								// calling the API ...
 								var obj = {
 								  method: 'feed',

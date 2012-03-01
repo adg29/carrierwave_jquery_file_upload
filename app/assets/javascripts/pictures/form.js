@@ -69,7 +69,7 @@ $(function () {
 			
 			
 			//on Success, allow the fb_share bool to live on outside of modal click.
-
+			window.onConfirmPanel == true;
 			
 			$('form#new_picture').fadeOut();
 			$('.fileupload-buttonbar').fadeOut();
