@@ -19,6 +19,7 @@
 	var allvars = '';	
 	function FBUser_swfInitialize(){
 		allvars = 'mosaicDataPath=/cities/<%= @city.id %>/mosaics/latest.xml&'
+						+'facebook_app_url='+ facebook_app_url+'&'
 						+'cities_status=/cities.xml&'
 						+'loc_code=en_de&'
 						+'currentCityId=<% if @city_none %>none<%else%>city-<%=@city.id%><% end %>&'
@@ -64,7 +65,7 @@
 					height:360,
 					padding:0
 				},
-				position: [80,260],
+				position: [80,],
 				overlayClose:true
 			});
 		})

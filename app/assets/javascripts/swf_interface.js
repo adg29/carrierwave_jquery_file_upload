@@ -66,7 +66,7 @@ function submitMedia(city_code,mediatype){
 					paddingTop: 15,
 					paddingBottom: 5 
 				},
-				position: [60,],
+				position: [60,260],
 				overlayClose:true,
 				onOpen: function(dialog){
 					dialog.overlay.fadeIn('slow', function () {
@@ -131,8 +131,11 @@ function fb_callback(response) {
 
 
 function joinTheProjectClick(){
-	top.window.location.href = facebook_app_url + "/?controller=cities&id="+city_id+"&action=interactive";
-	//window.top.location = facebook_app_url + "/?controller=cities&id="+city_id+"&action=interactive"; 
+	try {
+		top.window.location.href = facebook_app_url + "/?controller=cities&id=" + city_id + "&action=interactive";
+	} catch (e){
+		window.top.location = facebook_app_url + "/?controller=cities&id=" + city_id + "&action=interactive";
+	} 
 }
 
 /*
@@ -149,10 +152,7 @@ function setLanguage(loc_code){
  * called when user has changed mosaics/different city has been selected.
  */
 function setCityMosaic(mosaic_code){
-	
-
-
-	top.window.location = facebook_app_url + "/?controller=cities&id="+mosaic_code+"&action=interactive";
+	//top.window.location = facebook_app_url + "/?controller=cities&id="+mosaic_code+"&action=interactive";
 }
 /*
  * Can bee used to implement tracking; will get called when app state changes 
