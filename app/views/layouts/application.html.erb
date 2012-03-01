@@ -26,7 +26,10 @@
 				locale : response.locale
 			    };
 		kb.FBUser_populate_form();
-		FBUser_swfInitialize();
+		
+		if (!window.swfInitialized){
+			FBUser_swfInitialize();
+		}
 	});
 
     }

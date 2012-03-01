@@ -14,6 +14,7 @@
 
 <% end %>
 <script type="text/javascript">	
+	var swfInitialized = false;
 	var params = {};
 	var allvars = '';	
 	function FBUser_swfInitialize(){
@@ -48,8 +49,9 @@
 		    id:"swf_div",
 		    name:"swf_div"
 		}
-
-			swfobject.embedSWF("/assets/gallery_root.swf","swf_div","744","564","10.0.0","/assets/expressInstall.swf",null,params,attributes);
+		
+		swfobject.embedSWF("/assets/gallery_root.swf","swf_div","744","564","10.0.0","/assets/expressInstall.swf",null,params,attributes);
+		window.swfInitialized = true;
 	}
 
 	$(function(){
