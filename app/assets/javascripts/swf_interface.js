@@ -50,6 +50,7 @@ function submitMedia(city_code,mediatype){
 	trackMosaicEvent('upload',mediatype,'topnav');
 	pauseSwf();
 	window.onConfirmPanel = false;
+	console.log("onopen>"+window.onConfirmPanel);
 	try{
 			var uploadtype = "";
 			if( mediatype=="video") {
@@ -89,8 +90,9 @@ function submitMedia(city_code,mediatype){
 						dialog.container.hide('slow', function () {
 							dialog.overlay.slideUp('slow', function () {
 								$.modal.close();
-								//if( window.mosaic_fb_share===true){
+								console.log("onclose>"+window.onConfirmPanel);
 								if( window.mosaic_fb_share==true && window.onConfirmPanel == true){
+								
 								// calling the API ...
 								var obj = {
 								  method: 'feed',
