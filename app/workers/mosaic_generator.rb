@@ -28,17 +28,20 @@ class MosaicGenerator
      Rails.logger.debug( pictures_approved ) 
      files_approved = pictures_approved.map{ |a| a.file }
 
+     sources_deleted = 0
      source_images.to_a.each_with_index do|img,i|
        Rails.logger.debug( i )
        Rails.logger.debug( img )
        filename = img.filename.split('_')
 
-       Rails.logger.debug( "#{filename[1]} in approved" )
-       Rails.logger.debug( 'Approved array' )
-       Rails.logger.debug( files_approved )
+       Rails.logger.debug( "#{filename[1]} in approved?" )
+       Rails.logger.info( 'Approved array' )
+       Rails.logger.info( files_approved )
        if !(files_approved.include? filename[1]) 	
 	Rails.logger.debug( "delete at #{i}" )
-        source_images.delete_at(i)
+        source_images.delete_at(i-sources_deleted)
+        sources_deleted += 1
+	Rails.logger.debug( source_images.length )
        end
      end
 
