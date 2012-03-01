@@ -28,6 +28,11 @@ group :assets do
 	gem 'therubyracer'
 end
 
+group :production do
+  gem 'therubyracer'
+end
+
+
 group :development do
   gem 'seed_dump'
 end
