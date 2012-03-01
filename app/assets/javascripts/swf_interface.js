@@ -56,7 +56,7 @@ function submitMedia(city_code,mediatype){
 				uploadtype="?video=accept";
 			}
 			$('#swf_div')[0].pauseSwf();
-			var src = "http://"+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
+			var src = "https://"+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
 			$.modal('<iframe src="' + src + '" height="350" width="399" style="border:0">', {
 				closeHTML:"close",
 				containerCss:{
