@@ -35,17 +35,7 @@
 	overflow-x: hidden;
 }
 
-#simplemodal-container a.modalCloseImg {
-	background:url(/assets/images/ui/close-upload.png) no-repeat; /* adjust url as required */
-	width:44px;
-	height:44px;
-	display:inline;
-	z-index:3200;
-	position:absolute;
-	top:0px;
-	right:-15px;
-	cursor:pointer;
-}
+
 
 h1{
 	font-weight: normal;
