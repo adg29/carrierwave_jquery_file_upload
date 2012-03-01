@@ -65,7 +65,13 @@ $(function () {
 	    	},
 		done: function (e, data) {
 			
-			window.onConfirmPanel = true;
+			try{
+				parent.onConfirmPanel = true;
+			} catch (e){
+				//console.log("error on setting parent var.");
+				parent.setOnConfirmPanel(true);
+			};
+			
 			
 			
 			$('#mosaic_copy').html('<h2 class="cufon-intel">Upload Complete!</h2>');

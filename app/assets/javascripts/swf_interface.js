@@ -50,15 +50,20 @@ function submitMedia(city_code,mediatype){
 	trackMosaicEvent('upload',mediatype,'topnav');
 	pauseSwf();
 	window.onConfirmPanel = false;
-	console.log("onopen>"+window.onConfirmPanel);
+	function setSrc(){
+		var frameSource = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
+	   $('#uploadmodaliframe').attr("src", frameSource);
+	}
+	//console.log("onopen>"+window.onConfirmPanel);
 	try{
 			var uploadtype = "";
 			if( mediatype=="video") {
 				uploadtype="?video=accept";
 			}
 			$('#swf_div')[0].pauseSwf();
-			var src = "https://"+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
-			$.modal('<iframe src="' + src + '" height="350" width="399" style="border:0">', {
+			var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "https://";
+			var src = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
+			$.modal('<iframe id="uploadmodaliframe" src="" height="350" width="399" style="border:0">', {
 				closeHTML:"close",
 				containerCss:{
 					background:"url(/assets/upload-modal-global.png) no-repeat transparent",
@@ -66,6 +71,9 @@ function submitMedia(city_code,mediatype){
 					height:360,
 					paddingTop: 15,
 					paddingBottom: 5 
+				},
+				onShow: function(dialog) {
+					setSrc();
 				},
 				position: [60,260],
 				overlayClose:true,
@@ -90,8 +98,9 @@ function submitMedia(city_code,mediatype){
 						dialog.container.hide('slow', function () {
 							dialog.overlay.slideUp('slow', function () {
 								$.modal.close();
-								console.log("onclose>"+window.onConfirmPanel);
-								if( window.mosaic_fb_share==true){
+								
+								//console.log("onclose>"+window.onConfirmPanel);
+								if( window.mosaic_fb_share==true && window.onConfirmPanel==true){
 								
 								// calling the API ...
 								var obj = {
@@ -122,6 +131,11 @@ function submitMedia(city_code,mediatype){
 	
 }
 
+//setter from child iframe...
+function setOnConfirmPanel(val){
+	window.onConfirmPanel = val;
+	//console.log("setter called from child>"+val);
+}
 
 function fb_callback(response) {
   resumeSwf();
