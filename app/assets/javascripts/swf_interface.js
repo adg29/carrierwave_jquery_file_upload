@@ -49,7 +49,7 @@ function trackMosaicEvent(eventId,mediaType,evtSource){
 function submitMedia(city_code,mediatype){
 	trackMosaicEvent('upload',mediatype,'topnav');
 	pauseSwf();
-
+	window.onConfirmPanel = false;
 	try{
 			var uploadtype = "";
 			if( mediatype=="video") {
@@ -70,8 +70,6 @@ function submitMedia(city_code,mediatype){
 				overlayClose:true,
 				onOpen: function(dialog){
 					dialog.overlay.fadeIn('slow', function () {
-						//document.getElementById("simplemodal-overlay").onclick = function(){window.mosaic_fb_share = false;};
-						window.onConfirmPanel = false;
 						dialog.data.hide();
 						dialog.container.fadeIn('slow', function () {
 							if( mediatype!="video" ){
@@ -84,7 +82,6 @@ function submitMedia(city_code,mediatype){
 							dialog.data.slideDown('slow');
 						});
 					});
-					dialog.overlay.onClick= function (){window.mosaic_fb_share = false;}
 				},
 				onClose: function(dialog) {
 
@@ -92,6 +89,7 @@ function submitMedia(city_code,mediatype){
 						dialog.container.hide('slow', function () {
 							dialog.overlay.slideUp('slow', function () {
 								$.modal.close();
+								
 								if( window.mosaic_fb_share===true && window.onConfirmPanel == true){
 								// calling the API ...
 								var obj = {
