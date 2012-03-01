@@ -86,8 +86,7 @@ function submitMedia(city_code,mediatype){
 					dialog.overlay.onClick= function (){window.mosaic_fb_share = false;}
 				},
 				onClose: function(dialog) {
-					//console.log('DIALOG');
-					//console.log( dialog );
+
 					dialog.data.fadeOut('slow', function () {
 						dialog.container.hide('slow', function () {
 							dialog.overlay.slideUp('slow', function () {
@@ -109,7 +108,6 @@ function submitMedia(city_code,mediatype){
   									resumeSwf();
 								}
 
-
 							});
 						});
 					});
@@ -119,7 +117,6 @@ function submitMedia(city_code,mediatype){
 			// Closing animations
 			$("#sample").modal({});
 			
-
 		} catch (e){}
 	
 }
