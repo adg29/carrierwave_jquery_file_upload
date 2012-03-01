@@ -19,7 +19,7 @@
 	var allvars = '';	
 	function FBUser_swfInitialize(){
 		allvars = 'mosaicDataPath=/cities/<%= @city.id %>/mosaics/latest.xml&'
-						+'facebook_app_url='+ 'http://apps.facebook.com/300396973355596/&'
+						+'facebook_app_url='+'http://apps.facebook.com/300396973355596/&'
 						+'cities_status=/cities.xml&'
 						+'loc_code=en_de&'
 						+'currentCityId=<% if @city_none %>none<%else%>city-<%=@city.id%><% end %>&'
