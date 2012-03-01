@@ -70,9 +70,7 @@ $(function () {
 			
 			//on Success, allow the fb_share bool to live on outside of modal click.
 
-			if ($("#simplemodal-overlay")!=null){
-				$("#simplemodal-overlay")[0].onclick = function(){window.mosaic_fb_share = window.mosaic_fb_share;};
-			}
+			
 			$('form#new_picture').fadeOut();
 			$('.fileupload-buttonbar').fadeOut();
 
