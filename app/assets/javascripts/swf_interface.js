@@ -50,7 +50,7 @@ function submitMedia(city_code,mediatype){
 	trackMosaicEvent('upload',mediatype,'topnav');
 	pauseSwf();
 	window.onConfirmPanel = false;
-	console.log("onopen>"+window.onConfirmPanel);
+	//console.log("onopen>"+window.onConfirmPanel);
 	try{
 			var uploadtype = "";
 			if( mediatype=="video") {
@@ -92,7 +92,7 @@ function submitMedia(city_code,mediatype){
 							dialog.overlay.slideUp('slow', function () {
 								$.modal.close();
 								
-								console.log("onclose>"+window.onConfirmPanel);
+								//console.log("onclose>"+window.onConfirmPanel);
 								if( window.mosaic_fb_share==true && window.onConfirmPanel==true){
 								
 								// calling the API ...
@@ -127,7 +127,7 @@ function submitMedia(city_code,mediatype){
 //setter from child iframe...
 function setOnConfirmPanel(val){
 	window.onConfirmPanel = val;
-	console.log("setter called from child>"+val);
+	//console.log("setter called from child>"+val);
 }
 
 function fb_callback(response) {

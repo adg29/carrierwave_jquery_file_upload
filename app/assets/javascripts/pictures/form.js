@@ -68,7 +68,7 @@ $(function () {
 			try{
 				parent.onConfirmPanel = true;
 			} catch (e){
-				console.log("error on setting parent var.");
+				//console.log("error on setting parent var.");
 				parent.setOnConfirmPanel(true);
 			};
 			
