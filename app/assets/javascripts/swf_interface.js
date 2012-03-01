@@ -70,7 +70,7 @@ function submitMedia(city_code,mediatype){
 				overlayClose:true,
 				onOpen: function(dialog){
 					dialog.overlay.fadeIn('slow', function () {
-						document.getElementById("simplemodal-overlay").onclick = function(){window.mosaic_fb_share = false;};
+						//document.getElementById("simplemodal-overlay").onclick = function(){window.mosaic_fb_share = false;};
 						dialog.data.hide();
 						dialog.container.fadeIn('slow', function () {
 							if( mediatype!="video" ){
