@@ -57,7 +57,8 @@ function submitMedia(city_code,mediatype){
 				uploadtype="?video=accept";
 			}
 			$('#swf_div')[0].pauseSwf();
-			var src = "https://"+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
+			var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "https://";
+			var src = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
 			$.modal('<iframe src="' + src + '" height="350" width="399" style="border:0">', {
 				closeHTML:"close",
 				containerCss:{
@@ -92,7 +93,7 @@ function submitMedia(city_code,mediatype){
 								$.modal.close();
 								
 								console.log("onclose>"+window.onConfirmPanel);
-								if( window.mosaic_fb_share==true && window.onConfirmPanel){
+								if( window.mosaic_fb_share==true && window.onConfirmPanel==true){
 								
 								// calling the API ...
 								var obj = {
