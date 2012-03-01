@@ -51,8 +51,8 @@ function submitMedia(city_code,mediatype){
 	pauseSwf();
 	window.onConfirmPanel = false;
 	function setSrc(){
-		var src = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
-	   $('#uploadmodaliframe').attr("src", s);
+		var frameSource = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
+	   $('#uploadmodaliframe').attr("src", frameSource);
 	}
 	//console.log("onopen>"+window.onConfirmPanel);
 	try{
