@@ -8,6 +8,8 @@
  //= require nifty-layout
  //= require best_in_place
  //= require shadowbox
+ //= require fileinput-basic 
+ //= require fileinput-enhanced
 */
 
 #video-submit{
@@ -62,7 +64,10 @@ h2.cufon-intel{
 .page_picture_upload form label{
 	color: #fff;
 	font-size: 14px;
+	display: inline;
 }
+
+
 .page_picture_upload form input,
 .page_picture_upload form textarea{
 	font-family: tahoma;
