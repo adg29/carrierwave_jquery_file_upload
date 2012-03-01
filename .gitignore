@@ -8,3 +8,6 @@ public/uploads
 public/assets
 config/database.yml
 .rvmrc
+public/mosaics/
+nohup.out
+
