@@ -11,7 +11,7 @@
  * needs to be followed by resumeSwf()
  */
 
-var uploadModal = false;
+
 
 var urlParams = {};
 		(function () {
@@ -52,20 +52,21 @@ function submitMedia(city_code,mediatype){
 	trackMosaicEvent('upload',mediatype,'topnav');
 	pauseSwf();
 	window.onConfirmPanel = false;
+	
+	//src set onShow event - clears up IE Jquery Errors relating to IFrames and simplemodal.
 	function setSrc(){
+		var protocolstr = (window.location.href.indexOf("http://")==-1) ? "https://" : "http://";
 		var frameSource = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
 	   $('#uploadmodaliframe').attr("src", frameSource);
 	}
-	//console.log("onopen>"+window.onConfirmPanel);
+
 	try{
 			var uploadtype = "";
 			if( mediatype=="video") {
 				uploadtype="?video=accept";
 			}
 			$('#swf_div')[0].pauseSwf();
-			//var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "http://";  // wip dev
-			var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "https://";  // git
-			var src = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
+
 			
 			// w399 h350
 			$.modal('<iframe id="uploadmodaliframe" src="" height="350" width="399" style="border:0px" frameBorder="0" scrolling="no">', {
@@ -159,6 +160,7 @@ function joinTheProjectClick(){
 /*
  * called on user select of language drop down. 
  * param s - localization code associated with language selected.
+ * validates against valid language codes in strings xml, if not valid, does not change language.
  * 
  */
 function setLanguage(loc_code){
@@ -206,6 +208,8 @@ function resumeSwf(){
 	} catch (e){}
 }
 
+
+//Handles closes upload & video modals in cases where overlay does not get click [ie].
 function clickfromswf(){
 	$.modal.close();
 	//console.log("onclosefromclick>"+window.onConfirmPanel+"|"+window.mosaic_fb_share);
