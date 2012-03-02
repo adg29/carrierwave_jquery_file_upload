@@ -104,12 +104,7 @@ $(function () {
 					.fadeIn(function () {
 					    // Fix for IE7 and lower:
 					    $(this).show();
-                                                $('.template-download .preview')
-                                                        .css('overflow','visible')
-                                                        .css('width',350);
 						Cufon.replace($('.cufon-intel'));
-						$('.fileupload-content')
-							.css('marginLeft',15);
 
 					});
 				});
