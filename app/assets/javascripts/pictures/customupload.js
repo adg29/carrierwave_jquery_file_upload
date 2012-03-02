@@ -44,7 +44,27 @@ function gVimeo(){
 	success: function(data) {
 	     var vimeo_medium = data[0].thumbnail_medium;
 	     var vimeo_large = data[0].thumbnail_large;
-	     $('.files .preview').html( '<div class="thumb_paste"><img src="'+vimeo_medium+'"/></div>');
+	     $('.fileupload-content')
+	     	.append( '<div class="thumb_paste"><img src="'+vimeo_medium+'"/></div>')
+	     	.css('width',190)
+	     	.css('height',140)
+	     	.css('display','block');
+	     $('.template-upload')
+	     	.css('width',190)
+	     	.css('height',140)
+	     	.css('display','block');
+	     $('.thumb_paste')
+	     	.css('width',190)
+	     	.css('height',140)
+	     	.css('display','block');
+	     $('.files').remove();
+	     /*
+	     $('.files .preview')
+	     	.html( '<div class="thumb_paste"><img src="'+vimeo_medium+'"/></div>')
+	     	.css('width',190)
+	     	.css('height',140)
+	     	.css('display','block');
+		*/
 		picture_upload['picture']['video_url'] = $('#picture_remote_file_url').val();
 		picture_upload['picture']['remote_file_url'] = vimeo_large;
 	}
@@ -100,7 +120,14 @@ function gYoutube(){
 				url: '/pictures.json',
 				data: picture_upload,
 				success: function(r){
-					$('#mosaic_copy').html('<h3 class="cufon-intel">Upload Complete!</h3>');
+					$('#mosaic_copy')
+						.html('<h3 class="cufon-intel">Upload Complete!</h3>');
+					$('.fileupload-content')
+						.css('width',350)
+	     					.prepend("<span class='cufon-intel'>Almost done. We've received your pic and are quickly reviewing for content. Check back within 24 hrs to see if you've been approved.</span>")
+						.css('marginLeft',15);
+
+					Cufon.replace($('span.cufon-intel'));
 					Cufon.replace($('#mosaic_copy'));
 
 					$('.files').html( '' );

@@ -11,6 +11,8 @@
  * needs to be followed by resumeSwf()
  */
 
+var uploadModal = false;
+
 var urlParams = {};
 		(function () {
 		    var e,
@@ -61,7 +63,8 @@ function submitMedia(city_code,mediatype){
 				uploadtype="?video=accept";
 			}
 			$('#swf_div')[0].pauseSwf();
-			var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "https://";  // wip 2nd one is https
+			//var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "http://";  // wip dev
+			var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "https://";  // git
 			var src = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
 			
 			// w399 h350
@@ -76,6 +79,8 @@ function submitMedia(city_code,mediatype){
 				},
 				onShow: function(dialog) {
 					setSrc();
+					//$('#uploadmodaliframe').click( function(){ return false; } );
+					//$('body').click(function(){ $.modal.close(); } );
 				},
 				position: [60,260],
 				overlayClose:true,
@@ -95,7 +100,6 @@ function submitMedia(city_code,mediatype){
 					});
 				},
 				onClose: function(dialog) {
-
 					dialog.data.fadeOut('slow', function () {
 						dialog.container.hide('slow', function () {
 							dialog.overlay.slideUp('slow', function () {
@@ -202,6 +206,25 @@ function resumeSwf(){
 	} catch (e){}
 }
 
+function clickfromswf(){
+	$.modal.close();
+	
+	if (window.mosaic_fb_share == true && window.onConfirmPanel == true) {
+		window.onConfirmPanel = false;
+		// calling the API ...
+		var obj = {
+			method: 'feed',
+			link: facebook_app_url + '/?controller=cities&id=' + city_id + '&action=interative',
+			picture: request_HTTP_HOST + "/" + city_mosaic,
+			name: city_name + ' Intel Mosaic with Will.i.am',
+			caption: 'Join the mosaic by submitting media that best represents you and your city.',
+			description: 'Your City. His Inspiration.<br/>I just posted content to the Intel Ultrabook TM project. Inspiration for will.i.am.'
+		};
+		FB.ui(obj, fb_callback);
+			}else{
+  			resumeSwf();
+		}
+}
 
 
 function jslog(s){
