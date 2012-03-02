@@ -16,12 +16,13 @@
 <script type="text/javascript"> 
   var swfInitialized = false;
   var params = {};
-  var allvars = ''; 
+  var initLocation = (typeof kb.FBUser.locale != "undefined") ? kb.FBUser.locale : "en_us";
+  var allvars = '';
   function FBUser_swfInitialize(){
     allvars = 'mosaicDataPath=/cities/<%= @city.id %>/mosaics/latest.xml&'
             +'facebook_app_url='+'http://apps.facebook.com/<%= KCONF['fb_app_id']%>/&'
             +'cities_status=/cities.xml&'
-            +'loc_code=en_de&'
+            +'loc_code='+initLocation+'&'
             //+'currentCityId=<% if @city_none %>city-1<%else%>city-<%=@city.id%><% end %>&'   // wip dev
             +'currentCityId=<% if @city_none %>none<%else%>city-<%=@city.id%><% end %>&'   // team
             +'currentMosaicId=<%= @mosaic.id unless @mosaic.nil? %>_files&'
