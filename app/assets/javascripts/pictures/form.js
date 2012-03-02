@@ -9,6 +9,17 @@ $.extend({
     results = url.match("[\\?&]v=([^&#]*)");
 
     vid = ( results === null ) ? url : results[1];
+    
+    if ( vid == url ) {
+    	vid = GetIdFromUrl(url);
+	    if(size == "small"){
+	      return "https://img.youtube.com/vi/"+GetIdFromUrl(url)+"/2.jpg";
+	    }else {
+	      var yid = GetIdFromUrl(url);
+	      
+	      return "https://img.youtube.com/vi/"+yid+"/0.jpg";
+	    }
+    }
 
     if(size == "small"){
       return "https://img.youtube.com/vi/"+vid+"/2.jpg";
@@ -17,6 +28,16 @@ $.extend({
     }
   }
 });
+
+function GetIdFromUrl(url) {
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match && match[7].length == 11) {
+        return match[7];
+    } else {
+        alert("Failed to read YouTube URL. Did you enter a valid link?");
+    }
+}
 
 $(function () {
 
