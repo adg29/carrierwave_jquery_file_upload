@@ -11,9 +11,9 @@ $.extend({
     vid = ( results === null ) ? url : results[1];
 
     if(size == "small"){
-      return "http://img.youtube.com/vi/"+vid+"/2.jpg";
+      return "https://img.youtube.com/vi/"+vid+"/2.jpg";
     }else {
-      return "http://img.youtube.com/vi/"+vid+"/0.jpg";
+      return "https://img.youtube.com/vi/"+vid+"/0.jpg";
     }
   }
 });

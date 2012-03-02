@@ -39,7 +39,7 @@ function gVimeo(){
      
 
     $.ajax({
-	url: 'http://vimeo.com/api/v2/video/' + id + '.json',
+	url: 'https://vimeo.com/api/v2/video/' + id + '.json',
 	dataType: 'jsonp',
 	success: function(data) {
 	     var vimeo_medium = data[0].thumbnail_medium;
