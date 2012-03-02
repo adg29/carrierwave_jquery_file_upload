@@ -20,7 +20,7 @@
   var allvars = '';
   function FBUser_swfInitialize(){
     allvars = 'mosaicDataPath=/cities/<%= @city.id %>/mosaics/latest.xml&'
-            +'facebook_app_url='+'http://apps.facebook.com/<%= KCONF['fb_app_id']%>/&'
+            +'facebook_app_url='+'https://apps.facebook.com/<%= KCONF['fb_app_id']%>/&'
             +'cities_status=/cities.xml&'
             +'loc_code='+initLocation+'&'
             //+'currentCityId=<% if @city_none %>city-1<%else%>city-<%=@city.id%><% end %>&'   // wip dev
@@ -124,7 +124,7 @@
 <div id="page_footer_global">
 
   <div id="fb_like_container">
-    <div class="fb-like" data-href="http://review.kbsp.com:4000/cities/<%= @city.id %>/interactive" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
+    <div class="fb-like" data-href="https://apps.facebook.com/<%= KCONF['fb_app_id']%>/cities/<%= @city.id %>/interactive" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
   </div>
   
   <a href="#ultrabook-video" id="intel_about_a"><div id="intel_about"></div></a>
