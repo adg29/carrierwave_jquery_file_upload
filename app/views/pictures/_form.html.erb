@@ -56,7 +56,21 @@
 				var yt_meta = gYoutube();
 				$('.fileupload-buttonbar').css('display','block');
 				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
-				$('.files .preview').html( '<div class="thumb_paste"><img src="'+yt_meta['picture']['remote_file_url']+'"/></div>');
+
+				     $('.fileupload-content')
+					.append( '<div class="thumb_paste"><img src="'+yt_meta['picture']['remote_file_url']+'"/></div>')
+					.css('width',190)
+					.css('height',140)
+					.css('display','block');
+				     $('.template-upload')
+					.css('width',190)
+					.css('height',140)
+					.css('display','block');
+				     $('.thumb_paste')
+					.css('width',190)
+					.css('height',140)
+					.css('display','block');
+				     $('.files').remove();
 				$("#video-submit").css('display','none');
 				Cufon.replace();
 			}

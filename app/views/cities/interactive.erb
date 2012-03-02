@@ -22,7 +22,7 @@
             +'facebook_app_url='+'http://apps.facebook.com/<%= KCONF['fb_app_id']%>/&'
             +'cities_status=/cities.xml&'
             +'loc_code=en_de&'
-            // +'currentCityId=<% if @city_none %>city-1<%else%>city-<%=@city.id%><% end %>&'   // wip dev
+            //+'currentCityId=<% if @city_none %>city-1<%else%>city-<%=@city.id%><% end %>&'   // wip dev
             +'currentCityId=<% if @city_none %>none<%else%>city-<%=@city.id%><% end %>&'   // team
             +'currentMosaicId=<%= @mosaic.id unless @mosaic.nil? %>_files&'
             +'usersurl=/users.xml&'
@@ -57,22 +57,21 @@
 
 	$(function(){
 		//Cufon.replace($('#intel_use'));
-		$('#intel_about a').click(function(e){
+		$('#intel_about_a').click(function(e){
 			pauseSwf();
 			trackMosaicEvent('watch','video','bottomnav');
-			e.preventDefault();
 			$.modal('<iframe src="https://www.youtube.com/embed/zWKVSXkrWUc" width="640" height="340" style="border:0">', {
 				onClose:closeVideoModal,
 				position: [80,],
 				overlayClose:true
 			});
-		})
-
-    $('#william_listen').click(function() {
-      trackMosaicEvent('listen','audio','bottomnav');
-      var URL = "http://www.intel.com/content/www/us/en/ultrabook/ultrabook-project/ultrabook-project.html?globe";
-      setTimeout( function() {document.location.href = URL}, 400 );
+      console.log('intel a')
       return false;
+		});
+
+    $('#william_listen_a').click(function() {
+      trackMosaicEvent('listen','audio','bottomnav');
+      console.log('will a')
     })
 
     $('#intel_use').click(function(e){
@@ -122,19 +121,15 @@
 </div>
 
 <div id="page_footer_global">
+
   <div id="fb_like_container">
     <div class="fb-like" data-href="http://review.kbsp.com:4000/cities/<%= @city.id %>/interactive" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
   </div>
-  <div id="intel_about">
-    <a href="#ultrabook-video">&nbsp;</a>
-  </div>
-  <div id="william_listen" onclick="javascript:trackMosaicEvent('listen','audio','bottomnav');">
-    <a href="http://www.intel.com/content/www/us/en/ultrabook/ultrabook-project/ultrabook-project.html?globe" target="_blank">&nbsp;</a>
-  </div>
-  <div id="">
-  </div>
-  <div id="">
-  </div>
+  
+  <a href="#ultrabook-video" id="intel_about_a"><div id="intel_about"></div></a>
+  
+  <a href="http://www.intel.com/content/www/us/en/ultrabook/ultrabook-project/ultrabook-project.html?globe" target="_blank" id="william_listen_a"><div id="william_listen"></div></a>
+
 </div>
 
 <div class="fb-comments" data-href="http://<%= request.env['HTTP_HOST'] %>/cities/<%= @city.id %>/interactive" data-num-posts="2" data-width="470"></div>
