@@ -60,10 +60,11 @@
 			pauseSwf();
 			trackMosaicEvent('watch','video','bottomnav');
 			e.preventDefault();
-			$.modal('<iframe src="https://www.youtube.com/embed/zWKVSXkrWUc" width="640" height="340" style="border:0">', {
+			$.modal('<div id='video_display'><iframe src="https://www.youtube.com/embed/zWKVSXkrWUc" width="640" height="340" style="border:0"></div>', {
 				onClose:closeVideoModal,
 				position: [80,],
-				overlayClose:true
+				overlayClose:true,
+				modalContainer:modal_containerVideo
 			});
 		})
 
@@ -109,7 +110,8 @@
 
 </script>
 		
-<div id='swf_div' height='516' width='744'>
+<div id='swf_div_wrap'>
+	<div id='swf_div' height='516' width='744'></div>
 </div>
 
 <div id="page_footer_global">
