@@ -200,7 +200,7 @@ textarea#picture_description{
 	/*left: 150px;
 	top: 60px;*/
 	width:470px;
-	height:114px;
+	min-height:114px;
 	margin-left:auto;
 	margin-right:auto;
 	display: block;
