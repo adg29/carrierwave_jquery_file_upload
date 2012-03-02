@@ -121,6 +121,7 @@ function gYoutube(){
 				data: picture_upload,
 				success: function(r){
 					
+					//Flag close event-for show/not show share on modal close
 					try{
 						parent.onConfirmPanel = true;
 					} catch (e){
