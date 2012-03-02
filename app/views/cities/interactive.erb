@@ -64,7 +64,9 @@
 				containerCss:{
 					width: 640,
 					height:360,
-					padding:0
+					padding:0,
+					display:none,
+					z-index:3000
 				},
 				onClose:closeVideoModal,
 				position: [80,],
@@ -99,8 +101,9 @@
 	});
 	function closeVideoModal(dialog){
 	resumeSwf();
+	
 	try{
-		dialog.data.fadeOut('slow', function () {
+		dialog.data.fadeOut('fast', function () {
 			dialog.container.hide('fast', function () {
 				dialog.overlay.slideUp('fast', function () {
 					$.modal.close();
