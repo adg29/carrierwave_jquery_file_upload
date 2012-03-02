@@ -40,7 +40,7 @@
 			$('.fileinput-button,#picture_file').css('display','none');
 			<% if @uploadtype=="a video" %>
 			if ( $(this).val()=="" ) {
-				$('#picture_remote_file_url').val('Paste a YouTube or Vimeo video link here');
+				$('#picture_remote_file_url').val(getLanguageVal('upload_paste'));
 				$('#upload_start').css('display','none');
 				$('#description_input').css('display','none');
 				$('.fileupload-buttonbar').css('left',0);

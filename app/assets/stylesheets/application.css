@@ -12,6 +12,46 @@
  //= require fileinput-enhanced
 */
 
+#translate-intent .footer-intent{
+	display: block;
+	width: 95px;
+	height: 40px;
+	position: absolute;
+	top: 0px;
+	left: 649px;
+}
+
+.translate-option{
+	display: block;
+	height: 20px;
+	width: 96px;
+	background: url(/assets/translate-labels.png) no-repeat;
+	text-indent: -9999px;
+	margin: 4px 4px;
+	cursor: pointer;
+}
+.translate-option#translate-english{
+	background-position: 0 0;
+}
+.translate-option#translate-korean{
+	background-position: 0 -18px;
+}
+
+#translate-options{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	display: none;
+	width: 96px;
+	height: 147px;
+	background: #004280;
+	position: absolute;
+	top: -149px;
+	right: 0px;
+}
+#translate-intent{
+}
+
 .modalCloseImg{
 	display: block;
 	width: 16px;

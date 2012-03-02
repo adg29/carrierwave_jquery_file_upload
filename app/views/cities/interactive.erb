@@ -19,7 +19,7 @@
   var allvars = '';
   function FBUser_swfInitialize(){
     allvars = 'mosaicDataPath=/cities/<%= @city.id %>/mosaics/latest.xml&'
-            +'facebook_app_url='+'https://apps.facebook.com/<%= KCONF['fb_app_id']%>/&'
+            +'facebook_app_url='+'http://apps.facebook.com/<%= KCONF['fb_app_id']%>/&'
             +'cities_status=/cities.xml&'
             +'loc_code='+kb.FBUser.locale+'&'
             //+'currentCityId=<% if @city_none %>city-1<%else%>city-<%=@city.id%><% end %>&'   // wip dev
@@ -55,6 +55,7 @@
     window.swfInitialized = true;
   }
 
+
 	$(function(){
 		//Cufon.replace($('#intel_use'));
 		$('#intel_about_a').click(function(e){
@@ -65,13 +66,14 @@
 				position: [80,],
 				overlayClose:true
 			});
-      console.log('intel a')
-      return false;
+      			return false;
 		});
+      $.each( translate_vals, function(i,lang){
+          $('#translate-options').append('<li data-locale='+lang.locale+' id="translate-'+lang.label+'" class="translate-option">'+lang.label+'</li>');
+      });
 
     $('#william_listen_a').click(function() {
       trackMosaicEvent('listen','audio','bottomnav');
-      console.log('will a')
     })
 
     $('#intel_use').click(function(e){
@@ -99,7 +101,44 @@
     });
 
 
+
+    $('#translate-intent').live('click',function(){
+	if( $(this).hasClass('menu-open') ){
+		$(this).removeClass('menu-open');
+		$('#translate-options').css('display','none');
+	}
+	else{
+		$(this).addClass('menu-open');
+		$('#translate-options').css('display','block');
+	}
+    });
+
+    $('#translate-options li').live('click',function(){
+	setLanguage( $(this).attr('data-locale').toLowerCase() );
+	setStaticLanguage( $(this).attr('data-locale').toLowerCase() );
+    });
+
+
   });
+
+  function setStaticLanguage(locale){
+  	if( locale=='en_us' ){
+		$('#page_footer_global').css('background-position','-5px -18px');
+		language_current = 0;
+	}else if( locale=='ko_kr' ){
+		$('#page_footer_global').css('background-position','-5px -76px');
+		language_current = 0;
+	}
+
+
+  }
+
+  function getLanguageVal(key){
+  	var val = eval(language_vals[language_current].key);
+	console.log(val);
+	return val;
+  }
+
   function closeVideoModal(dialog){
   resumeSwf();
   
@@ -123,12 +162,15 @@
 <div id="page_footer_global">
 
   <div id="fb_like_container">
-    <div class="fb-like" data-href="https://apps.facebook.com/<%= KCONF['fb_app_id']%>/cities/<%= @city.id %>/interactive" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
+    <div class="fb-like" data-href="http://review.kbsp.com:4000/cities/<%= @city.id %>/interactive" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
   </div>
   
   <a href="#ultrabook-video" id="intel_about_a"><div id="intel_about"></div></a>
   
   <a href="http://www.intel.com/content/www/us/en/ultrabook/ultrabook-project/ultrabook-project.html?globe" target="_blank" id="william_listen_a"><div id="william_listen"></div></a>
+
+  <a id="translate-intent" href="#translate"><div class="footer-intent"></div></a>
+  <ul id="translate-options"></ul>
 
 </div>
 
