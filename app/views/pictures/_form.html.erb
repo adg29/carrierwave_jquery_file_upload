@@ -22,9 +22,15 @@
 	$('#mosaic_copy')
 		.html(getLanguageVal('upload_join_<%= @uploadcopy %>'))
 	if( translate_current!=1 ) {
-		console.log('trans');
-		console.log(translate_current);
 	}
+
+	$('label.fileinput-button')
+		.html(getLanguageVal('upload_image'))
+	$('label[for="Share_city_on_your_wall"]')
+		.html(getLanguageVal('fb_share'))
+
+	$('#picture_remote_file_url').val(getLanguageVal('upload_video_input'));
+
 
 	$('#video-submit').live('click',function(e){
 		e.preventDefault();
@@ -35,8 +41,12 @@
                 if( BrowserDetect.browser!="Firefox" ) $('#picture_file').customFileInput();
 	<% else %>
 		$('<button id="video-submit"></button>').insertBefore('#fb-name');
-		$('label[for="picture_remote_file_url"]').html('Link Video');
-		Cufon.replace( $('label[for="picture_remote_file_url"]') );
+		$('label[for="picture_remote_file_url"]').html(getLanguageVal('upload_video'));
+
+		if( translate_current!=1 ) {
+			Cufon.replace( $('label[for="picture_remote_file_url"]') );
+		}
+
 		$('#upload_start')
 			.css('backgroundPosition','-2px -30px');
 	<% end %>
