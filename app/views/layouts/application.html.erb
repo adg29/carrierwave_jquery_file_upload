@@ -40,7 +40,7 @@
 	$('#picture_user_attributes_name').val(kb.FBUser.name);
 	$('#picture_user_attributes_locale').val(kb.FBUser.locale);
 
-	var fbprofilepic = 'http://graph.facebook.com/'+kb.FBUser.id+'/picture';
+	var fbprofilepic = 'https://graph.facebook.com/'+kb.FBUser.id+'/picture';
 	$('#fbavatar').html('<img src="'+fbprofilepic+'"/>');
 	$('#fbusername').html(kb.FBUser.name);
         Cufon.replace($('h2.cufon-intel'));
