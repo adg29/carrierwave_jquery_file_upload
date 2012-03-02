@@ -64,9 +64,10 @@
 		kb.FBUser_populate_form();
 		
 		//will be undefined in the form iframe.
-		if (typeof FBUser_swfInitialize != "undefined"){
+			try{
 			FBUser_swfInitialize();
-		}
+			} catch(e){};
+		
 	});
 
     }
