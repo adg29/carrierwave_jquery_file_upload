@@ -56,8 +56,8 @@
 
 	$(function(){
 		//Cufon.replace($('#intel_use'));
-
 		$('#intel_about a').click(function(e){
+			pauseSwf();
 			trackMosaicEvent('watch','video','bottomnav');
 			e.preventDefault();
 			$.modal('<iframe src="https://www.youtube.com/embed/zWKVSXkrWUc" width="640" height="340" style="border:0">', {
@@ -66,6 +66,8 @@
 					height:360,
 					padding:0
 				},
+				close:true,
+				onClose: function(dialog){window.resumeSwf();},
 				position: [80,],
 				overlayClose:true
 			});
@@ -73,10 +75,9 @@
 
 		$('#intel_use').click(function(e){
 			e.preventDefault();
-			pauseSwf();
+			
 			$("#intel_tos_content").modal({
 				overlayClose:true,
-				onClose: function(dialog){window.resumeSwf();},
 				onOpen: function (dialog) {
 					dialog.overlay.fadeIn('slow', function () {
 						dialog.data.hide();
