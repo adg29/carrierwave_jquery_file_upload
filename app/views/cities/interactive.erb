@@ -73,8 +73,10 @@
 
 		$('#intel_use').click(function(e){
 			e.preventDefault();
+			pauseSwf();
 			$("#intel_tos_content").modal({
 				overlayClose:true,
+				onClose: function(dialog){window.resumeSwf();},
 				onOpen: function (dialog) {
 					dialog.overlay.fadeIn('slow', function () {
 						dialog.data.hide();
