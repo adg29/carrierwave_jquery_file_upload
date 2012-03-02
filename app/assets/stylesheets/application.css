@@ -49,9 +49,9 @@
 #simplemodal-data,
 #simplemodal-container,
 #simplemodal-container iframe{
+
 	overflow-x: hidden;
-	overflow-y: hidden;
-}
+
 #video_display{
 	position:abosolute;
 	text-align:center;
