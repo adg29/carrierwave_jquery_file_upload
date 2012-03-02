@@ -77,8 +77,8 @@ function submitMedia(city_code,mediatype){
 				},
 				onShow: function(dialog) {
 					setSrc();
-					$('#uploadmodaliframe').click( function(){ return false; } );
-					$('body').click(function(){ $.modal.close(); } );
+					//$('#uploadmodaliframe').click( function(){ return false; } );
+					//$('body').click(function(){ $.modal.close(); } );
 				},
 				position: [60,260],
 				overlayClose:true,
