@@ -12,6 +12,10 @@
  //= require fileinput-enhanced
 */
 
+#upload_start{
+	cursor: pointer;
+}
+
 #video-submit{
 	background-image: url(/assets/video-submit.png);
 	width: 155px;
