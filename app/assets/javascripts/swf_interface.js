@@ -55,19 +55,17 @@ function submitMedia(city_code,mediatype){
 	
 	//src set onShow event - clears up IE Jquery Errors relating to IFrames and simplemodal.
 	function setSrc(){
+		var protocolstr = (window.location.href.indexOf("http://")==-1) ? "https://" : "http://";
 		var frameSource = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
 	   $('#uploadmodaliframe').attr("src", frameSource);
 	}
-	//console.log("onopen>"+window.onConfirmPanel);
+
 	try{
 			var uploadtype = "";
 			if( mediatype=="video") {
 				uploadtype="?video=accept";
 			}
 			$('#swf_div')[0].pauseSwf();
-			//var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "http://";  // wip dev
-			var protocolstr = (window.location.href.indexOf("<%= request.env['HTTP_HOST'] %>")!=-1) ? "http://" : "https://";  // git
-			var src = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
 			
 			// w399 h350
 			$.modal('<iframe id="uploadmodaliframe" src="" height="350" width="399" style="border:0px" frameBorder="0" scrolling="no">', {
