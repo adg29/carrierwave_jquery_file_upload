@@ -14,13 +14,13 @@
 
 .modalCloseImg{
 	display: block;
-	width: 20px;
+	width: 16px;
 	height: 20px;
 	background: #0060AC;
 	background: url(/assets/ui/close.png);
 	position: absolute;
 	top: 3px;
-	right: 16px;
+	right: 20px;
 }
 
 #iframe_canvas{
