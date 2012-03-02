@@ -52,7 +52,7 @@
 			}
 			$('.mosaic_fb_share').css('display','inline');
 			$('label[for="Share_city_on_your_wall"]').css('display','inline');
-			if( $('#picture_remote_file_url').val().indexOf('youtube')!=-1 ){
+			if( $('#picture_remote_file_url').val().indexOf('youtube')!=-1 || $('#picture_remote_file_url').val().indexOf('youtu.be')!=-1   ){
 				var yt_meta = gYoutube();
 				$('.fileupload-buttonbar').css('display','block');
 				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );

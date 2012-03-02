@@ -12,6 +12,10 @@
  //= require fileinput-enhanced
 */
 
+#iframe_canvas{
+	overflow-x: hidden;
+}
+
 .fileupload-content .template-download{
   margin-left: 15px;
   overflow: visible;
