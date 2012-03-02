@@ -135,7 +135,7 @@ function gYoutube(){
 						.html('<h3 class="cufon-intel">Upload Complete!</h3>');
 					$('.fileupload-content')
 						.css('width',350)
-	     					.prepend("<span class='cufon-intel'>Almost done. We've received your pic and are quickly reviewing for content. Check back within 24 hrs to see if you've been approved.</span>")
+	     					.prepend("<span class='cufon-intel'>"+getLanguageVal('upload_moderate')+"</span>")
 						.css('marginLeft',15);
 
 					Cufon.replace($('span.cufon-intel'));

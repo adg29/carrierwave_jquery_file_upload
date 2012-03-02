@@ -55,8 +55,10 @@ function submitMedia(city_code,mediatype){
 	
 	//src set onShow event - clears up IE Jquery Errors relating to IFrames and simplemodal.
 	function setSrc(){
+		if( uploadtype=="" ) translateval = '?translate='+translate_current;
+		else translateval = '&translate='+translate_current;
 		var protocolstr = (window.location.href.indexOf("http://")==-1) ? "https://" : "http://";
-		var frameSource = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
+		var frameSource = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype+translateval;
 	   $('#uploadmodaliframe').attr("src", frameSource);
 	}
 

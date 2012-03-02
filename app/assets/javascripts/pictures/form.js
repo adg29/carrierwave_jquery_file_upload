@@ -35,7 +35,7 @@ function GetIdFromUrl(url) {
     if (match && match[7].length == 11) {
         return match[7];
     } else {
-        alert("Failed to read YouTube URL. Did you enter a valid link?");
+        //alert("Failed to read YouTube URL. Did you enter a valid link?");
     }
 }
 
@@ -97,8 +97,10 @@ $(function () {
 			
 			
 			
-			$('#mosaic_copy').html('<h2 class="cufon-intel">Upload Complete!</h2>');
-			Cufon.replace($('#mosaic_copy'));
+			$('#mosaic_copy').html('<h2 class="cufon-intel">'+getLanguageVal('upload_complete')+'</h2>');
+			if( translate_current!=1 ) {
+				Cufon.replace($('#mosaic_copy'));
+			}
 			
 			
 			//on Success, allow the fb_share bool to live on outside of modal click.
@@ -123,7 +125,9 @@ $(function () {
 					.fadeIn(function () {
 					    // Fix for IE7 and lower:
 					    $(this).show();
-						Cufon.replace($('.cufon-intel'));
+						if( translate_current!=1 ) {
+							Cufon.replace($('.cufon-intel'));
+						}
 
 					});
 				});
@@ -135,7 +139,9 @@ $(function () {
 				.fadeIn(function () {
 				    // Fix for IE7 and lower:
 				    $(this).show();
-					Cufon.replace($('.cufon-intel'));
+					if( translate_current!=1 ) {
+						Cufon.replace($('.cufon-intel'));
+					}
 					$('.template-download .preview')
 						.css('overflow','visible')
 						.css('width',350);

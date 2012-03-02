@@ -31,10 +31,10 @@
 	cursor: pointer;
 }
 .translate-option#translate-english{
-	background-position: 0 0;
+	background-position: 25px 0;
 }
 .translate-option#translate-korean{
-	background-position: 0 -18px;
+	background-position: 25px -18px;
 }
 
 #translate-options{
@@ -46,7 +46,7 @@
 	height: 147px;
 	background: #004280;
 	position: absolute;
-	top: -149px;
+	top: -147px;
 	right: 0px;
 }
 #translate-intent{
@@ -229,7 +229,7 @@ textarea#picture_description{
 	padding:0px; 
 	margin:0px; 
 	width:744px; 
-	height:564px;
+	height:562px;
 }
 
 #intel_about {
