@@ -18,13 +18,15 @@
   <script type="text/javascript">
 
 
-  var translate_current = 0;//english first
+  var translate_current = <% if @translate.nil? %> 0 <% else %><%= @translate%><% end %>;//english first
   var translate_vals = [
   	{ 
 		'label' : 'english',
 		'optionX' : 0,
 		'optionY' : 0,
 		'locale' : 'en_US',
+		'upload_join_image' : 'Join the mosaic by submitting an image that best represents you and your city.',
+		'upload_join_video' : 'Join the mosaic by submitting a video that best represents you and your city.',
 		'upload_callout' : 'Join the mosaic by uploading an image that best represents you and your city. ',
 		'upload_caption' : 'Add a caption to your upload',
 		'upload_paste' : 'Paste an image link here',
@@ -39,6 +41,8 @@
 		'optionX' : 0,
 		'optionY' : 18,
 		'locale' : 'ko_KR',
+		'upload_join_image' : '여러분과 여러분의 도시를 대표할 수 있는 사진을 업로드하여 울트라북 프로젝트에 참여하세요.',
+		'upload_join_video' : '여러분과 여러분의 도시를 대표할 수 있는 사진을 업로드하여 울트라북 프로젝트에 참여하세요.',
 		'upload_callout' : '여러분과 여러분의 도시를 대표할 수 있는 사진을 업로드하여 울트라북 프로젝트에 참여하세요.',
 		'upload_caption' : '게시물에 대한 설명을 남겨주세요',
 		'upload_paste' : '이곳에 이미지 링크를 올려주세요',
@@ -51,6 +55,10 @@
   ];
 
   function getLanguageVal(key){
+	  console.log( parent.window.translate_current );
+	  if ( translate_vals[translate_current]=='undefined' ){
+		translate_current=0;
+	  }
 	  var val = translate_vals[translate_current][key];
 	  console.log(val);
 	  return val;

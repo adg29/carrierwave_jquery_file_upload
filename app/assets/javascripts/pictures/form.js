@@ -98,7 +98,9 @@ $(function () {
 			
 			
 			$('#mosaic_copy').html('<h2 class="cufon-intel">'+getLanguageVal('upload_complete')+'</h2>');
-			Cufon.replace($('#mosaic_copy'));
+			if( translate_current!=1 ) {
+				Cufon.replace($('#mosaic_copy'));
+			}
 			
 			
 			//on Success, allow the fb_share bool to live on outside of modal click.
@@ -123,7 +125,9 @@ $(function () {
 					.fadeIn(function () {
 					    // Fix for IE7 and lower:
 					    $(this).show();
-						Cufon.replace($('.cufon-intel'));
+						if( translate_current!=1 ) {
+							Cufon.replace($('.cufon-intel'));
+						}
 
 					});
 				});
@@ -135,7 +139,9 @@ $(function () {
 				.fadeIn(function () {
 				    // Fix for IE7 and lower:
 				    $(this).show();
-					Cufon.replace($('.cufon-intel'));
+					if( translate_current!=1 ) {
+						Cufon.replace($('.cufon-intel'));
+					}
 					$('.template-download .preview')
 						.css('overflow','visible')
 						.css('width',350);

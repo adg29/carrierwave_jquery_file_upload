@@ -36,6 +36,11 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   # GET /pictures/new.json
   def new
+    if !params[:translate].nil?
+      @translate = params[:translate]
+    else
+      @translate = 0
+    end
     if params[:video]=="accept"
       @uploadtype = "a video" 
     else

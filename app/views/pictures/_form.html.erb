@@ -11,6 +11,21 @@
   
   <script type="text/javascript">
   $(function(){
+	<% 
+	  if @uploadtype=="a video"
+	    @uploadcopy="video"
+	  else
+	    @uploadcopy="image"
+	  end
+	%>
+
+	$('#mosaic_copy')
+		.html(getLanguageVal('upload_join_<%= @uploadcopy %>'))
+	if( translate_current!=1 ) {
+		console.log('trans');
+		console.log(translate_current);
+	}
+
 	$('#video-submit').live('click',function(e){
 		e.preventDefault();
 	});
@@ -25,8 +40,10 @@
 		$('#upload_start')
 			.css('backgroundPosition','-2px -30px');
 	<% end %>
-        Cufon.replace($('.cufon-intel'));
-        Cufon.replace($('form label'));
+	if( translate_current!=1 ) {
+       		Cufon.replace($('.cufon-intel'));
+        	Cufon.replace($('form label'));
+	}
   	$('#picture_remote_file_url')
 		.focus(function(){
 			if( $(this).val().substr(0,5)=="Paste" ){
@@ -72,19 +89,19 @@
 					.css('display','block');
 				     $('.files').remove();
 				$("#video-submit").css('display','none');
-				Cufon.replace();
+				//Cufon.replace();
 			}
 			else if( $('#picture_remote_file_url').val().indexOf('vimeo')!=-1 ){
 				var vimeo_meta = gVimeo();
 				$('.fileupload-buttonbar').css('display','block');
 				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
 				$("#video-submit").css('display','none');
-				Cufon.replace();
+				//Cufon.replace();
 			}
 			<% else %>
 				$('.files').html( $.tmpl( $('#template-upload').html(), {} ) );
 				$('.files .preview').html( '<div class="thumb_paste"><img src="'+$('#picture_remote_file_url').val()+'"/></div>');
-				Cufon.replace();
+				//Cufon.replace();
 			<% end %>
 		});
 
@@ -111,7 +128,7 @@
 	<div id="fbavatar_copy">
 		<h2 class="cufon-intel" id="fbusername"></h2>
 		<div class="cufon-intel" id="mosaic_copy">
-		Join the mosaic by submitting <%= @uploadtype %> that best represents you and your city.
+		
 		</div>
 	</div>
 </div>
