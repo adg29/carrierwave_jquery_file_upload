@@ -48,6 +48,11 @@
 	}
   ];
 
+  function getLanguageVal(key){
+  	var val = translate_vals[translate_current][key];
+	return val;
+  }
+
    var kb = kb || {};
    kb.FBGraphFetch = function(){
 	FB.api('/me', function(response) {
