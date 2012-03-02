@@ -1,6 +1,6 @@
 class MosaicsController < ApplicationController
 
-  before_filter(:only => [:index, :new, :edit, :create, :destroy, :generate]) do |controller|
+  before_filter(:only => [:index, :new, :edit, :create, :destroy]) do |controller|
     authenticate_admin #unless controller.request.format.xml?
   end
 
@@ -12,8 +12,14 @@ class MosaicsController < ApplicationController
 
   # GET /cities/:city_id/mosaics/generate
   # GET /cities/:city_id/mosaics/generate.json
-  def generate
-    @city = City.find_by_name(params['city_id'])
+  def self.generate(city_to_generate)
+    #@city = City.find_by_name(params['city_id'])
+    if city_to_generate.nil?
+      @city = City.find_last_by_status('open')
+    else
+      @city = City.find_by_name(city_to_generate)
+    end
+
     Resque.enqueue( MosaicGenerator, @city.id )
     logger.debug( @city.inspect )
     respond_to do |format|
