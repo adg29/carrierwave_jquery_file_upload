@@ -105,7 +105,7 @@ function submitMedia(city_code,mediatype){
 							dialog.overlay.slideUp('slow', function () {
 								$.modal.close();
 								
-								//console.log("onclose>"+window.onConfirmPanel);
+								console.log("onclose>"+window.onConfirmPanel+"|"+window.mosaic_fb_share);
 								if( window.mosaic_fb_share==true && window.onConfirmPanel==true){
 								
 								// calling the API ...
@@ -208,7 +208,7 @@ function resumeSwf(){
 
 function clickfromswf(){
 	$.modal.close();
-	
+	console.log("onclosefromclick>"+window.onConfirmPanel+"|"+window.mosaic_fb_share);
 	if (window.mosaic_fb_share == true && window.onConfirmPanel == true) {
 		window.onConfirmPanel = false;
 		// calling the API ...

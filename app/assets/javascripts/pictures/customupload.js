@@ -122,7 +122,7 @@ function gYoutube(){
 				success: function(r){
 					
 					try{
-					parent.onConfirmPanel = true;
+						parent.onConfirmPanel = true;
 					} catch (e){
 						//console.log("error on setting parent var.");
 						parent.setOnConfirmPanel(true);
