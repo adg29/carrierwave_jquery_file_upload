@@ -1,0 +1,7 @@
+#!/bin/bash
+while [ 1 ]
+do
+  cd /local/home/kbsp/intel-mosaic
+  rvmsudo bundle exec script/rails runner -e production 'Picture.retrieve_moderated_content'
+  sleep 60
+done
