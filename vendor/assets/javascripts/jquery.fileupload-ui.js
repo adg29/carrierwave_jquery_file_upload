@@ -418,13 +418,9 @@
                     icons: {primary: 'ui-icon-cancel'}
                 });
             tmpl.find('.preview').each(function (index, node) {
-		console.log('load preview');
-		console.log( node );
                 that._loadImage(
                     files[index],
                     function (img) {
-			console.log('img');
-			console.log(img);
                         $(img).hide().appendTo(node).fadeIn();
                     },
                     {
