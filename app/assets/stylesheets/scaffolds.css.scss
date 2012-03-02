@@ -33,6 +33,9 @@ div {
 #fileupload p {
   margin: 4px 0 0 0;
 }
+#iframe_canvas{
+  overflow-x: hidden;
+}
 
 .field_with_errors {
   padding: 2px;
