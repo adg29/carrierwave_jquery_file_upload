@@ -153,6 +153,7 @@ function joinTheProjectClick(){
 /*
  * called on user select of language drop down. 
  * param s - localization code associated with language selected.
+ * 
  */
 function setLanguage(loc_code){
 	try{
