@@ -120,6 +120,16 @@ function gYoutube(){
 				url: '/pictures.json',
 				data: picture_upload,
 				success: function(r){
+					
+					try{
+					parent.onConfirmPanel = true;
+					} catch (e){
+						//console.log("error on setting parent var.");
+						parent.setOnConfirmPanel(true);
+					};
+					
+					
+					
 					$('#mosaic_copy')
 						.html('<h3 class="cufon-intel">Upload Complete!</h3>');
 					$('.fileupload-content')
