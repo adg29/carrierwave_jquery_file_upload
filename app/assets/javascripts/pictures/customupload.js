@@ -115,9 +115,6 @@ function gYoutube(){
 						.fadeIn(function () {
 						    // Fix for IE7 and lower:
 						    $(this).show();
-							$('.template-download .preview')
-								.css('overflow','visible')
-								.css('width',350);
 							Cufon.replace($('.preview'));
 							$('.fileupload-content')
 								.css('marginLeft',15);

@@ -464,6 +464,9 @@
                 icons: {primary: 'ui-icon-trash'}
             });
             tmpl.find('a').each(this._enableDragToDesktop);
+            tmpl.find('.preview')
+              .css('overflow','visible')
+              .css('width',350);
             return tmpl;
         },
         
