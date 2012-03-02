@@ -102,7 +102,7 @@
 
 
 
-    $('#translate-intent').live('click',function(){
+    $('#translate-intent').live('click',function(e){
 	if( $(this).hasClass('menu-open') ){
 		$(this).removeClass('menu-open');
 		$('#translate-options').css('display','none');
@@ -111,6 +111,15 @@
 		$(this).addClass('menu-open');
 		$('#translate-options').css('display','block');
 	}
+
+	  $('body').one('click',function() {
+	    // Hide the menus
+		$('#translate-intent').removeClass('menu-open');
+		$('#translate-options').css('display','none');
+	  });
+
+	  e.stopPropagation();
+	
     });
 
     $('#translate-options li').live('click',function(){

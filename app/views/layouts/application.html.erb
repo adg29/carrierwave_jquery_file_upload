@@ -17,6 +17,9 @@
   <div id="fb-root"></div>
   <script type="text/javascript">
 
+  
+
+
 
   var translate_current = <% if @translate.nil? %> 0 <% else %><%= @translate%><% end %>;//english first
   var translate_vals = [
@@ -57,12 +60,10 @@
   ];
 
   function getLanguageVal(key){
-	  console.log( parent.window.translate_current );
 	  if ( translate_vals[translate_current]=='undefined' ){
 		translate_current=0;
 	  }
 	  var val = translate_vals[translate_current][key];
-	  console.log(val);
 	  return val;
   }
 
