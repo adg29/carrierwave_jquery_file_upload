@@ -213,8 +213,9 @@ textarea#picture_description{
 	height:564px;
 }
 
-#intel_about a{
-	display: block;
+#intel_about {
+	/*display: block;*/
+	
 	width: 275px;
 	height: 38px;
 	position: absolute;
@@ -222,8 +223,8 @@ textarea#picture_description{
 	left: 125px;
 }
 
-#william_listen a{
-	display: block;
+#william_listen {
+	/*display: block;*/
 	width: 249px;
 	height: 38px;
 	position: absolute;
