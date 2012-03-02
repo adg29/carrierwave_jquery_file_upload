@@ -61,8 +61,8 @@ function submitMedia(city_code,mediatype){
 				uploadtype="?video=accept";
 			}
 			$('#swf_div')[0].pauseSwf();
-			var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "http://";  // wip dev
-			//var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "https://";  // git
+			//var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "http://";  // wip dev
+			var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "https://";  // git
 			var src = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
 			
 			// w399 h350
