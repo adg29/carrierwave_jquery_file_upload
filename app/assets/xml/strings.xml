@@ -15,32 +15,21 @@
 		<by_label><![CDATA[By:]]></by_label>
 		<city-1><![CDATA[Seoul]]></city-1>
 		<city-2><![CDATA[city to come]]></city-2>
-		<city-3><![CDATA[city to come]]></city-3>
-		<city-4><![CDATA[city to come]]></city-4>
-		<city-5><![CDATA[city to come]]></city-5>
-		<city-6><![CDATA[city to come]]></city-6>
-		<city-7><![CDATA[city to come]]></city-7>
-		<city-8><![CDATA[city to come]]></city-8>
-		<city-9><![CDATA[city to come]]></city-9>
-		<city-10><![CDATA[city to come]]></city-10>
-		<city-11><![CDATA[city to come]]></city-11>
-		<city-12><![CDATA[city to come]]></city-12>
 	</en>
 	<ko>
-	 	<default_current_city><![CDATA[멕시코 시티]]></default_current_city>
+	 	<default_current_city><![CDATA[도시선택]]></default_current_city>
 	 	<zoom><![CDATA[축소]]></zoom>
-		<close><![CDATA[가까운]]></close>
-		<landing_headline><![CDATA[Your Mosaics.<br/>His Inspiration.]]></landing_headline>
-		<landing_body><![CDATA[Using only his eyes, ears and an Ultrabook™, will.i.am is visiting cities around the globe, collaborating with local talent to write and record one track for each city. All he needs from you is to add pics and videos<br/>to the mosaic as inspiration.]]></landing_body>
-		<hint_headline><![CDATA[포토 갤러리 사진 갤러리와 동영상 추가]]></hint_headline>
-		<hint_body><![CDATA[각 도시 will.i.am 방문을위한 모자이크를 구축하는 데 도움이 있습니다.]]></hint_body>
-		<myupload_label><![CDATA[내 업로드]]></myupload_label>
+		<close><![CDATA[닫기]]></close>
+		<landing_headline><![CDATA[Your City.<br/>His Inspiration.]]></landing_headline>
+		<landing_body><![CDATA[윌아이엠(Will.i.am)이 표현한 서울의 음악은 어떨까요? 자신의 눈과 귀, 그리고 울트라북™만을 갖고 그가 전세계 도시 여행을 시작했습니다. 현지 아티스트들과의 콜라보레이션을 통해 각 도시에 맞는 음원이 탄생합니다. 그에게 영감을 줄 수 있는 방법은 간단합니다. 서울의 모습을 담은 여러분의 사진과 동영상으로 모자이크를 완성시켜 주세요.]]></landing_body>
+		<hint_headline><![CDATA[사진과 동영상을 올려주세요]]></hint_headline>
+		<hint_body><![CDATA[윌아이엠에게 영감을 주기위한 사진과 동영상을 올려주세요.]]></hint_body>
+		<myupload_label><![CDATA[내 게시물 보기]]></myupload_label>
 		<upload_label><![CDATA[업로드:]]></upload_label>
-		<join_btn_label><![CDATA[Baguettes The Project whoa this]]></join_btn_label>
+		<join_btn_label><![CDATA[프로젝트 참여하기]]></join_btn_label>
 		<find_btn_label><![CDATA[내 업로드]]></find_btn_label>
-		<by_label><![CDATA[작성자 :]]></by_label>
-		<city0><![CDATA[멕시코 시티]]></city0>
-		<city1><![CDATA[서울]]></city1>
+		<by_label><![CDATA[올린이:]]></by_label>
+		<city-1><![CDATA[서울]]></city-1>
 		<city-2><![CDATA[앞으로 도시]]></city-2>
 		<city-3><![CDATA[앞으로 도시]]></city-3>
 		<city-4><![CDATA[앞으로 도시e]]></city-4>
