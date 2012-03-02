@@ -66,8 +66,7 @@
 					height:360,
 					padding:0
 				},
-				close:true,
-				onClose: function(dialog){window.resumeSwf();},
+				onClose:closeVideoModal,
 				position: [80,],
 				overlayClose:true
 			});
@@ -96,6 +95,20 @@
 					
 		});
 
+
+	});
+	function closeVideoModal(dialog){
+	resumeSwf();
+	try{
+		dialog.data.fadeOut('slow', function () {
+			dialog.container.hide('fast', function () {
+				dialog.overlay.slideUp('fast', function () {
+					$.modal.close();
+				});
+			});
+		});
+	} catch(e){};	
+	}
 
 	});
 </script>
