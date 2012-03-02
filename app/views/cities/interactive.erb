@@ -124,11 +124,17 @@
   function setStaticLanguage(locale){
   	if( locale=='en_us' ){
 		$('#page_footer_global').css('background-position','-5px -18px');
-		language_current = 0;
+		translate_current = 0;
 	}else if( locale=='ko_kr' ){
 		$('#page_footer_global').css('background-position','-5px -76px');
-		language_current = 0;
+		translate_current = 1;
 	}
+
+
+	$('label for["Share_city_on_your_wall"]').html(getLanguageVal('fb_share'));
+	Cufon.replace( $('label for["Share_city_on_your_wall"]') );
+	$('label.fileinput-button').html(getLanguageVal('upload_image'));
+	Cufon.replace( $('label.fileinput-button') );
 
 
   }

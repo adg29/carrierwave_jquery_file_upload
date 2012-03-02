@@ -29,7 +29,8 @@
 		'upload_caption' : 'Add a caption to your upload',
 		'upload_paste' : 'Paste an image link here',
 		'upload_complete' : 'Upload Complete!',
-		'upload_mdoerate' : 'Almost done. We’ve received your video and are quickly reviewing for content. Check back within 24 hrs to see if you’ve been approved.',
+                'upload_image' : 'Upload Image',
+		'upload_mdoderate' : 'Almost done. We’ve received your video and are quickly reviewing for content. Check back within 24 hrs to see if you’ve been approved.',
 		'upload_video' : 'Paste a YouTube or Vimeo video link here',
 		'fb_share' : 'Share city on your wall'
 	},
@@ -42,15 +43,17 @@
 		'upload_caption' : '게시물에 대한 설명을 남겨주세요',
 		'upload_paste' : '이곳에 이미지 링크를 올려주세요',
 		'upload_complete' : '업로드가 완료되었습니다!',
-		'upload_mdoerate' : '사진 등록이 완료되었습니다. 24시간내에 사진 승인및 업로드 여부 확인이 가능합니다.',
+                'upload_image' : '사진 올리기',
+		'upload_moderate' : '사진 등록이 완료되었습니다. 24시간내에 사진 승인및 업로드 여부 확인이 가능합니다.',
 		'upload_video' : '이곳에 비디오 링크를 올려주세요 YouTube or Vimeo',
 		'fb_share' : '담벼락에서공유하기'
 	}
   ];
 
   function getLanguageVal(key){
-  	var val = translate_vals[translate_current][key];
-	return val;
+	  var val = translate_vals[translate_current][key];
+	  console.log(val);
+	  return val;
   }
 
    var kb = kb || {};

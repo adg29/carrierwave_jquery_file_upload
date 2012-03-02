@@ -35,7 +35,7 @@ function GetIdFromUrl(url) {
     if (match && match[7].length == 11) {
         return match[7];
     } else {
-        alert("Failed to read YouTube URL. Did you enter a valid link?");
+        //alert("Failed to read YouTube URL. Did you enter a valid link?");
     }
 }
 
@@ -97,7 +97,7 @@ $(function () {
 			
 			
 			
-			$('#mosaic_copy').html('<h2 class="cufon-intel">Upload Complete!</h2>');
+			$('#mosaic_copy').html('<h2 class="cufon-intel">'+getLanguageVal('upload_complete')+'</h2>');
 			Cufon.replace($('#mosaic_copy'));
 			
 			
