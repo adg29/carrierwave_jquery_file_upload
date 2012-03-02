@@ -60,7 +60,7 @@
 	display:inline;
 	z-index:3200;
 	position:absolute;
-	top:5px;
+	top:-10px;
 	right:-5px;
 	cursor:pointer;
 }
