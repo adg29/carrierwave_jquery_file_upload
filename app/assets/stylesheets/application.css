@@ -57,42 +57,6 @@
 	overflow-y: hidden;
 }
 
-#video_display{
-	position:abosolute;
-	text-align:center;
-	vertical-align:top;
-	width:600px;
-	height:350px;
-	top: 0px;
-	left: 0px;
-}
-#vid_frame {
-	position:absolute;
-	text-align:center;
-	top: 15px;
-	width: 640px;
-	height: 340px;
-}
-#simplemodal-container a.modalCloseImg {
-	background:url(/assets/ui/close.png) no-repeat; /* adjust url as required */
-	width:44px;
-	height:44px;
-	display:inline;
-	z-index:3200;
-	position:absolute;
-	top:-10px;
-	right:-5px;
-	cursor:pointer;
-}
-
-#modal_containerVideo{
-	position:fixed;
-	top: 15px;
-	width: 800px;
-	height: 800px;
-	display:none;
-}
-
 h1{
 	font-weight: normal;
 }
@@ -240,7 +204,7 @@ textarea#picture_description{
 	/*left: 150px;
 	top: 60px;*/
 	width:470px;
-	height:114px;
+	min-height:114px;
 	margin-left:auto;
 	margin-right:auto;
 	display: block;
