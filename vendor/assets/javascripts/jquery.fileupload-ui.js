@@ -178,6 +178,7 @@
             },
             // Callback for uploads start, equivalent to the global ajaxStart event:
             start: function () {
+                $('.preview').append('<img class="spinner" src="/assets/spinner.gif"/>');
                 $(this).find('.fileupload-progressbar')
                     .progressbar('value', 0).fadeIn();
             },
