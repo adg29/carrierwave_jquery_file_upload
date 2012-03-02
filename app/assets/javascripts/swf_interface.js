@@ -61,9 +61,11 @@ function submitMedia(city_code,mediatype){
 				uploadtype="?video=accept";
 			}
 			$('#swf_div')[0].pauseSwf();
-			var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "https://";
+			var protocolstr = (window.location.href.indexOf("review.kbsp.com")!=-1) ? "http://" : "https://";  // wip 2nd one is https
 			var src = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype;
-			$.modal('<iframe id="uploadmodaliframe" src="" height="350" width="399" style="border:0">', {
+			
+			// w399 h350
+			$.modal('<iframe id="uploadmodaliframe" src="" height="350" width="399" style="border:0px" frameBorder="0" scrolling="no">', {
 				closeHTML:"close",
 				containerCss:{
 					background:"url(/assets/upload-modal-global.png) no-repeat transparent",

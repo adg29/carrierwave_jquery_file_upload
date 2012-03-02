@@ -62,6 +62,7 @@ $(function () {
 			$('#description_input').css('display','block');
 			$('.fileupload-buttonbar').css('left',200);
 			$('.fileinput-button,#picture_file').css('display','none');
+			$('.customfile').css('width',150);
 	    	},
 		done: function (e, data) {
 			

@@ -38,13 +38,15 @@ $.fn.customFileInput = function(){
 			var fileName = $(this).val().split(/\\/).pop();
 			//get file extension
 			var fileExt = 'customfile-ext-' + fileName.split('.').pop().toLowerCase();
+			
 			//update the feedback
-			uploadFeedback
-				.text(fileName) //set feedback text to filename
-				.removeClass(uploadFeedback.data('fileExt') || '') //remove any existing file extension class
-				.addClass(fileExt) //add file extension class
-				.data('fileExt', fileExt) //store file extension for class removal on next change
-				.addClass('customfile-feedback-populated'); //add class to show populated state
+			// uploadFeedback
+			// 	.text(fileName) //set feedback text to filename
+			// 	.removeClass(uploadFeedback.data('fileExt') || '') //remove any existing file extension class
+			// 	.addClass(fileExt) //add file extension class
+			// 	.data('fileExt', fileExt) //store file extension for class removal on next change
+			// 	.addClass('customfile-feedback-populated'); //add class to show populated state
+			
 			//change text of button	
 			//uploadButton.text('Change');	
 		})
@@ -61,6 +63,7 @@ $.fn.customFileInput = function(){
 	var uploadButton = $('<span class="customfile-button" aria-hidden="true"></span>').appendTo(upload);
 	//create custom control feedback
 	var uploadFeedback = $('<span class="customfile-feedback" aria-hidden="true"></span>').appendTo(upload);
+	//var uploadFeedback = $('<span class="customfile-feedback" aria-hidden="true">No file selected...</span>').appendTo(upload);
 	
 	//match disabled state
 	if(fileInput.is('[disabled]')){
