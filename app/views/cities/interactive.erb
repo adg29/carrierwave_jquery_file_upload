@@ -55,34 +55,6 @@
     window.swfInitialized = true;
   }
 
-  var translate_vals = [
-  	{ 
-		'label' : 'english',
-		'optionX' : 0,
-		'optionY' : 0,
-		'locale' : 'en_US',
-		'upload_callout' : 'Join the mosaic by uploading an image that best represents you and your city. ',
-		'upload_caption' : 'Add a caption to your upload',
-		'upload_paste' : 'Paste an image link here',
-		'upload_complete' : 'Upload Complete!',
-		'upload_mdoerate' : 'Almost done. We’ve received your video and are quickly reviewing for content. Check back within 24 hrs to see if you’ve been approved.',
-		'upload_video' : 'Paste a YouTube or Vimeo video link here',
-		'fb_share' : 'Share city on your wall'
-	},
-	{
-		'label' : 'korean',
-		'optionX' : 0,
-		'optionY' : 18,
-		'locale' : 'ko_KR',
-		'upload_callout' : '여러분과 여러분의 도시를 대표할 수 있는 사진을 업로드하여 울트라북 프로젝트에 참여하세요.',
-		'upload_caption' : '게시물에 대한 설명을 남겨주세요',
-		'upload_paste' : '이곳에 이미지 링크를 올려주세요',
-		'upload_complete' : '업로드가 완료되었습니다!',
-		'upload_mdoerate' : '사진 등록이 완료되었습니다. 24시간내에 사진 승인및 업로드 여부 확인이 가능합니다.',
-		'upload_video' : '이곳에 비디오 링크를 올려주세요 YouTube or Vimeo',
-		'fb_share' : '담벼락에서공유하기'
-	}
-  ];
 
 	$(function(){
 		//Cufon.replace($('#intel_use'));
@@ -96,6 +68,9 @@
 			});
       			return false;
 		});
+      $.each( translate_vals, function(i,lang){
+          $('#translate-options').append('<li data-locale='+lang.locale+' id="translate-'+lang.label+'" class="translate-option">'+lang.label+'</li>');
+      });
 
     $('#william_listen_a').click(function() {
       trackMosaicEvent('listen','audio','bottomnav');
@@ -125,9 +100,6 @@
           
     });
 
-    $.each( translate_vals, function(i,lang){
-    	$('#translate-options').append('<li data-locale='+lang.locale+' id="translate-'+lang.label+'" class="translate-option">'+lang.label+'</li>');
-    });
 
 
     $('#translate-intent').live('click',function(){
@@ -152,9 +124,19 @@
   function setStaticLanguage(locale){
   	if( locale=='en_us' ){
 		$('#page_footer_global').css('background-position','-5px -18px');
+		language_current = 0;
 	}else if( locale=='ko_kr' ){
 		$('#page_footer_global').css('background-position','-5px -76px');
+		language_current = 0;
 	}
+
+
+  }
+
+  function getLanguageVal(key){
+  	var val = eval(language_vals[language_current].key);
+	console.log(val);
+	return val;
   }
 
   function closeVideoModal(dialog){
