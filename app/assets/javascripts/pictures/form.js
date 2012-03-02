@@ -88,10 +88,10 @@ $(function () {
 	    	},
 		done: function (e, data) {
 			
+			//Flag close event-for show/not show share on modal close
 			try{
 				parent.onConfirmPanel = true;
 			} catch (e){
-				//console.log("error on setting parent var.");
 				parent.setOnConfirmPanel(true);
 			};
 			
@@ -102,8 +102,6 @@ $(function () {
 			
 			
 			//on Success, allow the fb_share bool to live on outside of modal click.
-			
-			
 			$('form#new_picture').css('display','none');
 			$('.fileupload-buttonbar').css('display','none');
 
