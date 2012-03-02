@@ -82,8 +82,8 @@ $(function () {
 			//on Success, allow the fb_share bool to live on outside of modal click.
 			
 			
-			$('form#new_picture').fadeOut();
-			$('.fileupload-buttonbar').fadeOut();
+			$('form#new_picture').css('display','none');
+			$('.fileupload-buttonbar').css('display','none');
 
 			var that = $(this).data('fileupload');
 			if (data.context) {
@@ -95,16 +95,18 @@ $(function () {
 				}
 
 				$(this).fadeOut(function () {
-				    that._renderDownload([file])
+				    that._renderDownload([file]);
+
+				     that._renderDownload([file])
 					.css('display', 'none')
 					.replaceAll(this)
 					.fadeIn(function () {
 					    // Fix for IE7 and lower:
 					    $(this).show();
+                                                $('.template-download .preview')
+                                                        .css('overflow','visible')
+                                                        .css('width',350);
 						Cufon.replace($('.cufon-intel'));
-						$('.template-download .preview')
-							.css('overflow','visible')
-							.css('width',350);
 						$('.fileupload-content')
 							.css('marginLeft',15);
 
