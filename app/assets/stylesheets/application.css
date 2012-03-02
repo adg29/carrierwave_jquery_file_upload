@@ -41,7 +41,7 @@
 	z-index:3200;
 }
 
-#modalCloseImg simplemodal-close {
+#simplemodal-container a.modalCloseImge {
 	background:url(/assets/images/ui/close-upload.png) no-repeat; /* adjust url as required */
 	width:44px;
 	height:44px;
