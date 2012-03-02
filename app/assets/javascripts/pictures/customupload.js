@@ -124,8 +124,6 @@ function gYoutube(){
 
 				},
 				error: function(r){
-					console.log('ERROR');
-					console.log(r);
 				}
 			  });
 
@@ -182,7 +180,6 @@ function gYoutube(){
                   '<div class="cancel"><button>Cancel</button></div>' +
                   '</div>');
               if (file.error) {
-	      	  console.log( file.error );
                   row.addClass('ui-state-error');
                   row.find('.error').text(
                       that.options.errorMessages[file.error] || file.error
