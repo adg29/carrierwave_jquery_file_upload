@@ -35,7 +35,6 @@
 }
 
 #simplemodal-data,
-#simplemodal-container,
 #simplemodal-container iframe{
 	overflow-y: hidden;
 	overflow-x: hidden;
