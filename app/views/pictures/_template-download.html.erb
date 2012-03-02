@@ -15,8 +15,9 @@
               {{else error === 'maxNumberOfFiles'}}Max number of files exceeded
               {{else error === 'uploadedBytes'}}Uploaded bytes exceed file size
               {{else error === 'emptyResult'}}Empty file upload result
-	      {{else error === '{"file":["can\'t be blank"]}'}}Media input can't be blank
+      	      {{else error === '{"file":["can\'t be blank"]}'}}Media input can't be blank
               {{else}}${error}
+
               {{/if}}
           </div>
       {{else}}

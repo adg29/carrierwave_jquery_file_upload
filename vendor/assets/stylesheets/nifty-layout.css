@@ -20,12 +20,12 @@ body.page_picture_upload{
 
 #page_footer_global{
 	background: url(/assets/page-footer-global.png) -5px -18px;
-	width: 763px;
+	/*width: 763px;*/
 	width: 744px;
 	height: 40px;
-	position: absolute;
+	/*position: absolute;
 	left: 0px;
-	top: 562px;
+	top: 562px;*/
 }
 
 a img{border:none;}
@@ -33,7 +33,7 @@ a{color:#0000FF;}
 .clear{clear:both;height:0;overflow:hidden;}
 
 #container{
-	width:75%;
+	width:744px;
 	background-color: transparent;
 }
 
