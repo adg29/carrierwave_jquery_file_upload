@@ -13,7 +13,7 @@ function gPictureForm(){
 		  }
 		};
 
-		if( $('#picture_remote_file_url').val().indexOf('vimeo')!=-1 || $('#picture_remote_file_url').val().indexOf('youtube')!=-1  ){
+		if( $('#picture_remote_file_url').val().indexOf('vimeo')!=-1 || $('#picture_remote_file_url').val().indexOf('youtube')!=-1 || $('#picture_remote_file_url').val().indexOf('youtu.be')!=-1    ){
 				
 			picture_upload['picture']['video_url'] = $('#picture_remote_file_url').val();
 			picture_upload['picture']['remote_file_url'] = $('.thumb_paste img').attr('src');
@@ -74,7 +74,7 @@ function gVimeo(){
 function gYoutube(){
   var picture_upload = gPictureForm();
   var ytThumb = $.jYoutube( $('#picture_remote_file_url').val() );
-  if( ytThumb !== null && $('#picture_remote_file_url').val().indexOf('youtube')!=-1 ) {
+  if( ytThumb !== null && ( $('#picture_remote_file_url').val().indexOf('youtube')!=-1 || $('#picture_remote_file_url').val().indexOf('youtu.be')!=-1 ) ) {
 	picture_upload['picture']['video_url'] = $('#picture_remote_file_url').val();
 	picture_upload['picture']['remote_file_url'] = ytThumb;
   }
