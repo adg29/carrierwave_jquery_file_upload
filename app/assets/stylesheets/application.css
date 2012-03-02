@@ -51,7 +51,6 @@
 #simplemodal-container iframe{
 	overflow-y: hidden;
 	overflow-x: hidden;
-	z-index:3000;
 }
 
 #simplemodal-container a.modalCloseImg {
