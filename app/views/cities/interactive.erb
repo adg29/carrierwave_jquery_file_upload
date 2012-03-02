@@ -57,15 +57,14 @@
 
 	$(function(){
 		//Cufon.replace($('#intel_use'));
-		$('#intel_about').click(function(e){
+		$('#intel_about a').click(function(e){
 			pauseSwf();
 			trackMosaicEvent('watch','video','bottomnav');
-			
-			$.modal('<div id="video_display"><iframe src="https://www.youtube.com/embed/zWKVSXkrWUc" width="640" height="340" style="border:0"></div>', {
+			e.preventDefault();
+			$.modal('<iframe src="https://www.youtube.com/embed/zWKVSXkrWUc" width="640" height="340" style="border:0">', {
 				onClose:closeVideoModal,
 				position: [80,],
-				overlayClose:true,
-				modalContainer:modal_containerVideo
+				overlayClose:true
 			});
 		})
 
