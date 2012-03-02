@@ -12,6 +12,18 @@
  //= require fileinput-enhanced
 */
 
+.fileupload-content .template-download{
+  margin-left: 15px;
+  overflow: visible;
+  width: 350px;
+
+}
+.preview img.spinner{
+        position: absolute;
+        top: 0px;
+        left: 30px;
+}
+
 #upload_start{
 	cursor: pointer;
 }
