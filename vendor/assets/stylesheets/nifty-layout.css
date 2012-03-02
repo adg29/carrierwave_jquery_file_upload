@@ -34,8 +34,9 @@ a{color:#0000FF;}
 .clear{clear:both;height:0;overflow:hidden;}
 
 #container{
-	width:744px;
+/*	width:744px;*/
 	background-color: transparent;
+	overflow-x: hidden;
 }
 
 #flash_notice,#flash_error,#flash_alert{padding:5px 8px;margin:10px 0;}
