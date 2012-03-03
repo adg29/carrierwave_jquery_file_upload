@@ -230,6 +230,11 @@ function clickfromswf(){
 			}else{
   			resumeSwf();
 		}
+	
+    	//$('#translate-intent').click();
+	$(this).removeClass('menu-open');
+	resumeSwf();
+	$('#translate-options').css('display','none');
 }
 
 
