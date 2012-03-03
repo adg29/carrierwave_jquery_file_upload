@@ -177,7 +177,7 @@
       
       <div class="fileupload-buttonbar" style="<% if( @uploadtype=="a video") %>display: none;<% end %>">
           <div id="description_input" class="field">
-              <%= f.text_area :description , :value => 'Add a caption to your upload' %>
+              <%= f.text_area :description , :maxlength=> 130,:value => 'Add a caption to your upload' %>
           </div>
 
           <label class="fileinput-button">

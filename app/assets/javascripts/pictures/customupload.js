@@ -132,14 +132,15 @@ function gYoutube(){
 					
 					
 					$('#mosaic_copy')
-						.html('<h3 class="cufon-intel">Upload Complete!</h3>');
+						.html('');
 					$('.fileupload-content')
 						.css('width',350)
 	     					.prepend("<span class='cufon-intel'>"+getLanguageVal('upload_moderate')+"</span>")
 						.css('marginLeft',15);
 
-					Cufon.replace($('span.cufon-intel'));
-					Cufon.replace($('#mosaic_copy'));
+					if( translate_current!=1 ) {
+						Cufon.replace($('span.cufon-intel'));
+					}
 
 					$('.files').html( '' );
 
