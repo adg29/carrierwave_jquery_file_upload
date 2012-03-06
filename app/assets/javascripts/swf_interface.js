@@ -113,11 +113,11 @@ function submitMedia(city_code,mediatype){
 								// calling the API ...
 								var obj = {
 								  method: 'feed',
-								  link: facebook_app_url + '/?controller=cities&id='+city_id+'&action=interative',
-								  picture: request_HTTP_HOST + "/" + city_mosaic,
-								  name: city_name + ' Intel Mosaic with Will.i.am',
-								  caption: 'Join the mosaic by submitting media that best represents you and your city.',
-								  description: 'Your City. His Inspiration.<br/>I just posted content to the Intel Ultrabook TM project. Inspiration for will.i.am.'
+								  link: facebook_app_url + '/?controller=cities&id='+city_id+'&action=interactive',
+								  picture: request_HTTP_HOST + "/assets/intel-thumb-fb.jpg",
+								  name: 'Intel Ultrabook Project | ' + city_name,
+								  caption: 'Your city. His inspiration',
+								  description: 'Join the inspiration mosaic by submitting media that best represents the city ' + city_name
 								};
 								//console.log(obj);
 
