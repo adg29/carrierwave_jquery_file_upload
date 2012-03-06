@@ -10,6 +10,7 @@
   <script type="text/javascript">
   	var request_HTTP_HOST = "<%= request.env['HTTP_HOST'] %>";
 	var facebook_app_url = "<%= KCONF['fb_app_url'] %>"; 
+	var facebook_auth_url = 'https://facebook.com/dialog/oauth?client_id=<%= KCONF['fb_app_id'] %>&scope=email&redirect_uri='+encodeURI(facebook_app_url)+encodeURIComponent('/')
   	var mosaic_fb_share = false;
 	console.log('window.parent.location');
 	console.log(window.parent.location);
