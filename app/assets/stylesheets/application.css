@@ -58,14 +58,14 @@
 	text-align:center;
 	vertical-align:top;
 	width:640px;
-	height:360px;
+	height:370px;
 	top: 0px;
 	left: 0px;
 }
 #vid_frame {
 	position:absolute;
 	text-align:center;
-	top: 15px;
+	top: 20px;
 	width: 640px;
 	height: 340px;
 }
@@ -76,8 +76,9 @@
 	background: #0060AC;
 	background: url(/assets/ui/close.png);
 	position: absolute;
-	top: 4px;
+	top: 2px;
 	right: 4px;
+	cursor:pointer;
 }
 
 #iframe_canvas{
