@@ -78,9 +78,9 @@
 		kb.FBUser_populate_form();
 		
 		//will be undefined in the form iframe.
-		if (typeof FBUser_swfInitialize != "undefined"){
+		try{
 			FBUser_swfInitialize();
-		}
+		} catch (e){};
 	});
 
     }
@@ -115,7 +115,7 @@
 	    kb.FBGraphFetch();
 	  } else { //if (response.status === 'not_authorized') {
 	    // the user is logged in to Facebook, 
-	    //but not connected to the app
+	    // but not connected to the app
 	    // Additional initialization code here
 	     FB.login(function(response) {
 	       if (response.authResponse) {
