@@ -49,6 +49,11 @@ function trackMosaicEvent(eventId,mediaType,evtSource){
 }
 
 function submitMedia(city_code,mediatype){
+	
+	//TODO: Test for valid FBID existence here before going in to tracking/and actual upload flow.
+	
+	
+	
 	trackMosaicEvent('upload',mediatype,'topnav');
 	pauseSwf();
 	window.onConfirmPanel = false;
