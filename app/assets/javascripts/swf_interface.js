@@ -68,7 +68,6 @@ function submitMedia(city_code,mediatype){
 				uploadtype="?video=accept";
 			}
 			$('#swf_div')[0].pauseSwf();
-
 			
 			// w399 h350
 			$.modal('<iframe id="uploadmodaliframe" src="" height="350" width="399" style="border:0px" frameBorder="0" scrolling="no">', {
@@ -220,14 +219,14 @@ function clickfromswf(){
 		// calling the API ...
 		var obj = {
 			method: 'feed',
-			link: facebook_app_url + '/?controller=cities&id=' + city_id + '&action=interative',
-			picture: request_HTTP_HOST + "/" + city_mosaic,
-			name: city_name + ' Intel Mosaic with Will.i.am',
-			caption: 'Join the mosaic by submitting media that best represents you and your city.',
-			description: 'Your City. His Inspiration.<br/>I just posted content to the Intel Ultrabook TM project. Inspiration for will.i.am.'
+			link: facebook_app_url + '/?controller=cities&id=' + city_id + '&action=interactive',
+			picture: request_HTTP_HOST + "/intel-thumb-fb.jpg",
+			name: 'Intel Ultrabook Project | ' + city_name,
+			caption: 'Your City. His inspiration.',
+			description: 'Join the inspiration mosaic by submitting media that best represents the city ' + city_name
 		};
 		FB.ui(obj, fb_callback);
-			}else{
+		}else{
   			resumeSwf();
 		}
 	

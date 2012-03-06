@@ -10,24 +10,6 @@ class MosaicsController < ApplicationController
     end
   end
 
-  # GET /cities/:city_id/mosaics/generate
-  # GET /cities/:city_id/mosaics/generate.json
-  def self.generate(city_to_generate)
-    #@city = City.find_by_name(params['city_id'])
-    if city_to_generate.nil?
-      @city = City.find_last_by_status('open')
-    else
-      @city = City.find_by_name(city_to_generate)
-    end
-
-    Resque.enqueue( MosaicGenerator, @city.id )
-    logger.debug( @city.inspect )
-    respond_to do |format|
-      format.html #generate.html
-      format.json { render json: ( @city ) }
-    end
-  end
-
   def self.tile(source,destination)
     logger.debug('TILEEEE')
     Resque.enqueue( MosaicTiler, source, destination )
