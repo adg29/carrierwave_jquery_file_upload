@@ -61,12 +61,12 @@
 		$('#intel_about_a').click(function(e){
 			pauseSwf();
 			trackMosaicEvent('watch','video','bottomnav');
-			$.modal('<iframe src="https://www.youtube.com/embed/zWKVSXkrWUc" width="640" height="340" style="border:0">', {
+			$.modal('<div id="video_display"><div id="vid_frame"><iframe src="https://www.youtube.com/embed/zWKVSXkrWUc" width="640" height="340" style="border:0"></div></div>', {
 				onClose:closeVideoModal,
 				position: [80,],
 				overlayClose:true
 			});
-      			return false;
+      		return false;
 		});
       $.each( translate_vals, function(i,lang){
           $('#translate-options').append('<li data-locale='+lang.locale+' id="translate-'+lang.label+'" class="translate-option">'+lang.label+'</li>');

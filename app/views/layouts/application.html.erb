@@ -85,9 +85,9 @@ kb.FBUser = {
 		kb.FBUser_populate_form();
 		
 		//will be undefined in the form iframe.
-		if (typeof FBUser_swfInitialize != "undefined"){
+		try{
 			FBUser_swfInitialize();
-		}
+		} catch (e){};
 	});
 
     }
@@ -124,7 +124,7 @@ kb.FBUser = {
 		//window.top.location.href = 'https://facebook.com/dialog/oauth?client_id=300396973355596&scope=email&response_type=token&redirect_uri=http%3A%2F%2Freview.kbsp.com:4001'
 	  //if (response.status === 'not_authorized') {
 	    // the user is logged in to Facebook, 
-	    //but not connected to the app
+	    // but not connected to the app
 	    // Additional initialization code here
 			FBUser_swfInitialize();
 	     /*
