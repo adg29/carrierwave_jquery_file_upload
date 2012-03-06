@@ -10,7 +10,10 @@
   <script type="text/javascript">
   	var request_HTTP_HOST = "<%= request.env['HTTP_HOST'] %>";
 	var facebook_app_url = "<%= KCONF['fb_app_url'] %>"; 
+	var facebook_auth_url = 'https://facebook.com/dialog/oauth?client_id=<%= KCONF['fb_app_id'] %>&scope=email&redirect_uri='+encodeURI(facebook_app_url)+encodeURIComponent('/')
   	var mosaic_fb_share = false;
+	console.log('window.parent.location');
+	console.log(window.parent.location);
   </script>
   </head>
   <body <%= "class='page_picture_upload'" unless (params[:action]!="new" && params[:controller]!="pictures") %>>
@@ -68,6 +71,11 @@
   }
 
    var kb = kb || {};
+kb.FBUser = { 
+		name : '',
+		id : -1,
+		locale : 'en_US' 
+	    };
    kb.FBGraphFetch = function(){
 	FB.api('/me', function(response) {
 		kb.FBUser = { 
@@ -113,19 +121,25 @@
 	    // request, and the time the access token 
 	    // and signed request each expire
 	    kb.FBGraphFetch();
-	  } else { //if (response.status === 'not_authorized') {
+	  } else { 
+		//window.top.location.href = 'https://facebook.com/dialog/oauth?client_id=300396973355596&scope=email&response_type=token&redirect_uri=http%3A%2F%2Freview.kbsp.com:4001'
+	  //if (response.status === 'not_authorized') {
 	    // the user is logged in to Facebook, 
 	    // but not connected to the app
 	    // Additional initialization code here
+			FBUser_swfInitialize();
+	     /*
 	     FB.login(function(response) {
 	       if (response.authResponse) {
 	       	 kb.FBGraphFetch();
 	       } else {
+	       //something should be done in case the user is not accepting facebook
 	       }
 	     }, {scope: 
 		  'email'
 		    
 		});
+	     */
 	   }
 	 });
 
