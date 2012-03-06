@@ -49,18 +49,36 @@
 	top: -147px;
 	right: 0px;
 }
+
 #translate-intent{
 }
 
+#video_display{
+	background:#000000;
+	position:abosolute;
+	text-align:center;
+	vertical-align:top;
+	width:640px;
+	height:360px;
+	top: 0px;
+	left: 0px;
+}
+#vid_frame {
+	position:absolute;
+	text-align:center;
+	top: 15px;
+	width: 640px;
+	height: 340px;
+}
 .modalCloseImg{
 	display: block;
 	width: 16px;
-	height: 20px;
+	height: 16px;
 	background: #0060AC;
 	background: url(/assets/ui/close.png);
 	position: absolute;
-	top: 3px;
-	right: 20px;
+	top: 4px;
+	right: 4px;
 }
 
 #iframe_canvas{
