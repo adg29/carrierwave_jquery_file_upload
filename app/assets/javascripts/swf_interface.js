@@ -232,9 +232,9 @@ function clickfromswf(){
 		}
 	
     	//$('#translate-intent').click();
-	$(this).removeClass('menu-open');
-	resumeSwf();
-	$('#translate-options').css('display','none');
+	try{
+		closeLanguageMenu();
+	} catch(e){};
 }
 
 
