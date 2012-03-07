@@ -116,6 +116,7 @@
 
 	  $('body').one('click',function() {
 	    // Hide the menus
+	    console.log("test-->"+e.currenttarget.attributes[1]);
 	    if (!e.currenttarget.attributes[1]=="translate-intent"){
 			$('#translate-intent').removeClass('menu-open');
 			resumeSwf();
