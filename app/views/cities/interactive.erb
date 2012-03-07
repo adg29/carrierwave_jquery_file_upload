@@ -104,9 +104,7 @@
 
     $('#translate-intent').live('click',function(e){
 		if( $(this).hasClass('menu-open') ){
-			$(this).removeClass('menu-open');
-			resumeSwf();
-			$('#translate-options').css('display','none');
+			 closeLanguageMenu();
 		}
 		else{
 			$(this).addClass('menu-open');
@@ -115,12 +113,10 @@
 		}
 
 	  $('body').one('click',function() {
-	    // Hide the menus
-	    console.log("test-->"+e.currentTarget.attributes[1]);
+	    // Hide the menus on click of OUTSIDE the main 
+	    
 	    if (!e.currentTarget.attributes[1]=="translate-intent"){
-			$('#translate-intent').removeClass('menu-open');
-			resumeSwf();
-			$('#translate-options').css('display','none');
+			 closeLanguageMenu();
 		}
 	  });
 
@@ -130,11 +126,13 @@
     $('#translate-options li').live('click',function(){
 		setLanguage( $(this).attr('data-locale').toLowerCase() );
 		setStaticLanguage( $(this).attr('data-locale').toLowerCase() );
-		resumeSwf();
+		 closeLanguageMenu();
     });
   });
   function closeLanguageMenu(){
-  	
+  	$('#translate-intent').removeClass('menu-open');
+	$('#translate-options').css('display','none');
+	resumeSwf();
   }
   function setStaticLanguage(locale){
   	if( locale=='en_us' ){
