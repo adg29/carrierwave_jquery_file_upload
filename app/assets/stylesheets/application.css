@@ -80,7 +80,7 @@
 	width: 16px;
 	height: 16px;
 	background: #0060AC;
-	background: url(../images/ui/close.png);
+	background: url(/assets/ui/close.png);
 	position: absolute;
 	top: 2px;
 	right: 4px;
