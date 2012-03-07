@@ -211,7 +211,6 @@ function resumeSwf(){
 	} catch (e){}
 }
 
-
 //Handles closes upload & video modals in cases where overlay does not get click [ie].
 function clickfromswf(){
 	$.modal.close();

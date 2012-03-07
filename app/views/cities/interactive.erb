@@ -103,19 +103,20 @@
 
 
     $('#translate-intent').live('click',function(e){
-	if( $(this).hasClass('menu-open') ){
-		$(this).removeClass('menu-open');
-		resumeSwf();
-		$('#translate-options').css('display','none');
-	}
-	else{
-		$(this).addClass('menu-open');
-		$('#translate-options').css('display','block');
-		pauseSwf();
-	}
+		if( $(this).hasClass('menu-open') ){
+			$(this).removeClass('menu-open');
+			resumeSwf();
+			$('#translate-options').css('display','none');
+		}
+		else{
+			$(this).addClass('menu-open');
+			$('#translate-options').css('display','block');
+			pauseSwf();
+		}
 
 	  $('body').one('click',function() {
 	    // Hide the menus
+	    e.stopPropagation();
 		$('#translate-intent').removeClass('menu-open');
 		resumeSwf();
 		$('#translate-options').css('display','none');
