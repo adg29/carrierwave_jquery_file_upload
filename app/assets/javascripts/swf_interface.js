@@ -57,6 +57,7 @@ function submitMedia(city_code,mediatype){
 	trackMosaicEvent('upload',mediatype,'topnav');
 	pauseSwf();
 	window.onConfirmPanel = false;
+	window.mosaic_fb_share=false;
 	
 	//src set onShow event - clears up IE Jquery Errors relating to IFrames and simplemodal.
 	function setSrc(){
@@ -66,7 +67,7 @@ function submitMedia(city_code,mediatype){
 		var frameSource = protocolstr+request_HTTP_HOST+"/cities/"+city_code.split('-')[1]+"/pictures/new"+uploadtype+translateval;
 	   $('#uploadmodaliframe').attr("src", frameSource);
 	}
-
+	
 	try{
 			var uploadtype = "";
 			if( mediatype=="video") {
