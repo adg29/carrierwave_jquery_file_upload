@@ -55,7 +55,9 @@
 #video_display{
 	background:#000000;
 	position:abosolute;
-	text-align:center;
+	text-align:left;
+	border-color:#000000;
+	border-width:0px;
 	vertical-align:top;
 	width:640px;
 	height:370px;
@@ -65,9 +67,11 @@
 #vid_frame {
 	position:absolute;
 	text-align:center;
+	border-color:#000000;
+	border-width:0px;
 	top: 20px;
 	width: 640px;
-	height: 340px;
+	height: 336px;
 }
 .modalCloseImg{
 	display: block;
