@@ -116,25 +116,25 @@
 
 	  $('body').one('click',function() {
 	    // Hide the menus
-	    e.stopPropagation();
-		$('#translate-intent').removeClass('menu-open');
-		resumeSwf();
-		$('#translate-options').css('display','none');
+	    if (!e.currenttarget.attributes[1]=="translate-intent"){
+			$('#translate-intent').removeClass('menu-open');
+			resumeSwf();
+			$('#translate-options').css('display','none');
+		}
 	  });
 
 	  e.stopPropagation();
 	
     });
-
     $('#translate-options li').live('click',function(){
-	setLanguage( $(this).attr('data-locale').toLowerCase() );
-	setStaticLanguage( $(this).attr('data-locale').toLowerCase() );
-	resumeSwf();
+		setLanguage( $(this).attr('data-locale').toLowerCase() );
+		setStaticLanguage( $(this).attr('data-locale').toLowerCase() );
+		resumeSwf();
     });
-
-
   });
-
+  function closeLanguageMenu(){
+  	
+  }
   function setStaticLanguage(locale){
   	if( locale=='en_us' ){
 		$('#page_footer_global').css('background-position','-5px -18px');
