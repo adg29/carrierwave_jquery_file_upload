@@ -60,6 +60,13 @@
 				$(this).val('');
 			}
 		})
+		<% if @uploadtype=="a video" %>
+		.change(function(){
+			if( $(this).val().substr(0,5)!="Paste" ){
+				$('.thumb_paste').remove();
+			}
+		})
+		<% end %>
 		.blur(function(){
 			$('#upload_start').css('display','block');
 			$('#description_input').css('display','block');
