@@ -52,12 +52,13 @@
 
 #translate-intent{
 }
-#video_display{
+##video_display{
+	display: block;
+	overflow-x: hidden;
+	overflow-y: hidden;
 	background:#000000;
 	position:abosolute;
 	text-align:left;
-	border-color:#000000;
-	border-width:0px;
 	vertical-align:top;
 	width:640px;
 	height:370px;
@@ -65,13 +66,14 @@
 	left: 0px;
 }
 #vid_frame {
+	display: block;
+	overflow-x: hidden;
+	overflow-y: hidden;
 	position:absolute;
-	text-align:center;
-	border-color:#000000;
-	border-width:0px;
+	text-align:left;
 	top: 20px;
 	width: 640px;
-	height: 336px;
+	height: 350px;
 }
 .modalCloseImg{
 	display: block;
