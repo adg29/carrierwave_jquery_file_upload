@@ -13,6 +13,8 @@
 	var facebook_auth_url = 'https://facebook.com/dialog/oauth?client_id=<%= KCONF['fb_app_id'] %>&scope=email&redirect_uri='+encodeURI(facebook_app_url)+encodeURIComponent('/')
   	var mosaic_fb_share = false;
   </script>
+  
+  <script src="//connect.facebook.net/en_US/all.js"></script>
   </head>
   <body <%= "class='page_picture_upload'" unless (params[:action]!="new" && params[:controller]!="pictures") %>>
   <div id="fb-root"></div>
@@ -105,7 +107,7 @@ kb.FBUser = {
     window.fbAsyncInit = function() {
       FB.init({
         appId      : '<%= KCONF['fb_app_id'] %>', // App ID
-        channelUrl : '//<%= request.env['HTTP_HOST'] %>/channel.html', // Channel File
+        //channelUrl : '//<%= request.env['HTTP_HOST'] %>/channel.html', // Channel File
         status     : true, // check login status
         cookie     : true, // enable cookies to allow the server to access the session
         xfbml      : true  // parse XFBML
@@ -141,7 +143,7 @@ kb.FBUser = {
 	   }
 	 });
 
-    };
+    	};
 
 
     // Load the SDK Asynchronously
