@@ -2,7 +2,7 @@
 # Do not hesitate to tweak this to your needs
 
 City.create([
-  { :name => "Seoul", :status => "generated", :created_at => "2012-02-14 03:39:11", :updated_at => "2012-02-17 02:50:16" },
+  { :name => "Seoul", :status => "open", :created_at => "2012-02-14 03:39:11", :updated_at => "2012-02-17 02:50:16" },
   { :name => "City to Come", :status => "closed", :created_at => "2012-02-17 02:34:56", :updated_at => "2012-02-23 05:21:40" },
   { :name => "City to Come", :status => "closed", :created_at => "2012-02-17 02:38:09", :updated_at => "2012-02-23 05:21:49" },
   { :name => "City to Come", :status => "closed", :created_at => "2012-02-23 05:22:00", :updated_at => "2012-02-23 05:22:00" },
