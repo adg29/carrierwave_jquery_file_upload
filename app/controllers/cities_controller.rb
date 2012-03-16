@@ -17,6 +17,7 @@ class CitiesController < ApplicationController
       logger.debug('INTERACT')
       @city_none = true;
       @city = City.find_last_by_status('open')
+      @city = City.find_last_by_status('generated') if !@city
       logger.debug( @city.inspect )
     else
       logger.debug('dont INTERACT')
